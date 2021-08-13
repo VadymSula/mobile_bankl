@@ -1,7 +1,7 @@
 # UBRiR Mobile Bank
 ### Autotest Framework
 ### Stack:
-###### - Java 8
+###### - Java 14
 ###### - Appium (Android + IOS)
 ###### - TestNG
 ###### - Allure
