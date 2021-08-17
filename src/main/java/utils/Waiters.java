@@ -31,8 +31,12 @@ public class Waiters {
         waiter().until(ExpectedConditions.alertIsPresent());
     }
 
-    public MobileElement waitForVisibility(MobileElement mobileElement) {
+    public MobileElement getElementAfterWaitForVisibility(MobileElement mobileElement) {
         return (MobileElement) waiter().until(ExpectedConditions.visibilityOf(mobileElement));
+    }
+
+    public void waitForVisibility(MobileElement mobileElement) {
+        waiter().until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
     public MobileElement waitForElementClickable(MobileElement element) {
