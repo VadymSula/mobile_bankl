@@ -15,9 +15,13 @@ import utils.Waiters;
 
 import java.time.Duration;
 
-public class Screen {
+public class Screen extends MobileElements {
     private AppiumDriver<MobileElement> driver;
     protected static final Logger LOGGER = LoggerFactory.getLogger(Screen.class);
+
+    public Screen(AppiumDriver<MobileElement> driver, Waiters waiters) {
+        super(driver, waiters);
+    }
 
     public enum Direction {
         UP, DOWN, LEFT, RIGHT

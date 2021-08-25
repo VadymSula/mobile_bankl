@@ -1,13 +1,17 @@
 package elements;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.Waiters;
 
-public class Elements {
+public class Elements extends MobileElements {
     private static final Logger LOGGER = LoggerFactory.getLogger(Elements.class);
-    private Waiters waiters;
+
+    public Elements(AppiumDriver<MobileElement> driver, Waiters waiters) {
+        super(driver, waiters);
+    }
 
 
     public String getTextFromElement(MobileElement mobileElement) {
@@ -48,5 +52,9 @@ public class Elements {
     public void searchFieldAndSendKey(MobileElement mobileElement, String key) {
         var searchField = waiters.waitForElementClickable(mobileElement);
         searchField.sendKeys(key);
+    }
+
+    public boolean isElementExist(MobileElement mobileElement) {
+        return waiters.isElementExist(mobileElement);
     }
 }
