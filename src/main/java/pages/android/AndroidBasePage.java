@@ -10,6 +10,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
 import pages.android.mainscreen.CurrencyRatePage;
+import pages.android.mainscreen.DepartmentAddressesPage;
 import utils.Waiters;
 
 public class AndroidBasePage {
@@ -44,5 +45,11 @@ public class AndroidBasePage {
     public CurrencyRatePage goToCurrencyRatesPage() {
         buttons.waitInSecondsAndClickButtonBy(CURRENCY_RATES_BUTTON, 3);
         return new CurrencyRatePage(appiumDriver);
+    }
+
+    @Step("Тапнуть на кнопку 'Адреса'")
+    public DepartmentAddressesPage goToDepartmentAddressesPage() {
+        buttons.searchAndClickButtonBy(DEPARTMENT_ADDRESSES_BUTTON);
+        return new DepartmentAddressesPage(appiumDriver);
     }
 }
