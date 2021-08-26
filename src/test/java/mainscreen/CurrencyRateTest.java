@@ -15,6 +15,7 @@ public class CurrencyRateTest {
         var actualResult = currencyRatePage
                 .goToCurrencyRatesPage()
                 .isExistCurrencyRatesRecyclerOnPage();
+
         Assert.assertTrue(actualResult);
     }
 }
