@@ -19,6 +19,7 @@
         <testng.version>7.0.0</testng.version>
         <allure.testng>2.13.5</allure.testng>
         <allure-maven>2.9</allure-maven>
+        <allure.version>2.13.1</allure.version>
         <selenium-remote-driver>3.141.59</selenium-remote-driver>
     </properties>
 
@@ -83,6 +84,19 @@
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                    <resultsDirectory>allure-results</resultsDirectory>
+                    <propertiesFilePath>${basedir}/..src/test/resources/allure.properties</propertiesFilePath>
+                    <allureDownloadUrl>
+                        https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${allure.version}/allure-commandline-${allure.version}.zip
+                    </allureDownloadUrl>
+                </configuration>
             </plugin>
         </plugins>
     </build>

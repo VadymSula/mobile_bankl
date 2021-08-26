@@ -35,7 +35,7 @@ public class InitialDriver {
     }
 
     private static void setCapabilities() {
-        switch (PropertiesConfig.getProperty("platform").toUpperCase()) {
+        switch (PropertiesConfig.getProperty("platformName").toUpperCase()) {
             case "ANDROID":
                 caps.setCapability(MobileCapabilityType.DEVICE_NAME, PropertiesConfig.getProperty("deviceName"));
                 caps.setCapability(MobileCapabilityType.PLATFORM_NAME, PropertiesConfig.getProperty("platformName"));
