@@ -9,6 +9,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
+import pages.android.authorization.singin.SignInByLogin;
 import pages.android.mainscreen.BecomeClientPage;
 import pages.android.mainscreen.CurrencyRatePage;
 import pages.android.mainscreen.DepartmentAddressesPage;
@@ -45,18 +46,28 @@ public class AndroidBasePage {
     @Step("Тапнуть на кнопку 'Курс валют'")
     public CurrencyRatePage goToCurrencyRatesPage() {
         buttons.waitInSecondsAndClickButtonBy(CURRENCY_RATES_BUTTON, 3);
-        return new CurrencyRatePage(appiumDriver);
+        return new CurrencyRatePage(getAppiumDriver());
     }
 
     @Step("Тапнуть на кнопку 'Адреса'")
     public DepartmentAddressesPage goToDepartmentAddressesPage() {
         buttons.searchAndClickButtonBy(DEPARTMENT_ADDRESSES_BUTTON);
-        return new DepartmentAddressesPage(appiumDriver);
+        return new DepartmentAddressesPage(getAppiumDriver());
     }
 
     @Step("Тапнуть на блок Стать клиентом")
     public BecomeClientPage goToBecomeClientPage() {
         buttons.searchAndClickButtonBy(BECOME_CLIENT_BUTTON);
-        return new BecomeClientPage(appiumDriver);
+        return new BecomeClientPage(getAppiumDriver());
+    }
+
+    @Step("Тап на кнопку 'Войти'")
+    public SignInByLogin goToSignInPage() {
+        buttons.searchAndClickButtonBy(LOGIN_BUTTON);
+        return new SignInByLogin(getAppiumDriver());
+    }
+
+    public AppiumDriver<MobileElement> getAppiumDriver() {
+        return appiumDriver;
     }
 }

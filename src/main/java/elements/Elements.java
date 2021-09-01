@@ -2,6 +2,8 @@ package elements;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.Waiters;
@@ -15,8 +17,9 @@ public class Elements extends MobileElements {
 
 
     public String getTextFromElement(MobileElement mobileElement) {
-        waiters.waitForElementVisibleNot(mobileElement);
-        return mobileElement.getText();
+        var elementWithText = waiters.getElementAfterWaitForVisibility(mobileElement);
+
+        return elementWithText.getText();
     }
 
     public boolean isSelectedElement(MobileElement mobileElement) {
@@ -54,6 +57,15 @@ public class Elements extends MobileElements {
         searchField.sendKeys(key);
     }
 
+    public void sendKeyFromAction(String key) {
+        Actions action = new Actions(driver);
+        action.sendKeys(key).perform();
+    }
+
+    public void sendKeyFromAndroidKeyboard(CharSequence sequence) {
+        Actions action = new Actions(driver);
+        action.sendKeys(sequence).perform();
+    }
     public boolean isElementExist(MobileElement mobileElement) {
         return waiters.isElementExist(mobileElement);
     }
