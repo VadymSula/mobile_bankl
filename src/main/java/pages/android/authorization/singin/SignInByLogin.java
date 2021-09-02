@@ -72,10 +72,8 @@ public class SignInByLogin extends AndroidBasePage {
     public SignInByLogin fullInFieldsForLoginNotValidData(String idOrLogin, String password) {
         buttons.searchAndClickButtonBy(LOGIN_TEXTFIELD);
         elements.sendKeyFromAction(idOrLogin);
-        //buttons.clickButtonBackOnKeyboardAndroid();
         buttons.searchAndClickButtonBy(PASSWORD_TEXTFIELD);
         elements.sendKeyFromAction(password);
-        //getAppiumDriver().executeScript("mobile: performEditorAction", ImmutableMap.of("action", "done"));
         return this;
     }
 
