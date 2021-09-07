@@ -1,13 +1,13 @@
 package demoversion;
 
-import core.InitialDriver;
+import core.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.android.demoversion.DemoVersionMainPage;
 
-public class DemoVersionMainTest {
-    private final DemoVersionMainPage demoVersionMainPage = new DemoVersionMainPage(InitialDriver.getDriver());
+public class DemoVersionMainTest extends BaseTest {
+    private final DemoVersionMainPage demoVersionMainPage = new DemoVersionMainPage(getAppiumDriver());
 
     @BeforeClass
     public void goToDemoVersion() {
@@ -22,4 +22,3 @@ public class DemoVersionMainTest {
         Assert.assertTrue(actualResult);
     }
 }
-

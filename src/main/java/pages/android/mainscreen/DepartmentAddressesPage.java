@@ -4,7 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
-import pages.android.AndroidBasePage;
+import core.base.AndroidBasePage;
 
 public class DepartmentAddressesPage extends AndroidBasePage {
     @AndroidFindBy(accessibility = "Карта")
