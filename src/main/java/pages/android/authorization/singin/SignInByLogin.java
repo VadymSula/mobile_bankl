@@ -4,10 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
-import org.openqa.selenium.Keys;
-import pages.android.AndroidBasePage;
-
-import java.io.IOException;
+import core.base.AndroidBasePage;
 
 public class SignInByLogin extends AndroidBasePage {
     private static final String USER_IS_NOT_EXIST_ALERT_TEXT = "Алерт 'Мы не нашли пользователя с такими данными. Убедитесь, что все введено корректно'";

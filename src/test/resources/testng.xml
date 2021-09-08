@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Mobile bank">
+    <test name="Main screen">
+        <classes>
+            <class name="mainscreen.DepartmentAddressesTest" />
+            <class name="mainscreen.BecomeClientTest" />
+            <class name="mainscreen.CurrencyRateTest" />
+        </classes>
+    </test>
+
+    <test name="Authorization / New scenario of signin / by Login">
+        <classes>
+            <class name="authorization.InvalidLoginOrPasswordTest" />
+        </classes>
+    </test>
+
+    <test name="Demo-version / Account and deposits">
+        <classes>
+            <class name="demoversion.accountAndDeposits.AccountRefillTest" />
+        </classes>
+    </test>
+</suite>

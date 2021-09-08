@@ -1,4 +1,4 @@
-package pages.android;
+package core.base;
 
 import elements.Buttons;
 import elements.Elements;

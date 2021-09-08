@@ -1,14 +1,14 @@
 package authorization;
 
-import core.InitialDriver;
+import core.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.android.authorization.singin.SignInByLogin;
 
-public class InvalidLoginOrPasswordTest {
+public class InvalidLoginOrPasswordTest extends BaseTest {
     private static final String INVALID_LOGIN = "11112";
     private static final String INVALID_PASSWORD = "11112";
-    private final SignInByLogin signInByLogin = new SignInByLogin(InitialDriver.getDriver());
+    private final SignInByLogin signInByLogin = new SignInByLogin(getAppiumDriver());
 
     @Test
     public void isVisibleScreenWithForm() {

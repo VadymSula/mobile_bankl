@@ -21,6 +21,7 @@
         <allure-maven>2.9</allure-maven>
         <allure.version>2.13.1</allure.version>
         <selenium-remote-driver>3.141.59</selenium-remote-driver>
+        <testrail-api-client>2.0.1</testrail-api-client>
     </properties>
 
     <dependencies>
@@ -55,6 +56,11 @@
             <artifactId>lombok</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.codepine.api</groupId>
+            <artifactId>testrail-api-java-client</artifactId>
+            <version>${testrail-api-client}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -73,6 +79,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>

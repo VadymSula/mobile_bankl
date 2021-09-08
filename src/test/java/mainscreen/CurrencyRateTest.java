@@ -1,13 +1,13 @@
 package mainscreen;
 
-import core.InitialDriver;
+import core.base.BaseTest;
 import io.qameta.allure.TmsLink;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.android.mainscreen.CurrencyRatePage;
 
-public class CurrencyRateTest {
-    private final CurrencyRatePage currencyRatePage = new CurrencyRatePage(InitialDriver.getDriver());
+public class CurrencyRateTest extends BaseTest {
+    private final CurrencyRatePage currencyRatePage = new CurrencyRatePage(getAppiumDriver());
 
     @Test
     @TmsLink("C9445")
