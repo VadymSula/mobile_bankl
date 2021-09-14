@@ -5,7 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Listeners;
-import utils.Listener;
+import utils.mobile.Listener;
 
 @Listeners(Listener.class)
 public class BaseTest {

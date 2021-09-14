@@ -1,4 +1,4 @@
-package utils;
+package utils.mobile;
 
 import core.base.BaseTest;
 import io.qameta.allure.Attachment;

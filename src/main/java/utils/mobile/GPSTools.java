@@ -1,4 +1,4 @@
-package utils;
+package utils.mobile;
 
 public class GPSTools {
     public static void switchONGPSConnection(String androidSdkToolPath, String deviceId) {

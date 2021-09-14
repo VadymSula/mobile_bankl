@@ -2,7 +2,7 @@ package elements;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import utils.Waiters;
+import utils.mobile.Waiters;
 
 public class MobileElements {
     protected final AppiumDriver<MobileElement> driver;

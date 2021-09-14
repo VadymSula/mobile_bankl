@@ -1,6 +1,5 @@
 package mainscreen;
 
-import core.InitialDriver;
 import core.base.BaseTest;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.TmsLink;
@@ -8,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.android.mainscreen.DepartmentAddressesPage;
-import utils.GPSTools;
+import utils.mobile.GPSTools;
 
 public class DepartmentAddressesTest extends BaseTest {
     private final DepartmentAddressesPage addressesPage = new DepartmentAddressesPage(getAppiumDriver());
