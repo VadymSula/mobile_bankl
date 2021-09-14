@@ -2,11 +2,10 @@ package elements;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.Waiters;
+import utils.mobile.Waiters;
 
 public class Elements extends MobileElements {
     private static final Logger LOGGER = LoggerFactory.getLogger(Elements.class);

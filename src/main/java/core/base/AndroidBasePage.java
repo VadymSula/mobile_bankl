@@ -14,7 +14,7 @@ import pages.android.demoversion.accountsAndDeposits.AccountRefillPage;
 import pages.android.mainscreen.BecomeClientPage;
 import pages.android.mainscreen.CurrencyRatePage;
 import pages.android.mainscreen.DepartmentAddressesPage;
-import utils.Waiters;
+import utils.mobile.Waiters;
 
 public class AndroidBasePage {
     private AppiumDriver<MobileElement> appiumDriver;

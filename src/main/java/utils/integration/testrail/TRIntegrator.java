@@ -4,7 +4,6 @@ import com.codepine.api.testrail.TestRail;
 import config.PropertiesConfig;
 
 public class TRIntegrator {
-
     public TestRail getTestRail() {
         return TestRail
                 .builder(PropertiesConfig.getProperty("endPoint"),

@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.Waiters;
+import utils.mobile.Waiters;
 
 import java.time.Duration;
 
