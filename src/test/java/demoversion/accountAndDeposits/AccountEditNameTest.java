@@ -4,14 +4,13 @@ import demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RefillAndRequestPaymentTest extends DemoVersionMainTest {
+public class AccountEditNameTest extends DemoVersionMainTest {
 
     @Test
-    public void refillAndRequestPayment() {
+    public void editAccountName() {
         var actualResult = accountRefillPage
                 .goToAccountRefill()
-                .tapOnRefillButton()
-                .tapOnRequestPaymentButton()
+                .tapOnEditNameButton()
                 .isExistAlertAboutNotAvailableInDemoVersion();
 
         Assert.assertTrue(actualResult);

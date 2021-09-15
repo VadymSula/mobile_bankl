@@ -4,20 +4,20 @@ import core.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.android.demoversion.DemoVersionMainPage;
+import pages.android.demoversion.accountsAndDeposits.AccountRefillPage;
 
 public class DemoVersionMainTest extends BaseTest {
-    private final DemoVersionMainPage demoVersionMainPage = new DemoVersionMainPage(getAppiumDriver());
+    protected final AccountRefillPage accountRefillPage = new AccountRefillPage(getAppiumDriver());
 
     @BeforeClass
     public void goToDemoVersion() {
-        demoVersionMainPage
+        accountRefillPage
                 .goToDemoVersion();
     }
 
     @Test(priority = 20)
     public void isDisplayedAlertAboutUnavailableInDemoVersion() {
-        var actualResult = demoVersionMainPage.isExistAlertAboutNotAvailableInDemoVersion();
+        var actualResult = accountRefillPage.isExistAlertAboutNotAvailableInDemoVersion();
 
         Assert.assertTrue(actualResult);
     }
