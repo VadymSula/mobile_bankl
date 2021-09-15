@@ -9,6 +9,8 @@ import pages.android.demoversion.DemoVersionMainPage;
 public class AccountRefillPage extends DemoVersionMainPage {
     private static final String SALARY_ACCOUNT_NAME = "Зарплатный счет";
 
+    @AndroidFindBy(accessibility = "Переименовать")
+    protected MobileElement EDIT_NAME_BUTTON;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.TextView[contains(@text, 'Пополнить')]/..")
     protected MobileElement ACCOUNT_REFILL_BUTTON;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.TextView[contains(@text, 'Со своего счёта')]")
@@ -30,9 +32,14 @@ public class AccountRefillPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_to_account_button_next")
     protected MobileElement TRANSFER_BUTTON;
 
-
     public AccountRefillPage(AppiumDriver<MobileElement> appiumDriver) {
         super(appiumDriver);
+    }
+
+    @Step("Тапнуть 'Переименовать'")
+    public AccountRefillPage tapOnEditNameButton() {
+        buttons.searchAndClickButtonBy(EDIT_NAME_BUTTON);
+        return this;
     }
 
     @Step("Тапнуть 'Пополнить'")
@@ -52,7 +59,6 @@ public class AccountRefillPage extends DemoVersionMainPage {
         buttons.searchAndClickButtonBy(FROM_CARD_OTHER_BANK);
         return new ChooseCardPage(getAppiumDriver());
     }
-
 
     @Step("Тапнуть 'Запросить платеж'")
     public AccountRefillPage tapOnRequestPaymentButton() {

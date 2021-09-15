@@ -21,6 +21,7 @@
             <class name="demoversion.accountAndDeposits.AddNewCardTest"/>
             <class name="demoversion.accountAndDeposits.RefillWithCardOtherBankTest"/>
             <class name="demoversion.accountAndDeposits.RefillAndRequestPaymentTest"/>
+            <class name="demoversion.accountAndDeposits.AccountEditNameTest"/>
         </classes>
     </test>
 </suite>
