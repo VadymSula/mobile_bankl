@@ -23,4 +23,10 @@ public class ChooseCardPage extends DemoVersionMainPage {
         buttons.searchAndClickButtonBy(CLASSIC_CARD);
         return new FromCardOtherBankPage(getAppiumDriver());
     }
+
+    @Step("Тапнуть на 'Добавить новую карту'")
+    public ChooseCardPage tapOnTheAddNewCardButton() {
+        buttons.searchAndClickButtonBy(ADD_NEW_CARD_BUTTON);
+        return this;
+    }
 }
