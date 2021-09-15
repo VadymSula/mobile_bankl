@@ -18,10 +18,10 @@ public class BaseTest {
         getAppiumDriver().resetApp();
     }
 
-    @AfterSuite
-    public void afterSuiteTest() {
-        getAppiumDriver().removeApp(PropertiesConfig.getProperty("myAppPackage"));
-    }
+//    @AfterSuite
+//    public void afterSuiteTest() {
+//        getAppiumDriver().removeApp(PropertiesConfig.getProperty("myAppPackage"));
+//    }
 
     public AppiumDriver<MobileElement> getAppiumDriver() {
         return appiumDriver;
