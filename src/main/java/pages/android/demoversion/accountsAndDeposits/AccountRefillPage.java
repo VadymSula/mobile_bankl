@@ -15,6 +15,8 @@ public class AccountRefillPage extends DemoVersionMainPage {
     protected MobileElement FROM_MY_ACCOUNT_BUTTON;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.TextView[contains(@text, 'С карты другого банка')]")
     protected MobileElement FROM_CARD_OTHER_BANK;
+    @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.TextView[contains(@text, 'Запросить платеж')]")
+    protected MobileElement REQUEST_PAYMENT;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_to_account_recipient")
     protected MobileElement TRANSFER_TO_ACCOUNT_RECIPIENT;
     @AndroidFindBy(id = "cb.ibank:id/view_payment_account_name")
@@ -49,6 +51,13 @@ public class AccountRefillPage extends DemoVersionMainPage {
     public ChooseCardPage tapOnFromCardOfOtherBankButton() {
         buttons.searchAndClickButtonBy(FROM_CARD_OTHER_BANK);
         return new ChooseCardPage(getAppiumDriver());
+    }
+
+
+    @Step("Тапнуть 'Запросить платеж'")
+    public AccountRefillPage tapOnRequestPaymentButton() {
+        buttons.searchAndClickButtonBy(REQUEST_PAYMENT);
+        return this;
     }
 
     @Step("В поле 'Счет пополнения' указан выбранный ранее счет")
