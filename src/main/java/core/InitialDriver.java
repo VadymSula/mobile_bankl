@@ -46,7 +46,7 @@ public class InitialDriver {
                 caps.setCapability(MobileCapabilityType.PLATFORM_NAME, capabilities.getDevice().getPlatformName());
                 caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, capabilities.getDevice().getPlatformVersion());
                 caps.setCapability(MobileCapabilityType.NO_RESET, false);
-                caps.setCapability("autoGrandPermission", true);
+                caps.setCapability("autoGrantPermission", true);
                 caps.setCapability("appActivity", capabilities.getMyAppActivity());
                 caps.setCapability("appPackage", capabilities.getMyAppPackage());
                 break;

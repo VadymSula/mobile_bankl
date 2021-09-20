@@ -3,7 +3,7 @@ package authorization;
 import core.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.android.authorization.singin.SignInByLogin;
+import pages.android.authorization.signin.SignInByLogin;
 
 public class InvalidLoginOrPasswordTest extends BaseTest {
     private static final String INVALID_LOGIN = "11112";

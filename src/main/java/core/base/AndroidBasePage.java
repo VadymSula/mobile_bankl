@@ -9,7 +9,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
-import pages.android.authorization.singin.SignInByLogin;
+import pages.android.authorization.signin.SignInByLogin;
 import pages.android.demoversion.accountsAndDeposits.AccountRefillPage;
 import pages.android.mainscreen.BecomeClientPage;
 import pages.android.mainscreen.CurrencyRatePage;

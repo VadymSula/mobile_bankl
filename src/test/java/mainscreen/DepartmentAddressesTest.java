@@ -4,18 +4,11 @@ import core.base.BaseTest;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.TmsLink;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.android.mainscreen.DepartmentAddressesPage;
-import utils.mobile.GPSTools;
 
 public class DepartmentAddressesTest extends BaseTest {
     private final DepartmentAddressesPage addressesPage = new DepartmentAddressesPage(getAppiumDriver());
-
-    @BeforeClass
-    public void installGPSTools() {
-        GPSTools.switchOffGPSConnection("C:/Users/AndUser/AppData/Local/platform-tools", "a32042dd");
-    }
 
     @Test
     @Flaky
