@@ -11,7 +11,7 @@ public class DemoVersionMainTest extends BaseTest {
 
     @BeforeClass
     public void goToDemoVersion() {
-        accountRefillPage
+        androidBasePage
                 .goToDemoVersion();
     }
 

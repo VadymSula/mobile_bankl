@@ -13,6 +13,8 @@ public class AccountRefillPage extends DemoVersionMainPage {
     protected MobileElement EDIT_NAME_BUTTON;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.TextView[contains(@text, 'Пополнить')]/..")
     protected MobileElement ACCOUNT_REFILL_BUTTON;
+    @AndroidFindBy(xpath = "//android.widget.LinearLayout[3]/android.widget.TextView[contains(@text, 'Реквизиты')]/..")
+    protected MobileElement REQUISITES_BUTTON;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.TextView[contains(@text, 'Со своего счёта')]")
     protected MobileElement FROM_MY_ACCOUNT_BUTTON;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.TextView[contains(@text, 'С карты другого банка')]")
@@ -31,6 +33,8 @@ public class AccountRefillPage extends DemoVersionMainPage {
     protected MobileElement SUM_OF_TRANSFER_EDITTEXT;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_to_account_button_next")
     protected MobileElement TRANSFER_BUTTON;
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Справка о доступном остатке')]/..")
+    protected MobileElement CERTIFICATE_AVAILABLE_RESIDUE;
 
     public AccountRefillPage(AppiumDriver<MobileElement> appiumDriver) {
         super(appiumDriver);
@@ -46,6 +50,12 @@ public class AccountRefillPage extends DemoVersionMainPage {
     public AccountRefillPage tapOnRefillButton() {
         buttons.searchAndClickButtonBy(ACCOUNT_REFILL_BUTTON);
         return this;
+    }
+
+    @Step("Тапнуть 'Реквизиты'")
+    public RequisitesPage tapOnRequisites() {
+        buttons.searchAndClickButtonBy(REQUISITES_BUTTON);
+        return new RequisitesPage(getAppiumDriver());
     }
 
     @Step("Тапнуть 'Со своего счета'")
@@ -94,5 +104,11 @@ public class AccountRefillPage extends DemoVersionMainPage {
     public AccountRefillPage tapOnTransferButton() {
         buttons.searchAndClickButtonBy(TRANSFER_BUTTON);
         return this;
+    }
+
+    @Step("Тапнуть 'Справка о доступном остатке'")
+    public CertificateAvailableResiduePage tapOnCertificateAvailableResidue() {
+        buttons.searchAndClickButtonBy(CERTIFICATE_AVAILABLE_RESIDUE);
+        return new CertificateAvailableResiduePage(getAppiumDriver());
     }
 }

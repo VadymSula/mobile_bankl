@@ -1,4 +1,4 @@
-package pages.android.authorization.singin;
+package pages.android.authorization.signin;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;

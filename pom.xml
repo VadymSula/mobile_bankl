@@ -53,11 +53,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
             <groupId>com.codepine.api</groupId>
             <artifactId>testrail-api-java-client</artifactId>
             <version>${testrail-api-client}</version>

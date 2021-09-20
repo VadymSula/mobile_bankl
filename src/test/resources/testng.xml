@@ -16,11 +16,13 @@
     </test>
 
     <test name="Demo-version / Account and deposits">
+        <parameter name="email" value="ext_sulavv@ubrr.ru"/>
         <classes>
             <class name="demoversion.accountAndDeposits.AccountRefillTest"/>
             <class name="demoversion.accountAndDeposits.AddNewCardTest"/>
             <class name="demoversion.accountAndDeposits.RefillWithCardOtherBankTest"/>
             <class name="demoversion.accountAndDeposits.RefillAndRequestPaymentTest"/>
+            <class name="demoversion.accountAndDeposits.CertificateAvailableResidueTest"/>
         </classes>
     </test>
 </suite>
