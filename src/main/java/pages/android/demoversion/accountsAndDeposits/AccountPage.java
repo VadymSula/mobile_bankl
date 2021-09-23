@@ -1,13 +1,15 @@
 package pages.android.demoversion.accountsAndDeposits;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.demoversion.DemoVersionMainPage;
+import pages.android.demoversion.card.CardPage;
 
-public class AccountRefillPage extends DemoVersionMainPage {
+public class AccountPage extends DemoVersionMainPage {
     private static final String SALARY_ACCOUNT_NAME = "Зарплатный счет";
+    private static final String CERTIFICATE_AVAILABLE_RESIDUE_TEXT = "Справка о доступном остатке";
 
     @AndroidFindBy(accessibility = "Переименовать")
     protected MobileElement EDIT_NAME_BUTTON;
@@ -33,21 +35,25 @@ public class AccountRefillPage extends DemoVersionMainPage {
     protected MobileElement SUM_OF_TRANSFER_EDITTEXT;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_to_account_button_next")
     protected MobileElement TRANSFER_BUTTON;
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Справка о доступном остатке')]/..")
+    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]")
+    protected MobileElement CARD;
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, '" + CERTIFICATE_AVAILABLE_RESIDUE_TEXT + "')]/..")
     protected MobileElement CERTIFICATE_AVAILABLE_RESIDUE;
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Выписка по счёту')]/..")
+//    protected MobileElement ACCOUNT_STATEMENT;
 
-    public AccountRefillPage(AppiumDriver<MobileElement> appiumDriver) {
-        super(appiumDriver);
+    public AccountPage(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
     }
 
     @Step("Тапнуть 'Переименовать'")
-    public AccountRefillPage tapOnEditNameButton() {
+    public AccountPage tapOnEditNameButton() {
         buttons.searchAndClickButtonBy(EDIT_NAME_BUTTON);
         return this;
     }
 
     @Step("Тапнуть 'Пополнить'")
-    public AccountRefillPage tapOnRefillButton() {
+    public AccountPage tapOnRefillButton() {
         buttons.searchAndClickButtonBy(ACCOUNT_REFILL_BUTTON);
         return this;
     }
@@ -55,11 +61,11 @@ public class AccountRefillPage extends DemoVersionMainPage {
     @Step("Тапнуть 'Реквизиты'")
     public RequisitesPage tapOnRequisites() {
         buttons.searchAndClickButtonBy(REQUISITES_BUTTON);
-        return new RequisitesPage(getAppiumDriver());
+        return new RequisitesPage(getAndroidDriver());
     }
 
     @Step("Тапнуть 'Со своего счета'")
-    public AccountRefillPage tapOnFromMyAccountButton() {
+    public AccountPage tapOnFromMyAccountButton() {
         buttons.searchAndClickButtonBy(FROM_MY_ACCOUNT_BUTTON);
         return this;
     }
@@ -67,11 +73,11 @@ public class AccountRefillPage extends DemoVersionMainPage {
     @Step("Тапнуть 'С карты другого банка'")
     public ChooseCardPage tapOnFromCardOfOtherBankButton() {
         buttons.searchAndClickButtonBy(FROM_CARD_OTHER_BANK);
-        return new ChooseCardPage(getAppiumDriver());
+        return new ChooseCardPage(getAndroidDriver());
     }
 
     @Step("Тапнуть 'Запросить платеж'")
-    public AccountRefillPage tapOnRequestPaymentButton() {
+    public AccountPage tapOnRequestPaymentButton() {
         buttons.searchAndClickButtonBy(REQUEST_PAYMENT);
         return this;
     }
@@ -82,33 +88,44 @@ public class AccountRefillPage extends DemoVersionMainPage {
     }
 
     @Step("Тапнуть на поле 'Счет списания'")
-    public AccountRefillPage tapOnTransferFromAccountSender() {
+    public AccountPage tapOnTransferFromAccountSender() {
         buttons.searchAndClickButtonBy(TRANSFER_FROM_ACCOUNT_SENDER);
         return this;
     }
 
     @Step("Выбрать чек-бокс счета 'Накопительный счет'")
-    public AccountRefillPage chooseDepositAccountCheckbox() {
+    public AccountPage chooseDepositAccountCheckbox() {
         buttons.searchAndClickButtonBy(DEPOSIT_ACCOUNT_VARIANT_TRANSFER);
         return this;
     }
 
     @Step("В поле 'Сумма' указать сумму")
-    public AccountRefillPage inputSumForTransfer(String sumOfTransfer) {
+    public AccountPage inputSumForTransfer(String sumOfTransfer) {
         buttons.searchAndClickButtonBy(SUM_OF_TRANSFER_EDITTEXT);
         elements.sendKeyFromAction(sumOfTransfer);
         return this;
     }
 
     @Step("Тапнуть 'Перевести'")
-    public AccountRefillPage tapOnTransferButton() {
+    public AccountPage tapOnTransferButton() {
         buttons.searchAndClickButtonBy(TRANSFER_BUTTON);
         return this;
     }
 
-    @Step("Тапнуть 'Справка о доступном остатке'")
+    @Step("Тапнуть на 'Карту'")
+    public CardPage tapOnCard() {
+        buttons.searchAndClickButtonBy(CARD);
+        return new CardPage(getAndroidDriver());
+    }
+
+    @Step("Тапнуть '" + CERTIFICATE_AVAILABLE_RESIDUE_TEXT + "'")
     public CertificateAvailableResiduePage tapOnCertificateAvailableResidue() {
+        screen.scrollablePageAndroidByText(CERTIFICATE_AVAILABLE_RESIDUE_TEXT);
         buttons.searchAndClickButtonBy(CERTIFICATE_AVAILABLE_RESIDUE);
-        return new CertificateAvailableResiduePage(getAppiumDriver());
+        return new CertificateAvailableResiduePage(getAndroidDriver());
+    }
+
+    public void scrooool() {
+        screen.scrollablePageAndroidByText("Инвестировать средства");
     }
 }

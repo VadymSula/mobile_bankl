@@ -8,7 +8,7 @@ import pages.android.authorization.signin.SignInByLogin;
 public class InvalidLoginOrPasswordTest extends BaseTest {
     private static final String INVALID_LOGIN = "11112";
     private static final String INVALID_PASSWORD = "11112";
-    private final SignInByLogin signInByLogin = new SignInByLogin(getAppiumDriver());
+    private final SignInByLogin signInByLogin = new SignInByLogin(getAndroidDriver());
 
     @Test
     public void isVisibleScreenWithForm() {

@@ -1,7 +1,7 @@
 package pages.android.demoversion.accountsAndDeposits;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.demoversion.DemoVersionMainPage;
@@ -14,8 +14,8 @@ public class FromCardOtherBankPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_cards_other_bank_refill_button_next")
     protected MobileElement NEXT_BUTTON;
 
-    public FromCardOtherBankPage(AppiumDriver<MobileElement> appiumDriver) {
-        super(appiumDriver);
+    public FromCardOtherBankPage(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
     }
 
     @Step("Заполнить 'СVV'")

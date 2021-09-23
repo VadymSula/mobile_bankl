@@ -3,34 +3,34 @@ package core.base;
 import elements.Buttons;
 import elements.Elements;
 import elements.Screen;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
 import pages.android.authorization.signin.SignInByLogin;
-import pages.android.demoversion.accountsAndDeposits.AccountRefillPage;
+import pages.android.demoversion.accountsAndDeposits.AccountPage;
 import pages.android.mainscreen.BecomeClientPage;
 import pages.android.mainscreen.CurrencyRatePage;
 import pages.android.mainscreen.DepartmentAddressesPage;
 import utils.mobile.Waiters;
 
 public class AndroidBasePage {
-    private AppiumDriver<MobileElement> appiumDriver;
+    private AndroidDriver<MobileElement> androidDriver;
     protected Buttons buttons;
     protected Screen screen;
     protected Elements elements;
     protected Waiters waiters;
 
-    public AndroidBasePage(AppiumDriver<MobileElement> appiumDriver) {
-        this.appiumDriver = appiumDriver;
-        waiters = new Waiters(appiumDriver);
-        buttons = new Buttons(appiumDriver, waiters);
-        screen = new Screen(appiumDriver, waiters);
-        elements = new Elements(appiumDriver, waiters);
+    public AndroidBasePage(AndroidDriver<MobileElement> androidDriver) {
+        this.androidDriver = androidDriver;
+        waiters = new Waiters(androidDriver);
+        buttons = new Buttons(androidDriver, waiters);
+        screen = new Screen(androidDriver, waiters);
+        elements = new Elements(androidDriver, waiters);
 
-        PageFactory.initElements(new AppiumFieldDecorator(appiumDriver), this);
+        PageFactory.initElements(new AppiumFieldDecorator(androidDriver), this);
     }
 
     @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_button_login")
@@ -49,34 +49,34 @@ public class AndroidBasePage {
     @Step("Тапнуть на кнопку 'Курс валют'")
     public CurrencyRatePage goToCurrencyRatesPage() {
         buttons.waitInSecondsAndClickButtonBy(CURRENCY_RATES_BUTTON, 3);
-        return new CurrencyRatePage(getAppiumDriver());
+        return new CurrencyRatePage(getAndroidDriver());
     }
 
     @Step("Тапнуть на кнопку 'Адреса'")
     public DepartmentAddressesPage goToDepartmentAddressesPage() {
         buttons.searchAndClickButtonBy(DEPARTMENT_ADDRESSES_BUTTON);
-        return new DepartmentAddressesPage(getAppiumDriver());
+        return new DepartmentAddressesPage(getAndroidDriver());
     }
 
     @Step("Тапнуть на блок Стать клиентом")
     public BecomeClientPage goToBecomeClientPage() {
         buttons.searchAndClickButtonBy(BECOME_CLIENT_BUTTON);
-        return new BecomeClientPage(getAppiumDriver());
+        return new BecomeClientPage(getAndroidDriver());
     }
 
     @Step("Тап на кнопку 'Войти'")
     public SignInByLogin goToSignInPage() {
         buttons.searchAndClickButtonBy(LOGIN_BUTTON);
-        return new SignInByLogin(getAppiumDriver());
+        return new SignInByLogin(getAndroidDriver());
     }
 
     @Step("Тапнуть на кнопку 'Демо-версия'")
-    public AccountRefillPage goToDemoVersion() {
+    public AccountPage goToDemoVersion() {
         buttons.searchAndClickButtonBy(DEMO_VERSION_BUTTON);
-        return new AccountRefillPage(getAppiumDriver());
+        return new AccountPage(getAndroidDriver());
     }
 
-    public AppiumDriver<MobileElement> getAppiumDriver() {
-        return appiumDriver;
+    public AndroidDriver<MobileElement> getAndroidDriver() {
+        return androidDriver;
     }
 }

@@ -11,22 +11,25 @@ public class AccountRefillTest extends DemoVersionMainTest {
 
     @Test
     public void isExistBeforeSelectedAccountTest() {
-        accountRefillPage
-                .goToAccountRefill()
+        accountPage
+                .goToAccountPage()
                 .tapOnRefillButton()
                 .tapOnFromMyAccountButton();
-        var actualResult = accountRefillPage.isExistSelectedAccount();
+        var actualResult = accountPage.isExistSelectedAccount();
 
         Assert.assertTrue(actualResult);
     }
 
     @Test(priority = 1)
     public void toTransferSum() {
-        accountRefillPage
+        var actualResult = accountPage
                 .tapOnTransferFromAccountSender()
                 .chooseDepositAccountCheckbox()
                 .inputSumForTransfer(TRANSFER_SUM)
-                .tapOnTransferButton();
+                .tapOnTransferButton()
+                .isExistAlertAboutNotAvailableInDemoVersion();
+
+        Assert.assertTrue(actualResult);
     }
 
 }

@@ -1,18 +1,18 @@
-package demoversion.accountAndDeposits;
+package demoversion.card;
 
 import demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class AddNewCardTest extends DemoVersionMainTest {
+public class CashBackTest extends DemoVersionMainTest {
 
     @Test
-    public void refillWithCardFromOtherBank_AddNewCard() {
+    public void cashBackDetailConditionsTest() {
         var actualResult = accountPage
                 .goToAccountPage()
-                .tapOnRefillButton()
-                .tapOnFromCardOfOtherBankButton()
-                .tapOnTheAddNewCardButton()
+                .tapOnCard()
+                .scrollAndTapOnDetailsCashBackConditions()
+                .scrollAndTapOnDetailConditions()
                 .isExistAlertAboutNotAvailableInDemoVersion();
 
         Assert.assertTrue(actualResult);

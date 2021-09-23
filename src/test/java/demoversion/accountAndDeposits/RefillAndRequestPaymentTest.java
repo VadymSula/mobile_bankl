@@ -8,8 +8,8 @@ public class RefillAndRequestPaymentTest extends DemoVersionMainTest {
 
     @Test
     public void refillAndRequestPayment() {
-        var actualResult = accountRefillPage
-                .goToAccountRefill()
+        var actualResult = accountPage
+                .goToAccountPage()
                 .tapOnRefillButton()
                 .tapOnRequestPaymentButton()
                 .isExistAlertAboutNotAvailableInDemoVersion();

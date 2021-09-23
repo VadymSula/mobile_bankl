@@ -10,8 +10,8 @@ public class RefillWithCardOtherBankTest extends DemoVersionMainTest {
 
     @Test
     public void refillWithCardOfOtherBank() {
-        var actualResult = accountRefillPage
-                .goToAccountRefill()
+        var actualResult = accountPage
+                .goToAccountPage()
                 .tapOnRefillButton()
                 .tapOnFromCardOfOtherBankButton()
                 .tapOnTheClassicCard()

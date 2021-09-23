@@ -1,7 +1,7 @@
 package pages.android.demoversion.accountsAndDeposits;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import pages.android.demoversion.DemoVersionMainPage;
 
@@ -16,7 +16,7 @@ public class RequisitesPage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = REQUISITES_FIELDS)
     protected MobileElement FIELD_REQUISITE;
 
-    public RequisitesPage(AppiumDriver<MobileElement> appiumDriver) {
-        super(appiumDriver);
+    public RequisitesPage(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
     }
 }
