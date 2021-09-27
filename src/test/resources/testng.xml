@@ -25,4 +25,10 @@
             <class name="demoversion.accountAndDeposits.CertificateAvailableResidueTest"/>
         </classes>
     </test>
+
+    <test name="Demo-version / Card">
+        <classes>
+            <class name="demoversion.card.CashBackTest"/>
+        </classes>
+    </test>
 </suite>

@@ -1,11 +1,11 @@
 package pages.android.demoversion;
 
-import io.appium.java_client.AppiumDriver;
+import core.base.AndroidBasePage;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
-import core.base.AndroidBasePage;
-import pages.android.demoversion.accountsAndDeposits.AccountRefillPage;
+import pages.android.demoversion.accountsAndDeposits.AccountPage;
 
 public class DemoVersionMainPage extends AndroidBasePage {
     private static final String NOT_AVAILABLE_MESSAGE = "Недоступно в демо-режиме";
@@ -14,14 +14,14 @@ public class DemoVersionMainPage extends AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/common_dialog_text")
     protected MobileElement NOT_AVAILABLE_IN_DEMO_VERSION_ALERT;
 
-    public DemoVersionMainPage(AppiumDriver<MobileElement> appiumDriver) {
-        super(appiumDriver);
+    public DemoVersionMainPage(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
     }
 
     @Step("Тапнуть 'Зарплатный Счет'")
-    public AccountRefillPage goToAccountRefill() {
+    public AccountPage goToAccountPage() {
         buttons.searchAndClickButtonBy(SALARY_ACCOUNT);
-        return new AccountRefillPage(getAppiumDriver());
+        return new AccountPage(getAndroidDriver());
     }
 
     @Step("Всплывает предупреждение 'Недоступно в демо-режиме'")

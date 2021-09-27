@@ -11,7 +11,7 @@ public class Listener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         Object currentClass = result.getInstance();
-        var driver = ((BaseTest) currentClass).getAppiumDriver();
+        var driver = ((BaseTest) currentClass).getAndroidDriver();
         var srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         saveScreenshot(srcFile);
     }

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import pages.android.mainscreen.DepartmentAddressesPage;
 
 public class DepartmentAddressesTest extends BaseTest {
-    private final DepartmentAddressesPage addressesPage = new DepartmentAddressesPage(getAppiumDriver());
+    private final DepartmentAddressesPage addressesPage = new DepartmentAddressesPage(getAndroidDriver());
 
     @Test
     @Flaky

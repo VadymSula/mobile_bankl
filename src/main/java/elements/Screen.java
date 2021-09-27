@@ -16,7 +16,6 @@ import utils.mobile.Waiters;
 import java.time.Duration;
 
 public class Screen extends MobileElements {
-    private AppiumDriver<MobileElement> driver;
     protected static final Logger LOGGER = LoggerFactory.getLogger(Screen.class);
 
     public Screen(AppiumDriver<MobileElement> driver, Waiters waiters) {
@@ -27,7 +26,7 @@ public class Screen extends MobileElements {
         UP, DOWN, LEFT, RIGHT
     }
 
-    public void scrollablePageAndroid(String text) {
+    public void scrollablePageAndroidByText(String text) {
         ((AndroidDriver<MobileElement>) driver).findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(" + "\"" + text + "\"" + ").instance(0));");
         LOGGER.info("Page is scrollable");
     }

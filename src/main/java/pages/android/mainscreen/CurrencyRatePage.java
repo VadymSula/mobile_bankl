@@ -1,16 +1,16 @@
 package pages.android.mainscreen;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
 import core.base.AndroidBasePage;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class CurrencyRatePage extends AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_currency_rates_recycler")
     protected MobileElement CURRENCY_RATES_RECYCLER;
 
-    public CurrencyRatePage(AppiumDriver<MobileElement> appiumDriver) {
-        super(appiumDriver);
+    public CurrencyRatePage(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
     }
 
     public boolean isExistCurrencyRatesRecyclerOnPage() {

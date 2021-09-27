@@ -1,10 +1,10 @@
 package pages.android.mainscreen;
 
-import io.appium.java_client.AppiumDriver;
+import core.base.AndroidBasePage;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
-import core.base.AndroidBasePage;
 
 public class DepartmentAddressesPage extends AndroidBasePage {
     @AndroidFindBy(accessibility = "Карта")
@@ -20,8 +20,8 @@ public class DepartmentAddressesPage extends AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_addresses_details_view_pager")
     protected MobileElement ADDITIONAL_INFO_PAGER;
 
-    public DepartmentAddressesPage(AppiumDriver<MobileElement> appiumDriver) {
-        super(appiumDriver);
+    public DepartmentAddressesPage(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
     }
 
     @Step("Открытие вариантов с адресами банкоматов до последнего одиночного варианта")

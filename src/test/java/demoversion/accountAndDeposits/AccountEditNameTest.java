@@ -8,8 +8,8 @@ public class AccountEditNameTest extends DemoVersionMainTest {
 
     @Test
     public void editAccountName() {
-        var actualResult = accountRefillPage
-                .goToAccountRefill()
+        var actualResult = accountPage
+                .goToAccountPage()
                 .tapOnEditNameButton()
                 .isExistAlertAboutNotAvailableInDemoVersion();
 

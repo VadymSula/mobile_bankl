@@ -3,13 +3,14 @@ package core;
 import config.PropertiesConfig;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.YamlParser;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -34,8 +35,15 @@ public class InitialDriver {
 
     private static AppiumDriver<MobileElement> initializeDriver() throws MalformedURLException {
             setCapabilities();
-            LOGGER.error("Yaml capabilities is not correct");
-        return new AppiumDriver<>(new URL(APPIUM_URL), caps);
+            switch (caps.getPlatform()) {
+                case ANDROID:
+                    return new AndroidDriver<>(new URL(APPIUM_URL), caps);
+                case IOS:
+                    return new IOSDriver<>(new URL(APPIUM_URL), caps);
+                default:
+                    LOGGER.error("Invalid platform");
+            }
+            return null;
     }
 
     private static void setCapabilities() {

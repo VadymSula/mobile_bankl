@@ -1,7 +1,7 @@
 package pages.android.demoversion.accountsAndDeposits;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.demoversion.DemoVersionMainPage;
@@ -16,8 +16,8 @@ public class CertificateAvailableResiduePage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.RadioGroup/android.widget.LinearLayout[1]")
     protected MobileElement FIRST_CHECKBOX_ACCOUNT;
 
-    public CertificateAvailableResiduePage(AppiumDriver<MobileElement> appiumDriver) {
-        super(appiumDriver);
+    public CertificateAvailableResiduePage(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
     }
 
     @Step("Указать 'Email'")

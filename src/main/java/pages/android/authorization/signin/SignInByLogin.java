@@ -1,10 +1,10 @@
 package pages.android.authorization.signin;
 
-import io.appium.java_client.AppiumDriver;
+import core.base.AndroidBasePage;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
-import core.base.AndroidBasePage;
 
 public class SignInByLogin extends AndroidBasePage {
     private static final String USER_IS_NOT_EXIST_ALERT_TEXT = "Алерт 'Мы не нашли пользователя с такими данными. Убедитесь, что все введено корректно'";
@@ -40,8 +40,8 @@ public class SignInByLogin extends AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/view_progress_button_text")
     protected MobileElement PROGRESS_BUTTON;
 
-    public SignInByLogin(AppiumDriver<MobileElement> appiumDriver) {
-        super(appiumDriver);
+    public SignInByLogin(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
     }
 
     @Step("Экран с формой для входа отображается")

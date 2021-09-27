@@ -10,15 +10,16 @@ public class CertificateAvailableResidueTest extends DemoVersionMainTest {
     @Test
     @Parameters("email")
     public void certificateOfAvailableResidue(String email) {
-        var actualResult = accountRefillPage
-                .goToAccountRefill()
-                .tapOnCertificateAvailableResidue()
-                .fillTheEmailField(email)
-                .tapOnAccountSelector()
-                .tapOnFirstCheckboxFromAccounts()
-                .tapOnSendButton()
-                .isExistAlertAboutNotAvailableInDemoVersion();
 
-        Assert.assertTrue(actualResult);
+//        var actualResult = accountPage
+//                .goToAccountPage()
+//                .tapOnCertificateAvailableResidue()
+//                .fillTheEmailField(email)
+//                .tapOnAccountSelector()
+//                .tapOnFirstCheckboxFromAccounts()
+//                .tapOnSendButton()
+//                .isExistAlertAboutNotAvailableInDemoVersion();
+//
+//        Assert.assertTrue(actualResult);
     }
 }

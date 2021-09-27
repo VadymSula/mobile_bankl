@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import pages.android.mainscreen.CurrencyRatePage;
 
 public class CurrencyRateTest extends BaseTest {
-    private final CurrencyRatePage currencyRatePage = new CurrencyRatePage(getAppiumDriver());
+    private final CurrencyRatePage currencyRatePage = new CurrencyRatePage(getAndroidDriver());
 
     @Test
     @TmsLink("C9445")
