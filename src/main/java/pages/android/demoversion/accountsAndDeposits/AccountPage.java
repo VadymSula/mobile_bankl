@@ -17,6 +17,8 @@ public class AccountPage extends DemoVersionMainPage {
     protected MobileElement ACCOUNT_REFILL_BUTTON;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[3]/android.widget.TextView[contains(@text, 'Реквизиты')]/..")
     protected MobileElement REQUISITES_BUTTON;
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[3]/android.widget.TextView[contains(@text, '3457')]/..")
+    protected MobileElement CARD_WITHOUT_PIN_CODE;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.TextView[contains(@text, 'Со своего счёта')]")
     protected MobileElement FROM_MY_ACCOUNT_BUTTON;
     @AndroidFindBy(xpath = "//android.widget.LinearLayout/android.widget.TextView[contains(@text, 'С карты другого банка')]")
@@ -62,6 +64,12 @@ public class AccountPage extends DemoVersionMainPage {
     public RequisitesPage tapOnRequisites() {
         buttons.searchAndClickButtonBy(REQUISITES_BUTTON);
         return new RequisitesPage(getAndroidDriver());
+    }
+
+    @Step("Тапнуть на 'Карту' с номером 1223 4500 0000 3457")
+    public CardPage tapOnCardWithoutPinCode() {
+        buttons.searchAndClickButtonBy(CARD_WITHOUT_PIN_CODE);
+        return new CardPage(getAndroidDriver());
     }
 
     @Step("Тапнуть 'Со своего счета'")
