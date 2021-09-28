@@ -30,6 +30,7 @@
         <classes>
             <class name="demoversion.card.CashBackTest"/>
             <class name="demoversion.card.SetPinCodeTest"/>
+            <class name="demoversion.card.EditPinCodeTest"/>
         </classes>
     </test>
 </suite>
