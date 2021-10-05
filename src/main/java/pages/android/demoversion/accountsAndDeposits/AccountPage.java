@@ -37,8 +37,8 @@ public class AccountPage extends DemoVersionMainPage {
     protected MobileElement SUM_OF_TRANSFER_EDITTEXT;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_to_account_button_next")
     protected MobileElement TRANSFER_BUTTON;
-    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[3]")
-    protected MobileElement CARD;
+    @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]")
+    protected MobileElement CARD_WITH_PIN_CODE;
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, '" + CERTIFICATE_AVAILABLE_RESIDUE_TEXT + "')]/..")
     protected MobileElement CERTIFICATE_AVAILABLE_RESIDUE;
 //    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Выписка по счёту')]/..")
@@ -121,8 +121,8 @@ public class AccountPage extends DemoVersionMainPage {
     }
 
     @Step("Тапнуть на 'Карту'")
-    public CardPage tapOnCard() {
-        buttons.searchAndClickButtonBy(CARD);
+    public CardPage tapOnCardWithPinCode() {
+        buttons.searchAndClickButtonBy(CARD_WITH_PIN_CODE);
         return new CardPage(getAndroidDriver());
     }
 
@@ -131,9 +131,5 @@ public class AccountPage extends DemoVersionMainPage {
         screen.scrollablePageAndroidByText(CERTIFICATE_AVAILABLE_RESIDUE_TEXT);
         buttons.searchAndClickButtonBy(CERTIFICATE_AVAILABLE_RESIDUE);
         return new CertificateAvailableResiduePage(getAndroidDriver());
-    }
-
-    public void scrooool() {
-        screen.scrollablePageAndroidByText("Инвестировать средства");
     }
 }

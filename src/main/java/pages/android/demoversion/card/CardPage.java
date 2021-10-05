@@ -1,18 +1,27 @@
 package pages.android.demoversion.card;
 
+import elements.Screen;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.demoversion.DemoVersionMainPage;
 import pages.android.demoversion.card.cashback.CashBackConditionsPage;
+import pages.android.demoversion.card.limits.LimitsPage;
 
 public class CardPage extends DemoVersionMainPage {
-    private static final String SET_PIN_CODE_TEXT = "ПИН-код";
+    private static final String SET_PIN_CODE_TEXT = "Установить ПИН-код";
+    private static final String LIMITS_TEXT = "Лимиты";
+    private static final String EDIT_PIN_CODE_TEXT = "Изменить ПИН-код";
+
     @AndroidFindBy(id = "cb.ibank:id/card_details_cashback_conditions")
     protected MobileElement CASHBACK_CONDITIONS;
     @AndroidFindBy(id = "cb.ibank:id/card_details_action_set_up_pin")
-    protected  MobileElement SET_PIN_CODE_BUTTON;
+    protected MobileElement SET_PIN_CODE_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/card_details_action_limits")
+    protected MobileElement LIMITS_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/card_details_action_edit_pin_code")
+    protected MobileElement EDIT_PIN_CODE_BUTTON;
 
     public CardPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
@@ -31,6 +40,22 @@ public class CardPage extends DemoVersionMainPage {
     public CardPage scrollAndTapOnSetPinCodeButton() {
         screen.scrollablePageAndroidByText(SET_PIN_CODE_TEXT);
         buttons.searchAndClickButtonBy(SET_PIN_CODE_BUTTON);
+
+        return this;
+    }
+
+    @Step("Тапнуть на 'Лимиты'")
+    public LimitsPage tapOnLimitsButton() {
+        screen.scrollablePageAndroidByText(LIMITS_TEXT);
+        buttons.searchAndClickButtonBy(LIMITS_BUTTON);
+
+        return new LimitsPage(getAndroidDriver());
+    }
+
+    @Step("Тапнуть на 'Изменить ПИН-код'")
+    public CardPage scrollAndTapOnEditPinCode() {
+        screen.swipeScreenWithLogs(Screen.Direction.UP, 1000);
+        buttons.searchAndClickButtonBy(EDIT_PIN_CODE_BUTTON);
 
         return this;
     }

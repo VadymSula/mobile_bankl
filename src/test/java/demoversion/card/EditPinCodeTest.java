@@ -4,15 +4,14 @@ import demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CashBackTest extends DemoVersionMainTest {
+public class EditPinCodeTest extends DemoVersionMainTest {
 
     @Test
-    public void cashBackDetailConditionsTest() {
+    public void editPinCodeForCardWithCode() {
         var actualResult = accountPage
                 .goToAccountPage()
                 .tapOnCardWithPinCode()
-                .scrollAndTapOnDetailsCashBackConditions()
-                .scrollAndTapOnDetailConditions()
+                .scrollAndTapOnEditPinCode()
                 .isExistAlertAboutNotAvailableInDemoVersion();
 
         Assert.assertTrue(actualResult);

@@ -13,6 +13,8 @@ public class DemoVersionMainPage extends AndroidBasePage {
     protected MobileElement SALARY_ACCOUNT;
     @AndroidFindBy(id = "cb.ibank:id/common_dialog_text")
     protected MobileElement NOT_AVAILABLE_IN_DEMO_VERSION_ALERT;
+    @AndroidFindBy(id = "cb.ibank:id/common_dialog_button_ok")
+    protected MobileElement OK_BUTTON;
 
     public DemoVersionMainPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
@@ -29,5 +31,7 @@ public class DemoVersionMainPage extends AndroidBasePage {
         return elements.getTextFromElement(NOT_AVAILABLE_IN_DEMO_VERSION_ALERT).equals(NOT_AVAILABLE_MESSAGE);
     }
 
-
+    public void tapOnOkButton() {
+        buttons.searchAndClickButtonBy(OK_BUTTON);
+    }
 }
