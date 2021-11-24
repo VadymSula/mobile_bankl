@@ -10,7 +10,7 @@ public class CurrencyRateTest extends BaseTest {
     private final CurrencyRatePage currencyRatePage = new CurrencyRatePage(getAndroidDriver());
 
     @Test
-    @TmsLink("C9445")
+    @TmsLink("9445")
     public void currencyRates() {
         var actualResult = currencyRatePage
                 .goToCurrencyRatesPage()

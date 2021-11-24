@@ -12,7 +12,7 @@ public class EditPinCodeTest extends DemoVersionMainTest {
                 .goToAccountPage()
                 .tapOnCardWithPinCode()
                 .scrollAndTapOnEditPinCode()
-                .isExistAlertAboutNotAvailableInDemoVersion();
+                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
         Assert.assertTrue(actualResult);
     }

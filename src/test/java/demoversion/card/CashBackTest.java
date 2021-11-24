@@ -13,7 +13,7 @@ public class CashBackTest extends DemoVersionMainTest {
                 .tapOnCardWithPinCode()
                 .scrollAndTapOnDetailsCashBackConditions()
                 .scrollAndTapOnDetailConditions()
-                .isExistAlertAboutNotAvailableInDemoVersion();
+                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
         Assert.assertTrue(actualResult);
     }

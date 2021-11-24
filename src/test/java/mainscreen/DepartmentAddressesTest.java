@@ -12,7 +12,7 @@ public class DepartmentAddressesTest extends BaseTest {
 
     @Test
     @Flaky
-    @TmsLink("C9444")
+    @TmsLink("9444")
     public void departmentAndATMAddresses() {
         var actualResult = addressesPage
                 .goToDepartmentAddressesPage()

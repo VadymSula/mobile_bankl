@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Mobile bank">
+    <parameter name="email" value="ext_sulavv@ubrr.ru"/>
     <test name="Main screen">
         <classes>
             <class name="mainscreen.DepartmentAddressesTest"/>
@@ -16,7 +17,6 @@
     </test>
 
     <test name="Demo-version / Account and deposits">
-        <parameter name="email" value="ext_sulavv@ubrr.ru"/>
         <classes>
             <class name="demoversion.accountAndDeposits.AccountRefillTest"/>
             <class name="demoversion.accountAndDeposits.AddNewCardTest"/>
@@ -31,6 +31,38 @@
             <class name="demoversion.card.CashBackTest"/>
             <class name="demoversion.card.SetPinCodeTest"/>
             <class name="demoversion.card.EditPinCodeTest"/>
+        </classes>
+    </test>
+
+    <test name="Demo-version / More">
+        <parameter name="phoneNumber" value="27102-63-08"/>
+        <classes>
+            <class name="demoversion.more.LogoutTest"/>
+            <class name="demoversion.more.FastPaymentSystemTest"/>
+            <class name="demoversion.more.ChangePasswordTest"/>
+            <class name="demoversion.more.PersonalDataTest"/>
+            <class name="demoversion.more.LogonByFingerprintTest"/>
+            <class name="demoversion.more.PushNotificationsTest"/>
+            <class name="demoversion.more.CallToBankTest"/>
+            <class name="demoversion.more.CurrencyRateTest"/>
+            <class name="demoversion.more.DeleteNumberForSmsNoticesTest"/>
+            <class name="demoversion.more.PhoneNumberAdditionTest"/>
+        </classes>
+    </test>
+
+    <test name="Demo-version / Payments and transfers">
+        <classes>
+            <class name="demoversion.paymentsAndTransfers.transfers.ByPhoneNumberTest"/>
+            <class name="demoversion.paymentsAndTransfers.transfers.BetweenAccountsTest">
+                <!--FLAKY!!!-->
+                <parameter name="sum" value="1500.56"/>
+                <!--FLAKY!!!-->
+            </class>
+            <class name="demoversion.paymentsAndTransfers.transfers.ByCardNumberTest">
+                <parameter name="cardNumber" value="1600 4522 5555 2000"/>
+                <parameter name="sum" value="1234.56"/>
+                <parameter name="comment" value="qwerty"/>
+            </class>
         </classes>
     </test>
 </suite>

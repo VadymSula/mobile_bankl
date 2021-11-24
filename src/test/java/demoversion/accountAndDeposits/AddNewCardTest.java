@@ -13,7 +13,7 @@ public class AddNewCardTest extends DemoVersionMainTest {
                 .tapOnRefillButton()
                 .tapOnFromCardOfOtherBankButton()
                 .tapOnTheAddNewCardButton()
-                .isExistAlertAboutNotAvailableInDemoVersion();
+                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
         Assert.assertTrue(actualResult);
     }

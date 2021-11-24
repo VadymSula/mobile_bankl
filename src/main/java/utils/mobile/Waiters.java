@@ -19,7 +19,7 @@ public class Waiters {
     protected static final Logger LOGGER = LoggerFactory.getLogger(Waiters.class);
 
     protected static final long WAIT_ELEMENT_TIMEOUT_IN_SECONDS = 10L;
-    protected static final long WAIT_ELEMENT_NOT_EXIST_TIMEOUT_IN_SECONDS = 1L;
+    protected static final long WAIT_ELEMENT_NOT_EXIST_TIMEOUT_IN_SECONDS = 5L;
 
     AppiumDriver<MobileElement> driver;
 
@@ -82,7 +82,7 @@ public class Waiters {
         waiter(errorMessage).until(function);
     }
 
-    protected void waitForPageVisible(MobileElement element) {
+    public void waitForPageVisible(MobileElement element) {
         var pageName = getClass().getSimpleName();
         LOGGER.info("Wait page: " + pageName);
 

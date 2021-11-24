@@ -65,6 +65,7 @@ public class Elements extends MobileElements {
         Actions action = new Actions(driver);
         action.sendKeys(sequence).perform();
     }
+
     public boolean isElementExist(MobileElement mobileElement) {
         return waiters.isElementExist(mobileElement);
     }

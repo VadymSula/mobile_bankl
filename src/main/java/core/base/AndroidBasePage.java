@@ -45,6 +45,8 @@ public class AndroidBasePage {
     protected MobileElement CURRENCY_RATES_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_demo_version")
     protected MobileElement DEMO_VERSION_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_title")
+    protected MobileElement WELCOME_TITLE;
 
     @Step("Тапнуть на кнопку 'Курс валют'")
     public CurrencyRatePage goToCurrencyRatesPage() {
@@ -74,6 +76,11 @@ public class AndroidBasePage {
     public AccountPage goToDemoVersion() {
         buttons.searchAndClickButtonBy(DEMO_VERSION_BUTTON);
         return new AccountPage(getAndroidDriver());
+    }
+
+    @Step("Отображается 'стартовая' страница")
+    public boolean isDisplayStartPage() {
+        return elements.isElementExist(WELCOME_TITLE);
     }
 
     public AndroidDriver<MobileElement> getAndroidDriver() {

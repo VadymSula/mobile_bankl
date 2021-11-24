@@ -12,7 +12,7 @@ public class RefillAndRequestPaymentTest extends DemoVersionMainTest {
                 .goToAccountPage()
                 .tapOnRefillButton()
                 .tapOnRequestPaymentButton()
-                .isExistAlertAboutNotAvailableInDemoVersion();
+                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
         Assert.assertTrue(actualResult);
     }

@@ -18,7 +18,7 @@ public class RefillWithCardOtherBankTest extends DemoVersionMainTest {
                 .toFillCvvOnField(CVV_CODE)
                 .toFillSumOnField(SUM)
                 .tapOnTheNextButton()
-                .isExistAlertAboutNotAvailableInDemoVersion();
+                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
         Assert.assertTrue(actualResult);
     }

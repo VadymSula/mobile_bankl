@@ -11,7 +11,7 @@ public class AccountEditNameTest extends DemoVersionMainTest {
         var actualResult = accountPage
                 .goToAccountPage()
                 .tapOnEditNameButton()
-                .isExistAlertAboutNotAvailableInDemoVersion();
+                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
         Assert.assertTrue(actualResult);
     }

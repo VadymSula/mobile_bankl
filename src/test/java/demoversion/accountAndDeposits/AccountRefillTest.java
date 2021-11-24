@@ -27,7 +27,7 @@ public class AccountRefillTest extends DemoVersionMainTest {
                 .chooseDepositAccountCheckbox()
                 .inputSumForTransfer(TRANSFER_SUM)
                 .tapOnTransferButton()
-                .isExistAlertAboutNotAvailableInDemoVersion();
+                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
         Assert.assertTrue(actualResult);
     }
