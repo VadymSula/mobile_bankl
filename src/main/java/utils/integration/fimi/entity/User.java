@@ -10,6 +10,7 @@ public class User {
     private String clerk;
     private String password;
     private String session;
+    private String NextChallenge;
     private String PAN;
 
     public User(String clerk, String password, String session) {

@@ -6,20 +6,21 @@ import javax.xml.soap.*;
 
 
 public abstract class InitSoapRq {
+    protected static final String SOAP_URL = "http://172.22.250.89:51030";
     protected static final String myNamespace = "fimi";
     protected static final String myNamespace1 = "fimi1";
     private static final String myNamespaceURI = "http://schemas.compassplus.com/two/1.0/fimi.xsd";
     private static final String myNamespaceURITypes = "http://schemas.compassplus.com/two/1.0/fimi_types.xsd";
     private static final String schemeURI = "http://www.w3.org/2003/05/soap-envelope";
 
-    public abstract SOAPMessage callSoapWebService(String soapEndpointUrl, String soapAction, User user);
+    public abstract SOAPMessage callSoapWebService(User user);
 
     protected SOAPMessage formHeadersForReq(String soapAction) throws SOAPException {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
 
         MimeHeaders headers = soapMessage.getMimeHeaders();
-        headers.addHeader("с", "gzip,deflate");
+        headers.addHeader("Accept-Encoding", "gzip,deflate");
         headers.addHeader("SOAPAction", soapAction);
         headers.addHeader("Content-Type", "application/soap+xml;charset=UTF-8");
 

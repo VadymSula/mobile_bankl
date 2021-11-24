@@ -9,15 +9,15 @@ import java.io.IOException;
 public class InitSessionRq extends InitSoapRq {
 
     @Override
-    public SOAPMessage callSoapWebService(String soapEndpointUrl, String soapAction, User user) {
+    public SOAPMessage callSoapWebService(User user) {
         try {
             var soapConnection = createSoapConnect();
-            var soapMessage = formSoapEnvelope(formHeadersForReq(soapAction), user);
+            var soapMessage = formSoapEnvelope(formHeadersForReq(SOAP_URL + "/InitSessionRq"), user);
             soapMessage.saveChanges();
             System.out.println("Request SOAP Message:");
             soapMessage.writeTo(System.out);
             System.out.println("\n");
-            return soapConnection.call(soapMessage, soapEndpointUrl);
+            return soapConnection.call(soapMessage, SOAP_URL);
         } catch (SOAPException | IOException e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ public class InitSessionRq extends InitSoapRq {
         SOAPElement soapBodyReqElement = soapBodyElem.addChildElement("Request", myNamespace);
         soapBodyReqElement.addAttribute(new QName("Product"), "FIMI");
         soapBodyReqElement.addAttribute(new QName("Clerk"), user.getClerk());
-        soapBodyReqElement.addAttribute(new QName("Ver"), "16.12");
+        soapBodyReqElement.addAttribute(new QName("Ver"), "16.16");
 
         soapBodyReqElement.addChildElement("NeedDicts", myNamespace1)
                 .addTextNode("0");

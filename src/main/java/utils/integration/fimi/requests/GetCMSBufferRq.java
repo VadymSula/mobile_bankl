@@ -11,15 +11,15 @@ import java.io.IOException;
 
 public class GetCMSBufferRq extends InitSoapRq {
     @Override
-    public SOAPMessage callSoapWebService(String soapEndpointUrl, String soapAction, User user) {
+    public SOAPMessage callSoapWebService(User user) {
         try {
             var soapConnection = createSoapConnect();
-            var soapMessage = formSoapEnvelope(formHeadersForReq(soapAction), user);
+            var soapMessage = formSoapEnvelope(formHeadersForReq(SOAP_URL + "/GetCMSBufferRq"), user);
             soapMessage.saveChanges();
             System.out.println("Request SOAP Message:");
             soapMessage.writeTo(System.out);
             System.out.println("\n");
-            return soapConnection.call(soapMessage, soapEndpointUrl);
+            return soapConnection.call(soapMessage, SOAP_URL);
         } catch (SOAPException | IOException e) {
             e.printStackTrace();
         }
@@ -39,7 +39,7 @@ public class GetCMSBufferRq extends InitSoapRq {
         soapBodyReqElement.addAttribute(new QName("Clerk"), user.getClerk());
         soapBodyReqElement.addAttribute(new QName("Password"), user.getPassword());
         soapBodyReqElement.addAttribute(new QName("Session"), user.getSession());
-        soapBodyReqElement.addAttribute(new QName("Ver"), "16.12");
+        soapBodyReqElement.addAttribute(new QName("Ver"), "16.16");
 
         soapBodyReqElement.addChildElement("PAN", myNamespace1)
                 .addTextNode(user.getPAN());

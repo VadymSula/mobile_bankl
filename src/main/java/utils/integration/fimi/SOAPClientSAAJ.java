@@ -1,39 +1,62 @@
 package utils.integration.fimi;
 
 import utils.integration.fimi.entity.User;
-import utils.integration.fimi.requests.InitSoapRq;
+import utils.integration.fimi.requests.GetCMSBufferRq;
+import utils.integration.fimi.requests.InitSessionRq;
 import utils.integration.fimi.requests.LogonRq;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.xml.namespace.QName;
 import javax.xml.soap.*;
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 
 public class SOAPClientSAAJ {
-
-    // SAAJ - SOAP Client Testing
+    private static final String TEST_CRED = "DB_TEST2";
     public static void main(String args[]) {
-        /*
-            The example below requests from the Web Service at:
-             http://www.webservicex.net/uszip.asmx?op=GetInfoByCity
+        try {
+            var initSessionResponse = initSessionRequest();
+            login(SOAPParser.getValueFromBodyXML(initSessionResponse, 0),
+                    SOAPParser.getKeyWordForCipher(initSessionResponse));
+//            getCodeByPAN(session);
 
 
-            To call other WS, change the parameters below, which are:
-             - the SOAP Endpoint URL (that is, where the service is responding from)
-             - the SOAP Action
-
-            Also change the contents of the method createSoapEnvelope() in this class. It constructs
-             the inner part of the SOAP envelope that is actually sent.
-         */
-        String soapEndpointUrl = "http://172.22.250.89:21004";
-        String soapAction = "http://172.22.250.89:21004/InitSessionRq";
-        InitSoapRq initSoapRq = new LogonRq();
-        var user = new User("C2B_USER2", "1C3792D899AC85E2", "615667244");
-        initSoapRq.callSoapWebService(soapEndpointUrl, soapAction, user);
+        } catch (SOAPException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
+//    private static String getCodeByPAN(String session) throws SOAPException, IOException {
+//        var user = new User(TEST_CRED, EncoderSHA.getEncodePassword(TEST_CRED), session, "9990040083167");
+//        new GetCMSBufferRq().callSoapWebService(user).writeTo(System.out);
+//        System.out.println();
+//        return "";
+//    }
+//
+    private static void login(String session, String vector) throws SOAPException, IOException {
+        User user = null;
+        try {
+            user = new User(TEST_CRED, TrippleDes.encode(vector), session);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        new LogonRq().callSoapWebService(user).writeTo(System.out);
+        System.out.println();
+    }
+
+    private static SOAPMessage initSessionRequest() throws SOAPException, IOException {
+        var user = new User();
+        user.setClerk(TEST_CRED);
+        return new InitSessionRq().callSoapWebService(user);
+    }
 //    private static void createSoapEnvelope(SOAPMessage soapMessage) throws SOAPException {
 //        SOAPPart soapPart = soapMessage.getSOAPPart();
-//
+//"DB_TEST1", EncoderSHA.getEncodePassword("DB_TEST1"), "615667244"
 //        // SOAP Envelope
 //        SOAPEnvelope envelope = soapPart.getEnvelope();
 //        SOAPHeader header = soapMessage.getSOAPHeader();
