@@ -44,46 +44,10 @@ public class Screen extends MobileElements {
 
     }
 
-    public void swipe(Direction dir) {
-        final int ANIMATION_TIME = 200;
-        final int PRESS_TIME = 2000;
-        int edgeBorder = 200;
-        PointOption pointOptionStart, pointOptionEnd;
-        Dimension dims = driver.manage().window().getSize();
-        pointOptionStart = PointOption.point(dims.width / 2, dims.height / 2);
-
-        switch (dir) {
-            case DOWN: // center of footer
-                pointOptionEnd = PointOption.point(dims.width / 2, dims.height - edgeBorder);
-                break;
-            case UP: // center of header
-                pointOptionEnd = PointOption.point(dims.width / 2, edgeBorder);
-                break;
-            case LEFT: // center of left side
-                pointOptionEnd = PointOption.point(edgeBorder, dims.height / 2);
-                break;
-            case RIGHT: // center of right side
-                pointOptionEnd = PointOption.point(dims.width - edgeBorder, dims.height / 2);
-                break;
-            default:
-                throw new IllegalArgumentException("swipeScreen(): dir: '" + dir + "' NOT supported");
-        }
-        try {
-            new TouchAction(driver)
-                    .press(pointOptionStart)
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(PRESS_TIME)))
-                    .moveTo(pointOptionEnd)
-                    .release().perform();
-        } catch (Exception e) {
-            LOGGER.error("swipeScreen(): TouchAction FAILED\n" + e.getMessage());
-        }
-    }
-
-    public void swipeScreenWithLogs(Direction dir, int pressTime) {
-        System.out.println("swipeScreen(): dir: '" + dir + "'");
+    public void swipeScreenWithPressTime(Direction dir, int pressTime, Point pointStart) {
         final int ANIMATION_TIME = 200;
 
-        Point pointStart, pointEnd;
+        Point pointEnd;
         PointOption pointOptionStart, pointOptionEnd;
 
         int edgeBorder = 10;
@@ -91,7 +55,9 @@ public class Screen extends MobileElements {
         Dimension dims = driver.manage().window().getSize();
         new Waiters(driver).waitSomeSecond(1);
 
-        pointStart = new Point(dims.width / 2, dims.height / 2);
+        if (pointStart == null) {
+            pointStart = new Point(dims.width / 2, dims.height / 2);
+        }
 
         switch (dir) {
             case DOWN: // center of footer
@@ -112,9 +78,7 @@ public class Screen extends MobileElements {
 
         pointOptionStart = PointOption.point(pointStart.x, pointStart.y);
         pointOptionEnd = PointOption.point(pointEnd.x, pointEnd.y);
-//        System.out.println("swipeScreen(): pointStart: {" + pointStart.x + "," + pointStart.y + "}");
-//        System.out.println("swipeScreen(): pointEnd: {" + pointEnd.x + "," + pointEnd.y + "}");
-//        System.out.println("swipeScreen(): screenSize: {" + dims.width + "," + dims.height + "}");
+
         try {
             new TouchAction(driver)
                     .press(pointOptionStart)
@@ -131,5 +95,17 @@ public class Screen extends MobileElements {
         } catch (InterruptedException e) {
             // ignore
         }
+    }
+
+    /**
+     * @param heightPart  - part of the height by which to divide the whole height
+     * @param widthPart - part of the width by which to divide the whole width
+     */
+    public Point setPointForSwipe(Float heightPart, Float widthPart) {
+        var dims = driver
+                .manage()
+                .window()
+                .getSize();
+        return new Point( (int) (dims.width / widthPart), (int) (dims.height / heightPart));
     }
 }

@@ -1,4 +1,4 @@
-package pages.android.demoversion.paymensAndTransfers.entity;
+package core.entity.forPages;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

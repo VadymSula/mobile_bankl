@@ -5,7 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.demoversion.DemoVersionMainPage;
-import pages.android.demoversion.paymensAndTransfers.entity.Requisites;
+import core.entity.forPages.Requisites;
 
 public class ByRequisitesPage extends DemoVersionMainPage {
 

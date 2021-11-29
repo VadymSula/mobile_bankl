@@ -54,7 +54,7 @@ public class CardPage extends DemoVersionMainPage {
 
     @Step("Тапнуть на 'Изменить ПИН-код'")
     public CardPage scrollAndTapOnEditPinCode() {
-        screen.swipeScreenWithLogs(Screen.Direction.UP, 1000);
+        screen.swipeScreenWithPressTime(Screen.Direction.UP, 1000, null);
         buttons.searchAndClickButtonBy(EDIT_PIN_CODE_BUTTON);
 
         return this;

@@ -4,7 +4,7 @@ import demoversion.paymentsAndTransfers.PaymentsAndTransfersMainTest;
 import io.qameta.allure.TmsLink;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.android.demoversion.paymensAndTransfers.entity.Requisites;
+import core.entity.forPages.Requisites;
 
 public class ByRequisitesTest extends PaymentsAndTransfersMainTest {
 
