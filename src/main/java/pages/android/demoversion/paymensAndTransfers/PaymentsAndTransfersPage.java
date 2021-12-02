@@ -7,6 +7,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Point;
 import pages.android.demoversion.DemoVersionMainPage;
+import pages.android.demoversion.paymensAndTransfers.payments.InternetAndTVPage;
 import pages.android.demoversion.paymensAndTransfers.payments.MobileConnectionPage;
 import pages.android.demoversion.paymensAndTransfers.transfers.*;
 
@@ -31,6 +32,10 @@ public class PaymentsAndTransfersPage extends DemoVersionMainPage {
     protected MobileElement PAYMENT_OF_UTILITY_SERVICES;
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Домашний телефон')]/..")
     protected MobileElement HOME_PHONE;
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Интернет и ТВ')]/..")
+    protected MobileElement INTERNET_AND_TV_BUTTON;
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Образование')]/..")
+    protected MobileElement EDUCATION_BUTTON;
 
     public PaymentsAndTransfersPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
@@ -97,6 +102,19 @@ public class PaymentsAndTransfersPage extends DemoVersionMainPage {
     @Step("Тапнуть на кнопку 'Домашний телефон'")
     public PaymentsAndTransfersPage tapOnHomePhoneButton() {
         buttons.searchAndClickButtonBy(HOME_PHONE);
+        return this;
+    }
+
+    @Step("Тапнуть на кнопку 'Интернет и ТВ'")
+    public InternetAndTVPage tapOnInternetAndTVButton() {
+        screen.swipeScreenWithPressTime(Screen.Direction.LEFT, 200, paymentsPoint);
+        buttons.searchAndClickButtonBy(INTERNET_AND_TV_BUTTON);
+        return new InternetAndTVPage(getAndroidDriver());
+    }
+
+    @Step("Тапнуть на кнопку 'Образование'")
+    public PaymentsAndTransfersPage tapOnEducationButton() {
+        buttons.searchAndClickButtonBy(EDUCATION_BUTTON);
         return this;
     }
 }
