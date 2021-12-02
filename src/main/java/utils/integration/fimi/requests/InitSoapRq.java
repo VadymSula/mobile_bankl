@@ -1,5 +1,8 @@
 package utils.integration.fimi.requests;
 
+import config.PropertiesConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import utils.integration.fimi.entity.User;
 
 import javax.xml.soap.*;

@@ -4,7 +4,6 @@ import utils.integration.fimi.entity.User;
 
 import javax.xml.namespace.QName;
 import javax.xml.soap.*;
-import java.io.IOException;
 
 public class InitSessionRq extends InitSoapRq {
 
@@ -14,11 +13,8 @@ public class InitSessionRq extends InitSoapRq {
             var soapConnection = createSoapConnect();
             var soapMessage = formSoapEnvelope(formHeadersForReq(SOAP_URL + "/InitSessionRq"), user);
             soapMessage.saveChanges();
-            System.out.println("Request SOAP Message:");
-            soapMessage.writeTo(System.out);
-            System.out.println("\n");
             return soapConnection.call(soapMessage, SOAP_URL);
-        } catch (SOAPException | IOException e) {
+        } catch (SOAPException e) {
             e.printStackTrace();
         }
         return null;

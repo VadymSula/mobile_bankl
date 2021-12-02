@@ -7,20 +7,16 @@ import javax.xml.soap.SOAPConnection;
 import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
-import java.io.IOException;
 
-public class GetCMSBufferRq extends InitSoapRq {
+public class GetCMSArchiveRq extends InitSoapRq {
     @Override
     public SOAPMessage callSoapWebService(User user) {
         try {
             var soapConnection = createSoapConnect();
-            var soapMessage = formSoapEnvelope(formHeadersForReq(SOAP_URL + "/GetCMSBufferRq"), user);
+            var soapMessage = formSoapEnvelope(formHeadersForReq(SOAP_URL + "/GetCMSArchiveRq"), user);
             soapMessage.saveChanges();
-            System.out.println("Request SOAP Message:");
-            soapMessage.writeTo(System.out);
-            System.out.println("\n");
             return soapConnection.call(soapMessage, SOAP_URL);
-        } catch (SOAPException | IOException e) {
+        } catch (SOAPException e) {
             e.printStackTrace();
         }
         return null;
@@ -33,7 +29,7 @@ public class GetCMSBufferRq extends InitSoapRq {
 
     private SOAPMessage formSoapEnvelope(SOAPMessage soapMessage, User user) throws SOAPException {
         var soapBody = initBodyEnvelope(soapMessage).getBody();
-        var soapBodyElem = soapBody.addChildElement("GetCMSBufferRq", myNamespace);
+        var soapBodyElem = soapBody.addChildElement("GetCMSArchiveRq", myNamespace);
         var soapBodyReqElement = soapBodyElem.addChildElement("Request", myNamespace);
         soapBodyReqElement.addAttribute(new QName("Product"), "FIMI");
         soapBodyReqElement.addAttribute(new QName("Clerk"), user.getClerk());

@@ -7,7 +7,6 @@ import javax.xml.soap.SOAPConnection;
 import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
-import java.io.IOException;
 
 public class LogoffRq extends InitSoapRq {
 
@@ -17,11 +16,8 @@ public class LogoffRq extends InitSoapRq {
             var soapConnection = createSoapConnect();
             var soapMessage = formSoapEnvelope(formHeadersForReq(SOAP_URL + "/LogoffRq"), user);
             soapMessage.saveChanges();
-            System.out.println("Request SOAP Message:");
-            soapMessage.writeTo(System.out);
-            System.out.println("\n");
             return soapConnection.call(soapMessage, SOAP_URL);
-        } catch (SOAPException | IOException e) {
+        } catch (SOAPException e) {
             e.printStackTrace();
         }
         return null;
