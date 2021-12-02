@@ -6,15 +6,16 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class InternetAndTVByVendorFromListTest extends PaymentsAndTransfersMainTest {
+public class InternetAndTVByVendorBySearchTest extends PaymentsAndTransfersMainTest {
 
     @Test
-    @TmsLink("27932")
-    @Parameters({"account", "sum"})
-    public void internetAndTVByVendorFromListPaymentTest(String account, String sum) {
+    @TmsLink("27934")
+    @Parameters({"inn", "account", "sum"})
+    public void internetAndTVByVendorThroughSearchByINNTest(String inn, String account, String sum) {
         var actualResult = paymentsAndTransfersPage
                 .tapOnInternetAndTVButton()
-                .tapOnByVendorPAOButton()
+                .fillInFieldByNameOrINN(inn)
+                .tapOnPAOVendor()
                 .fillInFields(account, sum)
                 .tapOnNextButton()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();

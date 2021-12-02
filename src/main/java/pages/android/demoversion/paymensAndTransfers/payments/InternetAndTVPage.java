@@ -18,6 +18,12 @@ public class InternetAndTVPage extends DemoVersionMainPage {
     protected MobileElement SUM_FIELD;
     @AndroidFindBy(className = "android.widget.RelativeLayout")
     protected MobileElement NEXT_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_payments_search")
+    protected MobileElement SEARCH_FIELD_BY_NAME_OR_INN;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_search_edit_text")
+    protected MobileElement EDIT_TEXT_FOR_SEARCH;
+    @AndroidFindBy(xpath = "//android.widget.TextView/..")
+    protected MobileElement FIRST_VENDOR;
 
     public InternetAndTVPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
@@ -47,6 +53,21 @@ public class InternetAndTVPage extends DemoVersionMainPage {
     @Step("Тапнуть на кнопку 'Далее'")
     public InternetAndTVPage tapOnNextButton() {
         buttons.searchAndClickButtonBy(NEXT_BUTTON);
+        return this;
+    }
+
+    @Step("Заполнить поле:" +
+            "Поиск по названию или ИНН: 7740000076")
+    public InternetAndTVPage fillInFieldByNameOrINN(String inn) {
+        buttons.searchAndClickButtonBy(SEARCH_FIELD_BY_NAME_OR_INN);
+        elements.searchFieldAndSendKey(EDIT_TEXT_FOR_SEARCH, inn);
+        return this;
+    }
+
+    @Step("Тапнуть на иконку" +
+            "(например 'ПАО 'МТС' HOME [РФ]')")
+    public InternetAndTVPage tapOnPAOVendor() {
+        buttons.searchAndClickButtonBy(FIRST_VENDOR);
         return this;
     }
 }

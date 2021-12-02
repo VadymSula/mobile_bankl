@@ -70,6 +70,19 @@
                 <parameter name="phoneNumber" value="+79827522233"/>
                 <parameter name="sum" value="1500.56"/>
             </class>
+            <class name="demoversion.paymentsAndTransfers.payments.EducationTest"/>
+            <class name="demoversion.paymentsAndTransfers.payments.HomePhoneTest"/>
+            <class name="demoversion.paymentsAndTransfers.payments.InternetAndTVTest"/>
+            <class name="demoversion.paymentsAndTransfers.payments.InternetAndTVByVendorFromListTest">
+                <parameter name="account" value="9923491935"/>
+                <parameter name="sum" value="110.15"/>
+            </class>
+            <class name="demoversion.paymentsAndTransfers.payments.InternetAndTVByVendorBySearchTest">
+                <parameter name="account" value="9923491935"/>
+                <parameter name="sum" value="110.15"/>
+                <parameter name="inn" value="7740000076"/>
+            </class>
+            <class name="demoversion.paymentsAndTransfers.payments.PaymentOfUtilityServicesTest"/>
         </classes>
     </test>
 </suite>
