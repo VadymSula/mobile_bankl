@@ -9,7 +9,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
-import pages.android.authorization.signin.SignInByLogin;
+import pages.android.authorization.LoginPage;
 import pages.android.demoversion.accountsAndDeposits.AccountPage;
 import pages.android.mainscreen.BecomeClientPage;
 import pages.android.mainscreen.CurrencyRatePage;
@@ -47,6 +47,8 @@ public class AndroidBasePage {
     protected MobileElement DEMO_VERSION_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_title")
     protected MobileElement WELCOME_TITLE;
+    @AndroidFindBy(id = "cb.ibank:id/common_dialog_text")
+    protected MobileElement ALERT_TEXT;
 
     @Step("Тапнуть на кнопку 'Курс валют'")
     public CurrencyRatePage goToCurrencyRatesPage() {
@@ -67,9 +69,9 @@ public class AndroidBasePage {
     }
 
     @Step("Тап на кнопку 'Войти'")
-    public SignInByLogin goToSignInPage() {
+    public LoginPage goToSignInPage() {
         buttons.searchAndClickButtonBy(LOGIN_BUTTON);
-        return new SignInByLogin(getAndroidDriver());
+        return new LoginPage(getAndroidDriver());
     }
 
     @Step("Тапнуть на кнопку 'Демо-версия'")

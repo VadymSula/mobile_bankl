@@ -11,6 +11,8 @@
     </test>
 
     <test name="Authorization / New scenario of signin / by Login">
+        <parameter name="login" value="9990040083167"/>
+        <parameter name="password" value="1111"/>
         <classes>
             <class name="authorization.InvalidLoginOrPasswordTest"/>
         </classes>
@@ -52,7 +54,9 @@
 
     <test name="Demo-version / Payments and transfers">
         <classes>
-            <class name="demoversion.paymentsAndTransfers.transfers.ByPhoneNumberTest"/>
+            <class name="demoversion.paymentsAndTransfers.transfers.ByPhoneNumberTest">
+                <parameter name="sumForTransfer" value="10000"/>
+            </class>
             <class name="demoversion.paymentsAndTransfers.transfers.BetweenAccountsTest">
                 <!--FLAKY!!!-->
                 <parameter name="sum" value="1500.56"/>

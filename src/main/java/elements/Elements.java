@@ -23,10 +23,19 @@ public class Elements extends MobileElements {
 
     public boolean isSelectedElement(MobileElement mobileElement) {
         try {
-            mobileElement.isSelected();
-            return true;
-        } catch (Exception ElementNotSelected) {
+            return mobileElement.isSelected();
+        } catch (Exception e) {
             LOGGER.error("Element " + mobileElement.toString() + " is not selected");
+            return false;
+        }
+    }
+
+    public boolean isEnableElement(MobileElement mobileElement) {
+        try {
+            waiters.waitForVisibility(mobileElement);
+            return mobileElement.isEnabled();
+        } catch (Exception e) {
+            LOGGER.error("Element " + mobileElement.toString() + " is not exist or invisible");
             return false;
         }
     }

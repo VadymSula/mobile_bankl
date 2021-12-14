@@ -62,7 +62,7 @@ public class InitialDriver {
                 caps.setCapability(MobileCapabilityType.DEVICE_NAME, PropertiesConfig.getProperty("iosDeviceName"));
                 caps.setCapability(MobileCapabilityType.PLATFORM_NAME, PropertiesConfig.getProperty("iosPlatformName"));
                 caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, PropertiesConfig.getProperty("iosPlatformVersion"));
-                caps.setCapability(MobileCapabilityType.NO_RESET, true);
+                caps.setCapability(MobileCapabilityType.NO_RESET, false);
                 caps.setCapability(MobileCapabilityType.UDID, PropertiesConfig.getProperty("iosUdId"));
                 caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, PropertiesConfig.getProperty("iosAutomationName"));
                 caps.setCapability("bundleId", PropertiesConfig.getProperty("iosBundleId"));
