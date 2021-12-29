@@ -18,7 +18,7 @@ import static org.testng.Assert.fail;
 public class Waiters {
     protected static final Logger LOGGER = LoggerFactory.getLogger(Waiters.class);
 
-    protected static final long WAIT_ELEMENT_TIMEOUT_IN_SECONDS = 10L;
+    protected static final long WAIT_ELEMENT_TIMEOUT_IN_SECONDS = 15L;
     protected static final long WAIT_ELEMENT_NOT_EXIST_TIMEOUT_IN_SECONDS = 5L;
 
     AppiumDriver<MobileElement> driver;
@@ -28,23 +28,27 @@ public class Waiters {
     }
 
     public void waitForAlert() {
-        waiter().until(ExpectedConditions.alertIsPresent());
+        waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(ExpectedConditions.alertIsPresent());
     }
 
     public MobileElement getElementAfterWaitForVisibility(MobileElement mobileElement) {
-        return (MobileElement) waiter().until(ExpectedConditions.visibilityOf(mobileElement));
+        return (MobileElement) waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
     public void waitForVisibility(MobileElement mobileElement) {
-        waiter().until(ExpectedConditions.visibilityOf(mobileElement));
+        waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
     public MobileElement waitForElementClickable(MobileElement element) {
-        return (MobileElement) waiter().until(elementToBeClickable(element));
+        return (MobileElement) waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(elementToBeClickable(element));
+    }
+
+    public MobileElement waitForElementClickable(MobileElement element, Long duration) {
+        return (MobileElement) waiter(duration).until(elementToBeClickable(element));
     }
 
     public void waitForChangeAttribute(By by, String attribute, String attributeValue) {
-        waiter().until(ExpectedConditions.attributeContains(by, attribute, attributeValue));
+        waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(ExpectedConditions.attributeContains(by, attribute, attributeValue));
     }
 
     public void waitForElementVisibleNot(By byElement) {
@@ -74,8 +78,22 @@ public class Waiters {
         return isElementExist;
     }
 
+    public boolean isElementExist(MobileElement element, Long duration) {
+        boolean isElementExist;
+        setWaitElementTimeout(duration);
+
+        try {
+            isElementExist = element.isDisplayed();
+        } catch (NoSuchElementException | ElementNotInteractableException e) {
+            isElementExist = false;
+        }
+
+        setWaitElementTimeout(WAIT_ELEMENT_TIMEOUT_IN_SECONDS);
+        return isElementExist;
+    }
+
     public void waitUntilFunctionIsTrue(AppiumFunction<AppiumDriver<MobileElement>, Object> function) {
-        waiter().until(function);
+        waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(function);
     }
 
     protected void waitUntilFunctionIsTrue(AppiumFunction<AppiumDriver<MobileElement>, Object> function, String errorMessage) {
@@ -109,9 +127,9 @@ public class Waiters {
         }
     }
 
-    private FluentWait<AppiumDriver<MobileElement>> waiter() {
+    private FluentWait<AppiumDriver<MobileElement>> waiter(Long duration) {
         return new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(WAIT_ELEMENT_TIMEOUT_IN_SECONDS))
+                .withTimeout(Duration.ofSeconds(duration))
                 .ignoring(ElementNotInteractableException.class)
                 .ignoring(InvalidElementStateException.class)
                 .ignoring(StaleElementReferenceException.class)
@@ -119,7 +137,7 @@ public class Waiters {
     }
 
     private FluentWait<AppiumDriver<MobileElement>> waiter(String errorMessage) {
-        return waiter()
+        return waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS)
                 .withMessage(errorMessage + "\nWait timeout: " + WAIT_ELEMENT_TIMEOUT_IN_SECONDS + " seconds.\n");
     }
 

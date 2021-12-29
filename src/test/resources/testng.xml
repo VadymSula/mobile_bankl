@@ -2,91 +2,16 @@
 
 <suite name="Mobile bank">
     <parameter name="email" value="ext_sulavv@ubrr.ru"/>
-    <test name="Main screen">
-        <classes>
-            <class name="mainscreen.DepartmentAddressesTest"/>
-            <class name="mainscreen.BecomeClientTest"/>
-            <class name="mainscreen.CurrencyRateTest"/>
-        </classes>
-    </test>
 
-    <test name="Authorization / New scenario of signin / by Login">
-        <parameter name="login" value="9990040083167"/>
-        <parameter name="password" value="1111"/>
-        <classes>
-            <class name="authorization.InvalidLoginOrPasswordTest"/>
-        </classes>
-    </test>
-
-    <test name="Demo-version / Account and deposits">
-        <classes>
-            <class name="demoversion.accountAndDeposits.AccountRefillTest"/>
-            <class name="demoversion.accountAndDeposits.AddNewCardTest"/>
-            <class name="demoversion.accountAndDeposits.RefillWithCardOtherBankTest"/>
-            <class name="demoversion.accountAndDeposits.RefillAndRequestPaymentTest"/>
-            <class name="demoversion.accountAndDeposits.CertificateAvailableResidueTest"/>
-        </classes>
-    </test>
-
-    <test name="Demo-version / Card">
-        <classes>
-            <class name="demoversion.card.CashBackTest"/>
-            <class name="demoversion.card.SetPinCodeTest"/>
-            <class name="demoversion.card.EditPinCodeTest"/>
-        </classes>
-    </test>
-
-    <test name="Demo-version / More">
-        <parameter name="phoneNumber" value="27102-63-08"/>
-        <classes>
-            <class name="demoversion.more.LogoutTest"/>
-            <class name="demoversion.more.FastPaymentSystemTest"/>
-            <class name="demoversion.more.ChangePasswordTest"/>
-            <class name="demoversion.more.PersonalDataTest"/>
-            <class name="demoversion.more.LogonByFingerprintTest"/>
-            <class name="demoversion.more.PushNotificationsTest"/>
-            <class name="demoversion.more.CallToBankTest"/>
-            <class name="demoversion.more.CurrencyRateTest"/>
-            <class name="demoversion.more.DeleteNumberForSmsNoticesTest"/>
-            <class name="demoversion.more.PhoneNumberAdditionTest"/>
-        </classes>
-    </test>
-
-    <test name="Demo-version / Payments and transfers">
-        <classes>
-            <class name="demoversion.paymentsAndTransfers.transfers.ByPhoneNumberTest">
-                <parameter name="sumForTransfer" value="10000"/>
-            </class>
-            <class name="demoversion.paymentsAndTransfers.transfers.BetweenAccountsTest">
-                <!--FLAKY!!!-->
-                <parameter name="sum" value="1500.56"/>
-                <!--FLAKY!!!-->
-            </class>
-            <class name="demoversion.paymentsAndTransfers.transfers.ByCardNumberTest">
-                <parameter name="cardNumber" value="1600 4522 5555 2000"/>
-                <parameter name="sum" value="1234.56"/>
-                <parameter name="comment" value="qwerty"/>
-            </class>
-            <class name="demoversion.paymentsAndTransfers.transfers.ByRequisitesTest"/>
-            <class name="demoversion.paymentsAndTransfers.transfers.SystemOfFastPaymentTest"/>
-            <class name="demoversion.paymentsAndTransfers.payments.ByQRCodeTest"/>
-            <class name="demoversion.paymentsAndTransfers.payments.MobileConnectionTest">
-                <parameter name="phoneNumber" value="+79827522233"/>
-                <parameter name="sum" value="1500.56"/>
-            </class>
-            <class name="demoversion.paymentsAndTransfers.payments.EducationTest"/>
-            <class name="demoversion.paymentsAndTransfers.payments.HomePhoneTest"/>
-            <class name="demoversion.paymentsAndTransfers.payments.InternetAndTVTest"/>
-            <class name="demoversion.paymentsAndTransfers.payments.InternetAndTVByVendorFromListTest">
-                <parameter name="account" value="9923491935"/>
-                <parameter name="sum" value="110.15"/>
-            </class>
-            <class name="demoversion.paymentsAndTransfers.payments.InternetAndTVByVendorBySearchTest">
-                <parameter name="account" value="9923491935"/>
-                <parameter name="sum" value="110.15"/>
-                <parameter name="inn" value="7740000076"/>
-            </class>
-            <class name="demoversion.paymentsAndTransfers.payments.PaymentOfUtilityServicesTest"/>
-        </classes>
-    </test>
+    <suite-files>
+        <suite-file path="suites/demoVersionSuite.xml"/>
+        <suite-file path="suites/mainScreenSuite.xml"/>
+    </suite-files>
+<!--    <test name="Authorization / New scenario of signin / by Login">-->
+<!--        <parameter name="login" value="9990040083167"/>-->
+<!--        <parameter name="password" value="1111"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.authorization.InvalidLoginOrPasswordTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>

@@ -8,6 +8,10 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.interactions.Actions;
 import utils.mobile.Waiters;
 
 import java.time.Duration;
@@ -21,6 +25,19 @@ public class Buttons extends MobileElements {
     public void searchAndClickButtonBy(MobileElement mobileElement) {
         var waitedMobileElement = waiters.waitForElementClickable(mobileElement);
         waitedMobileElement.click();
+    }
+
+    public void searchAndClickButtonBy(MobileElement mobileElement, Long duration) {
+        var waitedMobileElement = waiters.waitForElementClickable(mobileElement, duration);
+        waitedMobileElement.click();
+    }
+
+    public void searchAndClickButtonByCoordinates(MobileElement mobileElement) {
+        waiters.waitForVisibility(mobileElement);
+        var coordinatesOnPageOfWaitedElement = mobileElement.getCoordinates().onPage();
+        TouchAction actions = new TouchAction(driver);
+        actions.press(PointOption.point(new Point(coordinatesOnPageOfWaitedElement.getX(), coordinatesOnPageOfWaitedElement.getY())));
+        actions.release().perform();
     }
 
     public void waitInSecondsAndClickButtonBy(MobileElement mobileElement, Integer quantityOfSeconds) {

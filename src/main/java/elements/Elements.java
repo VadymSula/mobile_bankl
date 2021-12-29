@@ -62,6 +62,7 @@ public class Elements extends MobileElements {
 
     public void searchFieldAndSendKey(MobileElement mobileElement, String key) {
         var searchField = waiters.waitForElementClickable(mobileElement);
+        searchField.clear();
         searchField.sendKeys(key);
     }
 
@@ -77,5 +78,9 @@ public class Elements extends MobileElements {
 
     public boolean isElementExist(MobileElement mobileElement) {
         return waiters.isElementExist(mobileElement);
+    }
+
+    public boolean isElementExist(MobileElement mobileElement, Long duraion) {
+        return waiters.isElementExist(mobileElement, duraion);
     }
 }

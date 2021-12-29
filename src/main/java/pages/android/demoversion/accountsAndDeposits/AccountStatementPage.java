@@ -1,9 +1,9 @@
-//package pages.android.demoversion.accountsAndDeposits;
+//package pages.android.tests.demoversion.accountsAndDeposits;
 //
 //import io.appium.java_client.AppiumDriver;
 //import io.appium.java_client.MobileElement;
 //import io.appium.java_client.pagefactory.AndroidFindBy;
-//import pages.android.demoversion.DemoVersionMainPage;
+//import pages.android.tests.demoversion.DemoVersionMainPage;
 //
 //public class AccountStatementPage extends DemoVersionMainPage {
 //    @AndroidFindBy(id = "cb.ibank:id/include_statements_and_references_email_text")

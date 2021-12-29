@@ -36,7 +36,7 @@ public class YamlParser {
     private Capabilities getCapabilitiesFromYaml() {
         var inputStream = this.getClass()
                 .getClassLoader()
-                .getResourceAsStream("conf.yaml");
+                .getResourceAsStream("yamls/conf.yaml");
         return yaml.load(inputStream);
     }
 }

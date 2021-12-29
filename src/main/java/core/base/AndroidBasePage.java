@@ -9,8 +9,9 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
+import pages.android.authorization.ConfirmLoginPage;
 import pages.android.authorization.LoginPage;
-import pages.android.demoversion.accountsAndDeposits.AccountPage;
+import pages.android.demoversion.accountsAndDeposits.DemoAccountPage;
 import pages.android.mainscreen.BecomeClientPage;
 import pages.android.mainscreen.CurrencyRatePage;
 import pages.android.mainscreen.DepartmentAddressesPage;
@@ -33,6 +34,8 @@ public class AndroidBasePage {
         PageFactory.initElements(new AppiumFieldDecorator(androidDriver), this);
     }
 
+    @AndroidFindBy(accessibility = "Перейти вверх")
+    protected MobileElement BACK_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_button_login")
     protected MobileElement LOGIN_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_button_become_client")
@@ -48,7 +51,15 @@ public class AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_title")
     protected MobileElement WELCOME_TITLE;
     @AndroidFindBy(id = "cb.ibank:id/common_dialog_text")
-    protected MobileElement ALERT_TEXT;
+    protected MobileElement COMMON_DIALOG_TEXT;
+    @AndroidFindBy(id = "cb.ibank:id/common_dialog_button_ok")
+    protected MobileElement OK_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/tutorial_view_title")
+    protected MobileElement ONBOARDING_TITLE_TEXT;
+    @AndroidFindBy(id = "cb.ibank:id/tutorial_view_message")
+    protected MobileElement ONBOARDING_MESSAGE_TEXT;
+    @AndroidFindBy(id = "cb.ibank:id/tutorial_view_next_button")
+    protected MobileElement ONBOARDING_NEXT_BUTTON;
 
     @Step("Тапнуть на кнопку 'Курс валют'")
     public CurrencyRatePage goToCurrencyRatesPage() {
@@ -75,9 +86,9 @@ public class AndroidBasePage {
     }
 
     @Step("Тапнуть на кнопку 'Демо-версия'")
-    public AccountPage goToDemoVersion() {
+    public DemoAccountPage goToDemoVersion() {
         buttons.searchAndClickButtonBy(DEMO_VERSION_BUTTON);
-        return new AccountPage(getAndroidDriver());
+        return new DemoAccountPage(getAndroidDriver());
     }
 
     public boolean isDisplayStartPage() {

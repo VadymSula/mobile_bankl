@@ -6,13 +6,16 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.PersonalCabinetMainPage;
-import utils.integration.fimi.SOAPClientSAAJ;
 
 public class ConfirmLoginPage extends AndroidBasePage {
 
     private static final String SMS_MESSAGE = "Мы отправили вам сообщение на";
     private static final String TIMER_TEXT = "Код действует:";
     private static final String TIME_OUT_TEXT = "Время действия кода истекло";
+    private static final String CODE_INVALID_TEXT = "Код подтверждения введен неверно";
+    private static final String ATTEMPTS_LIMIT_REACHED_TEXT = "Вы превысили допустимое количество попыток входа. Доступ будет заблокирован на 24 часа";
+    private static final String ACCESS_TEMP_BLOCK_MESSAGE = "Доступ временно заблокирован. Обратитесь в банк или попробуйте войти позднее";
+
     @AndroidFindBy(id = "cb.ibank:id/view_controller_confirm_sms_title")
     protected MobileElement CONFIRM_SMS_TITLE;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_confirm_sms_edit_text")
@@ -25,29 +28,34 @@ public class ConfirmLoginPage extends AndroidBasePage {
     protected MobileElement CANCEL_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/common_dialog_button_ok")
     protected MobileElement OK_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/common_dialog_text")
+    protected MobileElement COMMON_DIALOG_TEXT;
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'ПОЗВОНИТЬ В БАНК')]/..")
+    protected MobileElement CALL_TO_BANK_BUTTON;
 
     public ConfirmLoginPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
     }
 
     @Step("Ввести код из смс")
-    public ConfirmLoginPage inputCheckingCodeInFieldByCode() {
-        elements.searchFieldAndSendKey(
-                CONFIRM_SMS_FIELD,
-                SOAPClientSAAJ.getDynamicCodeByHisNumber(getNumberOfCheckingCode())
-        );
-
+    public ConfirmLoginPage inputCheckingCodeInFieldByCode(String code) {
+        elements.searchFieldAndSendKey(CONFIRM_SMS_FIELD, code);
         return this;
     }
 
     @Step("Тапнуть на кнопку \"Готово\"")
     public PersonalCabinetMainPage tapOnReadyButton() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         buttons.searchAndClickButtonBy(CONFIRM_SMS_BUTTON);
         return new PersonalCabinetMainPage(getAndroidDriver());
     }
 
     @Step("Отображается экран подтверждения: ")
-    public boolean isDisplaySignInScreenAndSections() {
+    public boolean isDisplayConfirmLoginScreenAndSections() {
         return isDisplayMessageAboutConfirmSms() &&
                 isDisplayCheckingCodeField() &&
                 isDisplayKeyboardOnScreen() &&
@@ -85,15 +93,42 @@ public class ConfirmLoginPage extends AndroidBasePage {
     private boolean isDisplayConfirmSmsButtonAndDisabled() {
         var isExistButton = elements.isElementExist(CONFIRM_SMS_BUTTON);
         var isDisableButton = !elements.isEnableElement(CONFIRM_SMS_BUTTON);
-        
+
         return isExistButton && isDisableButton;
     }
 
-    private String getNumberOfCheckingCode() {
+    @Step("Отображается алерт \"Код подтверждения введен неверно\"")
+    public boolean isContainsMessageAboutInvalidCode() {
+        return elements.getTextFromElement(COMMON_DIALOG_TEXT).contains(CODE_INVALID_TEXT);
+    }
+
+    @Step("Отображается алерт \"" + ATTEMPTS_LIMIT_REACHED_TEXT + "\"")
+    public boolean isContainsMessageAboutAttemptsLimitReached() {
+        return elements.getTextFromElement(COMMON_DIALOG_TEXT).contains(ATTEMPTS_LIMIT_REACHED_TEXT);
+    }
+
+    @Step("Отображаются кнопки \"ПОЗВОНИТЬ В БАНК\" и \"ОК\"")
+    public boolean isDisplayCallToBankAndOkButton() {
+        return elements.isElementExist(CALL_TO_BANK_BUTTON) && elements.isElementExist(OK_BUTTON);
+    }
+
+    @Step("Отображается алерт \"" + ACCESS_TEMP_BLOCK_MESSAGE + "\"")
+    public boolean isDisplayAlertAboutAccessTempBlockMessage() {
+        return elements.getTextFromElement(COMMON_DIALOG_TEXT).contains(ACCESS_TEMP_BLOCK_MESSAGE);
+    }
+
+    @Step("Тапнуть на кнопку \"ОК\"")
+    public ConfirmLoginPage tapOnOkButton() {
+        buttons.searchAndClickButtonBy(OK_BUTTON);
+        return this;
+    }
+
+    public String getNumberOfCheckingCode() {
         return elements.getTextFromElement(CONFIRM_SMS_FIELD).replaceAll("[^0-9]", "");
     }
 
     public boolean isExistAndContainsTextTimeOutMessage() {
-        return elements.isElementExist(ALERT_TEXT) && elements.getTextFromElement(ALERT_TEXT).contains(TIME_OUT_TEXT);
+        var isExistElement = elements.isElementExist(COMMON_DIALOG_TEXT);
+        return isExistElement && elements.getTextFromElement(COMMON_DIALOG_TEXT).contains(TIME_OUT_TEXT);
     }
 }

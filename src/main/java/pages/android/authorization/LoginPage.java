@@ -50,7 +50,7 @@ public class LoginPage extends AndroidBasePage {
     }
 
     @Step("Тапнуть на поле \"Идентификатор / логин\"" +
-            "Ввести логин ({9990040083167})")
+            "Ввести логин ({idOrLogin})")
     public LoginPage tapOnIDOrLoginFieldAndInput(String idOrLogin) {
         buttons.searchAndClickButtonBy(LOGIN_TEXTFIELD);
         elements.sendKeyFromAction(idOrLogin);
@@ -58,7 +58,7 @@ public class LoginPage extends AndroidBasePage {
     }
 
     @Step("Тапнуть на поле \"Пароль\"" +
-            "Ввести пароль ({1111})")
+            "Ввести пароль ({password})")
     public LoginPage tapOnPasswordFieldAndInput(String password) {
         buttons.searchAndClickButtonBy(PASSWORD_TEXTFIELD);
         elements.sendKeyFromAction(password);
@@ -66,14 +66,14 @@ public class LoginPage extends AndroidBasePage {
     }
 
     @Step("Тап на кнопку 'Войти'")
-    public LoginPage tapOnSignInButton() {
+    public ConfirmLoginPage tapOnSignInButton() {
         buttons.searchAndClickButtonBy(SIGN_IN_BUTTON);
-        return this;
+        return new ConfirmLoginPage(getAndroidDriver());
     }
 
     @Step(USER_IS_NOT_EXIST_ALERT_TEXT)
     public boolean isExistFailAlertAfterSignIn() {
-        var textFromAlert = elements.getTextFromElement(ALERT_TEXT);
+        var textFromAlert = elements.getTextFromElement(COMMON_DIALOG_TEXT);
 
         return textFromAlert.contains(PART_OF_ALERT_MESSAGE_ABOUT_NON_EXIST_USER);
     }

@@ -5,10 +5,9 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
-import pages.android.demoversion.accountsAndDeposits.AccountPage;
-import pages.android.demoversion.more.MorePage;
-import pages.android.demoversion.more.smsAndEmailNotices.PhoneAddition;
-import pages.android.demoversion.paymensAndTransfers.PaymentsAndTransfersPage;
+import pages.android.demoversion.accountsAndDeposits.DemoAccountPage;
+import pages.android.demoversion.more.DemoMorePage;
+import pages.android.demoversion.paymensAndTransfers.DemoPaymentsAndTransfersPage;
 
 public class DemoVersionMainPage extends AndroidBasePage {
     private static final String NOT_AVAILABLE_MESSAGE = "Недоступно в демо-режиме";
@@ -16,8 +15,6 @@ public class DemoVersionMainPage extends AndroidBasePage {
     protected MobileElement SALARY_ACCOUNT;
     @AndroidFindBy(id = "cb.ibank:id/common_dialog_text")
     protected MobileElement NOT_AVAILABLE_IN_DEMO_VERSION_ALERT;
-    @AndroidFindBy(id = "cb.ibank:id/common_dialog_button_ok")
-    protected MobileElement OK_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/main_navigation_more")
     protected MobileElement MORE_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/done")
@@ -30,28 +27,28 @@ public class DemoVersionMainPage extends AndroidBasePage {
     }
 
     @Step("Тапнуть 'Зарплатный Счет'")
-    public AccountPage goToAccountPage() {
+    public DemoAccountPage goToAccountPage() {
         buttons.searchAndClickButtonBy(SALARY_ACCOUNT);
-        return new AccountPage(getAndroidDriver());
+        return new DemoAccountPage(getAndroidDriver());
     }
 
     @Step("Всплывает предупреждение 'Недоступно в демо-режиме'")
     public boolean isExistAlertAboutNotAvailableInDemoVersionAndTapOK() {
         var isExistAlert = elements.getTextFromElement(NOT_AVAILABLE_IN_DEMO_VERSION_ALERT).equals(NOT_AVAILABLE_MESSAGE);
-        tapOnOkButton();
+        tapOnOkButtonInNotification();
 
         return isExistAlert;
     }
 
     @Step("Тапнуть кнопку 'Ок' в уведомлении")
-    public void tapOnOkButton() {
+    public void tapOnOkButtonInNotification() {
         buttons.searchAndClickButtonBy(OK_BUTTON);
     }
 
     @Step("Тапнуть 'Еще'")
-    public MorePage goToMorePage() {
+    public DemoMorePage goToMorePage() {
         buttons.searchAndClickButtonBy(MORE_BUTTON);
-        return new MorePage(getAndroidDriver());
+        return new DemoMorePage(getAndroidDriver());
     }
 
     @Step("Тапнуть на 'Готово'")
@@ -61,8 +58,8 @@ public class DemoVersionMainPage extends AndroidBasePage {
     }
 
     @Step("Тапнуть на 'Платежи'")
-    public PaymentsAndTransfersPage tapOnPaymentsButton() {
+    public DemoPaymentsAndTransfersPage tapOnPaymentsButton() {
         buttons.searchAndClickButtonBy(PAYMENTS_BUTTON);
-        return new PaymentsAndTransfersPage(getAndroidDriver());
+        return new DemoPaymentsAndTransfersPage(getAndroidDriver());
     }
 }
