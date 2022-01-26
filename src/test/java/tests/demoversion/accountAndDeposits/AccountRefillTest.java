@@ -1,35 +1,29 @@
 package tests.demoversion.accountAndDeposits;
 
-import tests.demoversion.DemoVersionMainTest;
 import io.qameta.allure.TmsLink;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+import tests.demoversion.DemoVersionMainTest;
 
-@TmsLink("C12618")
+@TmsLink("31838")
 public class AccountRefillTest extends DemoVersionMainTest {
     private static final String TRANSFER_SUM = "2000";
 
-    @Test
+    @Test(description = "Пополнить. Со своего счёта")
     public void isExistBeforeSelectedAccountTest() {
+        SoftAssert softAssert = new SoftAssert();
         demoAccountPage
                 .goToAccountPage()
                 .tapOnRefillButton()
                 .tapOnFromMyAccountButton();
-        var actualResult = demoAccountPage.isExistSelectedAccount();
-
-        Assert.assertTrue(actualResult);
-    }
-
-    @Test(priority = 1)
-    public void toTransferSum() {
+        softAssert.assertTrue(demoAccountPage.isExistSelectedAccount());
         var actualResult = demoAccountPage
                 .tapOnTransferFromAccountSender()
                 .chooseDepositAccountCheckbox()
                 .inputSumForTransfer(TRANSFER_SUM)
                 .tapOnTransferButton()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
-
-        Assert.assertTrue(actualResult);
+        softAssert.assertTrue(actualResult);
+        softAssert.assertAll();
     }
-
 }

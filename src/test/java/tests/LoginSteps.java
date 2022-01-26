@@ -17,7 +17,7 @@ public class LoginSteps extends BaseTest {
     public void login(/*String login, String password*/) {
         loginPage
                 .goToSignInPage()
-                .tapOnIDOrLoginFieldAndInput("9990040083167")
+                .tapOnIDOrLoginFieldAndInput("99900705948514")
                 .tapOnPasswordFieldAndInput("1111")
                 .tapOnSignInButton()
                 //.inputCheckingCodeInFieldByCode(getCheckingCode())

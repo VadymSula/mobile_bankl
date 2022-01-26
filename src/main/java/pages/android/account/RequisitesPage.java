@@ -1,6 +1,5 @@
 package pages.android.account;
 
-import config.PropertiesConfig;
 import core.base.AndroidBasePage;
 import enums.Text;
 import io.appium.java_client.MobileElement;

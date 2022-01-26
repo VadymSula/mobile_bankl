@@ -20,7 +20,8 @@ public class DemoCertificateAvailableResiduePage extends DemoVersionMainPage {
         super(androidDriver);
     }
 
-    @Step("Указать 'Email'")
+    @Step("Тапнуть на поле с плейсхолдером 'Email' " +
+            "| Ввести электронный адрес в поле с плейсхолдером 'Email'")
     public DemoCertificateAvailableResiduePage fillTheEmailField(String email) {
         elements.searchFieldAndSendKey(EMAIL_FIELD, email);
         return this;
@@ -38,7 +39,8 @@ public class DemoCertificateAvailableResiduePage extends DemoVersionMainPage {
         return this;
     }
 
-    @Step("Тапнуть на 'Отправить'")
+    @Step("Скрыть виртуальную клавиатуру" +
+            " | Тапнуть на кнопку 'Отправить'")
     public DemoCertificateAvailableResiduePage tapOnSendButton() {
         buttons.searchAndClickButtonBy(SEND_BUTTON);
         return this;

@@ -10,7 +10,7 @@ public class InternetAndTVByVendorBySearchTest extends PaymentsAndTransfersMainT
 
     @Test
     @TmsLink("27934")
-    @Parameters({"inn", "tests/account", "sum"})
+    @Parameters({"inn", "account", "sum"})
     public void internetAndTVByVendorThroughSearchByINNTest(String inn, String account, String sum) {
         var actualResult = demoPaymentsAndTransfersPage
                 .tapOnInternetAndTVButton()

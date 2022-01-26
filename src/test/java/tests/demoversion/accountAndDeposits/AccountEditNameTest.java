@@ -1,9 +1,11 @@
 package tests.demoversion.accountAndDeposits;
 
+import io.qameta.allure.TmsLink;
 import tests.demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@TmsLink("31843")
 public class AccountEditNameTest extends DemoVersionMainTest {
 
     @Test

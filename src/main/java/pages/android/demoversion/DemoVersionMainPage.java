@@ -26,7 +26,7 @@ public class DemoVersionMainPage extends AndroidBasePage {
         super(androidDriver);
     }
 
-    @Step("Тапнуть 'Зарплатный Счет'")
+    @Step("Тапнуть на счет 'Зарплатный Счет'")
     public DemoAccountPage goToAccountPage() {
         buttons.searchAndClickButtonBy(SALARY_ACCOUNT);
         return new DemoAccountPage(getAndroidDriver());
@@ -40,7 +40,7 @@ public class DemoVersionMainPage extends AndroidBasePage {
         return isExistAlert;
     }
 
-    @Step("Тапнуть кнопку 'Ок' в уведомлении")
+    @Step("Тапнуть на кнопку 'Ок' в уведомлении")
     public void tapOnOkButtonInNotification() {
         buttons.searchAndClickButtonBy(OK_BUTTON);
     }

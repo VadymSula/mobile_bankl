@@ -1,4 +1,4 @@
-package tests.paymentsAndTransfers.betweenAccounts;
+package tests.deposits;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -7,22 +7,22 @@ import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.android.paymentsAndTransfers.BetweenAccountsPage;
-import pages.android.paymentsAndTransfers.PaymentsAndTransfersPage;
+import tests.paymentsAndTransfers.betweenAccounts.PaymentsAndTransfersBaseTest;
 
-public class ValidDataTest extends PaymentsAndTransfersBaseTest {
+public class OutgoingTransferSavingAccTest extends PaymentsAndTransfersBaseTest {
 
-    @Epic("Платежи и переводы")
-    @Feature("Переводы между счетами")
-    @Story("Валидные данные")
-    @TmsLink("10392")
+    @Epic("Вклады и накопительный счет")
+    @Feature("Вклад")
+    @Story("Исходящий перевод со счета вклада")
+    @TmsLink("9619")
     @Test
-    public void betweenAccountsValidDataTest() {
+    public void outgoingTransferFromDepositAccountTest() {
         SoftAssert softAssert = new SoftAssert();
         var betweenAccountsPage = new BetweenAccountsPage(getAndroidDriver());
 
         stepToChooseAccountRecipient(softAssert, betweenAccountsPage);
         var isDisplayModalForAccountRecipient = betweenAccountsPage
-                .tapOnAvailableAccount()
+                .tapAndChooseSavingAccount()
                 .tapOnAccountRecipient()
                 .isDisplayModalWindowWithTransferForAccountRecipient();
         softAssert.assertTrue(isDisplayModalForAccountRecipient);
@@ -34,7 +34,6 @@ public class ValidDataTest extends PaymentsAndTransfersBaseTest {
         var isDisplaySuccessScreen = betweenAccountsPage
                 .tapOnTransferButtonOnModalWindow()
                 .isDisplaySuccessScreen();
-        betweenAccountsPage.tapOnBackToPaymentsButton();
         softAssert.assertTrue(isDisplaySuccessScreen);
         softAssert.assertAll();
     }

@@ -1,24 +1,25 @@
 package tests.demoversion.accountAndDeposits;
 
-import tests.demoversion.DemoVersionMainTest;
+import io.qameta.allure.TmsLink;
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import tests.demoversion.DemoVersionMainTest;
 
 public class CertificateAvailableResidueTest extends DemoVersionMainTest {
 
     @Test
-    @Parameters("email")
-    public void certificateOfAvailableResidue(String email) {
+    @TmsLink("31845")
+    //@Parameters("email")
+    public void certificateOfAvailableResidue(/*String email*/) {
 
-//        var actualResult = accountPage
-//                .goToAccountPage()
-//                .tapOnCertificateAvailableResidue()
-//                .fillTheEmailField(email)
-//                .tapOnAccountSelector()
-//                .tapOnFirstCheckboxFromAccounts()
-//                .tapOnSendButton()
-//                .isExistAlertAboutNotAvailableInDemoVersion();
-//
-//        Assert.assertTrue(actualResult);
+        var actualResult = demoAccountPage
+                .goToAccountPage()
+                .tapOnCertificateAvailableResidue()
+                .fillTheEmailField("asdasd@gmail.com")
+                .tapOnSendButton()
+                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
+
+        Assert.assertTrue(actualResult);
     }
 }

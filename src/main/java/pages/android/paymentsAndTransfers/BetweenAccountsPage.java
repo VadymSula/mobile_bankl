@@ -1,6 +1,7 @@
 package pages.android.paymentsAndTransfers;
 
 import core.base.AndroidBasePage;
+import enums.Text;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -49,7 +50,13 @@ public class BetweenAccountsPage extends AndroidBasePage {
     protected MobileElement FAVORITES_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/payment_finished_back_to_payment_button")
     protected MobileElement BACK_TO_PAYMENT_BUTTON;
-    
+    @AndroidFindBy(id = "cb.ibank:id/view_payment_field_hint")
+    protected MobileElement PAYMENT_SUM_FIELD_HINT;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Вклад']/ancestor::android.widget.LinearLayout[1]")
+    protected MobileElement DEPOSIT_ACCOUNT;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Накопительный счет']/ancestor::android.widget.LinearLayout[1]")
+    protected MobileElement SAVING_ACCOUNT;
+
     public BetweenAccountsPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
     }
@@ -176,5 +183,38 @@ public class BetweenAccountsPage extends AndroidBasePage {
 
     private Float parseSumFromAccountToFloat(String sumAccount) {
         return Float.parseFloat(sumAccount.replaceAll("[^0-9&.]", ""));
+    }
+
+    @Step("Отображается модалка \"Необходимо корректно заполнить все поля\" Кнопка \"ОК\"")
+    public boolean isDisplayPopUpAboutIncorrectFilling() {
+        var textFromMessage = elements.getTextFromElement(COMMON_DIALOG_TEXT);
+        var textFromStatic = Text.INVALID_FILLING_FIELDS.getText();
+
+        return textFromMessage.equals(textFromStatic);
+    }
+
+    @Step("Тапнуть на кнопку \"ОК\"")
+    public BetweenAccountsPage tapOnOkButtonAfterIncorrectFilling() {
+        buttons.searchAndClickButtonBy(OK_BUTTON);
+        return this;
+    }
+
+    @Step("Модальное окно закрылось\n" +
+            "Поле \"Сумма\" подсвечивается оранжевым цветом\n" +
+            "Хинт в поле \"Сумма\" отображается")
+    public boolean isDisplayHintInSumField() {
+        return elements.isElementExist(PAYMENT_SUM_FIELD_HINT);
+    }
+
+    @Step("Тапом по полю \"Счет списания\" выбрать \"Вклад\" из выпадающего списка")
+    public BetweenAccountsPage tapAndChooseDepositAccount() {
+        buttons.searchAndClickButtonBy(DEPOSIT_ACCOUNT);
+        return this;
+    }
+
+    @Step
+    public BetweenAccountsPage tapAndChooseSavingAccount() {
+        buttons.searchAndClickButtonBy(SAVING_ACCOUNT);
+        return this;
     }
 }

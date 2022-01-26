@@ -24,7 +24,7 @@ public class DemoChooseCardPage extends DemoVersionMainPage {
         return new DemoFromCardOtherBankPage(getAndroidDriver());
     }
 
-    @Step("Тапнуть на 'Добавить новую карту'")
+    @Step("Тапнуть на опцию 'Добавить новую карту'")
     public DemoChooseCardPage tapOnTheAddNewCardButton() {
         buttons.searchAndClickButtonBy(ADD_NEW_CARD_BUTTON);
         return this;

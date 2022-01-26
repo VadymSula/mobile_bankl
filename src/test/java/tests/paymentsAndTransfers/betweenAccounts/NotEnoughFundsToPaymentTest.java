@@ -7,16 +7,15 @@ import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.android.paymentsAndTransfers.BetweenAccountsPage;
-import pages.android.paymentsAndTransfers.PaymentsAndTransfersPage;
 
-public class ValidDataTest extends PaymentsAndTransfersBaseTest {
+public class NotEnoughFundsToPaymentTest extends PaymentsAndTransfersBaseTest {
 
     @Epic("Платежи и переводы")
     @Feature("Переводы между счетами")
-    @Story("Валидные данные")
-    @TmsLink("10392")
+    @Story("Недостаточно средств")
+    @TmsLink("27211")
     @Test
-    public void betweenAccountsValidDataTest() {
+    public void notEnoughFundsToPaymentsBetweenAccountsTest() {
         SoftAssert softAssert = new SoftAssert();
         var betweenAccountsPage = new BetweenAccountsPage(getAndroidDriver());
 
@@ -28,14 +27,14 @@ public class ValidDataTest extends PaymentsAndTransfersBaseTest {
         softAssert.assertTrue(isDisplayModalForAccountRecipient);
         var isDisplayModalTransferDetail = betweenAccountsPage
                 .tapOnAvailableAccountForRecipient()
-                .tapOnSumFieldAndFillAndTapOnTransferButton("100")
-                .isDisplayModalWindowWithTransferDetails("100");
-        softAssert.assertTrue(isDisplayModalTransferDetail);
-        var isDisplaySuccessScreen = betweenAccountsPage
+                .fillSumFieldOverSumOnAccountTransferFrom()
                 .tapOnTransferButtonOnModalWindow()
-                .isDisplaySuccessScreen();
-        betweenAccountsPage.tapOnBackToPaymentsButton();
-        softAssert.assertTrue(isDisplaySuccessScreen);
+                .isDisplayPopUpAboutIncorrectFilling();
+        softAssert.assertTrue(isDisplayModalTransferDetail);
+        var isDisplayHintInSumField = betweenAccountsPage
+                .tapOnOkButtonAfterIncorrectFilling()
+                .isDisplayHintInSumField();
+        softAssert.assertTrue(isDisplayHintInSumField);
         softAssert.assertAll();
     }
 }

@@ -18,19 +18,21 @@ public class DemoFromCardOtherBankPage extends DemoVersionMainPage {
         super(androidDriver);
     }
 
-    @Step("Заполнить 'СVV'")
+    @Step("Тапнуть на поле с плейсхолдером '000'" +
+            "Ввести CVV в поле с плейсхолдером '000'")
     public DemoFromCardOtherBankPage toFillCvvOnField(String cvvCode) {
         elements.searchFieldAndSendKey(CVV_INPUT_FIELD, cvvCode);
         return this;
     }
 
-    @Step("Заполнить 'Сумма'")
+    @Step("Ввести сумму в поле с плейсхолдером 'Сумма'" +
+            "Скрыть цифровую клавиатуру")
     public DemoFromCardOtherBankPage toFillSumOnField(String sum) {
         elements.searchFieldAndSendKey(SUM_INPUT_FIELD, sum);
         return this;
     }
 
-    @Step("Тапнуть 'Далее'")
+    @Step("Тапнуть на кнопку 'Далее'")
     public DemoFromCardOtherBankPage tapOnTheNextButton() {
         buttons.searchAndClickButtonBy(NEXT_BUTTON);
         return this;

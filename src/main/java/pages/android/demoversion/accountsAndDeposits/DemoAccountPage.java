@@ -41,20 +41,18 @@ public class DemoAccountPage extends DemoVersionMainPage {
     protected MobileElement CARD_WITH_PIN_CODE;
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, '" + CERTIFICATE_AVAILABLE_RESIDUE_TEXT + "')]/..")
     protected MobileElement CERTIFICATE_AVAILABLE_RESIDUE;
-//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Выписка по счёту')]/..")
-//    protected MobileElement ACCOUNT_STATEMENT;
 
     public DemoAccountPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
     }
 
-    @Step("Тапнуть 'Переименовать'")
+    @Step("Тапнуть на кнопку 'Переименовать'")
     public DemoAccountPage tapOnEditNameButton() {
         buttons.searchAndClickButtonBy(EDIT_NAME_BUTTON);
         return this;
     }
 
-    @Step("Тапнуть 'Пополнить'")
+    @Step("Тапнуть на кнопку 'Пополнить'")
     public DemoAccountPage tapOnRefillButton() {
         buttons.searchAndClickButtonBy(ACCOUNT_REFILL_BUTTON);
         return this;
@@ -72,19 +70,19 @@ public class DemoAccountPage extends DemoVersionMainPage {
         return new DemoCardPage(getAndroidDriver());
     }
 
-    @Step("Тапнуть 'Со своего счета'")
+    @Step("Тапнуть на опцию 'Со своего счета'")
     public DemoAccountPage tapOnFromMyAccountButton() {
         buttons.searchAndClickButtonBy(FROM_MY_ACCOUNT_BUTTON);
         return this;
     }
 
-    @Step("Тапнуть 'С карты другого банка'")
+    @Step("Тапнуть на опцию 'С карты другого банка'")
     public DemoChooseCardPage tapOnFromCardOfOtherBankButton() {
         buttons.searchAndClickButtonBy(FROM_CARD_OTHER_BANK);
         return new DemoChooseCardPage(getAndroidDriver());
     }
 
-    @Step("Тапнуть 'Запросить платеж'")
+    @Step("Тапнуть на опцию 'Запросить платеж'")
     public DemoAccountPage tapOnRequestPaymentButton() {
         buttons.searchAndClickButtonBy(REQUEST_PAYMENT);
         return this;
@@ -95,26 +93,26 @@ public class DemoAccountPage extends DemoVersionMainPage {
         return elements.getTextFromElement(PAYMENT_ACCOUNT_NAME).equals(SALARY_ACCOUNT_NAME);
     }
 
-    @Step("Тапнуть на поле 'Счет списания'")
+    @Step("Тапнуть на поле с плейсхолдером 'Выбрать счёт списания'")
     public DemoAccountPage tapOnTransferFromAccountSender() {
         buttons.searchAndClickButtonBy(TRANSFER_FROM_ACCOUNT_SENDER);
         return this;
     }
 
-    @Step("Выбрать чек-бокс счета 'Накопительный счет'")
+    @Step("Выбрать счет 'Накопительный счет'")
     public DemoAccountPage chooseDepositAccountCheckbox() {
         buttons.searchAndClickButtonBy(DEPOSIT_ACCOUNT_VARIANT_TRANSFER);
         return this;
     }
 
-    @Step("В поле 'Сумма' указать сумму")
+    @Step("Ввести сумму в поле с плейсхолдером 'Сумма'")
     public DemoAccountPage inputSumForTransfer(String sumOfTransfer) {
         buttons.searchAndClickButtonBy(SUM_OF_TRANSFER_EDITTEXT);
         elements.sendKeyFromAction(sumOfTransfer);
         return this;
     }
 
-    @Step("Тапнуть 'Перевести'")
+    @Step("Тапнуть на кнопку 'Перевести'")
     public DemoAccountPage tapOnTransferButton() {
         buttons.searchAndClickButtonBy(TRANSFER_BUTTON);
         return this;
@@ -126,7 +124,7 @@ public class DemoAccountPage extends DemoVersionMainPage {
         return new DemoCardPage(getAndroidDriver());
     }
 
-    @Step("Тапнуть '" + CERTIFICATE_AVAILABLE_RESIDUE_TEXT + "'")
+    @Step("Тапнуть на опцию '" + CERTIFICATE_AVAILABLE_RESIDUE_TEXT + "'")
     public DemoCertificateAvailableResiduePage tapOnCertificateAvailableResidue() {
         screen.scrollablePageAndroidByText(CERTIFICATE_AVAILABLE_RESIDUE_TEXT);
         buttons.searchAndClickButtonBy(CERTIFICATE_AVAILABLE_RESIDUE);

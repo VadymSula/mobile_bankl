@@ -18,21 +18,21 @@ public class DataValidTest extends AuthorizationMainTest {
     @Story("Валидные данные")
     @TmsLink("27316")
     @Test
-    @Parameters({"login", "password"})
-    public void signInWithValidCredentialsTest(String login, String password) {
+    //@Parameters({"login", "password"})
+    public void signInWithValidCredentialsTest(/*String login, String password*/) {
         ConfirmLoginPage confirmLoginPage = new ConfirmLoginPage(getAndroidDriver());
         var isDisplaySignInScreen = loginPage.isDisplaySignInScreenAndSections();
 
         var isDisplayConfirmLoginScreen = loginPage
-                .tapOnIDOrLoginFieldAndInput(login)
-                .tapOnPasswordFieldAndInput(password)
+                .tapOnIDOrLoginFieldAndInput("9990040083167")
+                .tapOnPasswordFieldAndInput("1111")
                 .tapOnSignInButton()
                 .isDisplayConfirmLoginScreenAndSections();
 
         var isDisplayMainMenu = confirmLoginPage
-                .inputCheckingCodeInFieldByCode(
-                        SOAPClientSAAJ.getDynamicCodeByHisNumber(confirmLoginPage.getNumberOfCheckingCode())
-                )
+//                .inputCheckingCodeInFieldByCode(
+//                        SOAPClientSAAJ.getDynamicCodeByHisNumber(confirmLoginPage.getNumberOfCheckingCode())
+//                )
                 .tapOnReadyButton()
                 .tapOnFingerPrintCancelButtonIfExistIt()
                 .tapRepeatedlyOnOnboardingNextButton()

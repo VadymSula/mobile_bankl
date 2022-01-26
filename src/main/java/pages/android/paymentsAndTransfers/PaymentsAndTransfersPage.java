@@ -45,7 +45,7 @@ public class PaymentsAndTransfersPage extends AndroidBasePage {
             "Отображается подсказка \"Как оплачивать по QR-коду\" напротив иконки \"Оплата по QR-коду\" с текстом:\n" +
             "\"Отсканируйте его на квитанции ЖКХ или другом счете, и мы сами заполним все данные. " +
             "Либо воспользуйтесь функцией сканирования из файла, если ваша квитанция сохранена в фотогалереи.\"")
-    public boolean isDisplayOnboardingAboutPayments() {
+    public boolean isDisplayOnboardingAboutPaymentsByQRCode() {
         var textFromMessage = elements.getTextFromElement(ONBOARDING_MESSAGE_TEXT);
         var textFromTitle = elements.getTextFromElement(ONBOARDING_TITLE_TEXT);
 

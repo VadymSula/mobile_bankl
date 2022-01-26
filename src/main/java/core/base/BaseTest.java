@@ -4,6 +4,7 @@ import core.InitialDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Listeners;
 import utils.mobile.Listener;
 
@@ -15,6 +16,7 @@ public class BaseTest {
     @AfterClass
     public void afterMobileTests() {
         getAndroidDriver().resetApp();
+        //TODO Через .startActivity для уменьшения логина
     }
 
 //    @AfterSuite

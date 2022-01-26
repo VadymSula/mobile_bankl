@@ -5,7 +5,7 @@
 
     <suite-files>
         <suite-file path="suites/demoVersionSuite.xml"/>
-        <suite-file path="suites/mainScreenSuite.xml"/>
+<!--        <suite-file path="suites/mainScreenSuite.xml"/>-->
     </suite-files>
 <!--    <test name="Authorization / New scenario of signin / by Login">-->
 <!--        <parameter name="login" value="9990040083167"/>-->

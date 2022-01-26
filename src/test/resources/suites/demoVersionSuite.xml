@@ -62,11 +62,11 @@
             <class name="tests.demoversion.paymentsAndTransfers.payments.HomePhoneTest"/>
             <class name="tests.demoversion.paymentsAndTransfers.payments.InternetAndTVTest"/>
             <class name="tests.demoversion.paymentsAndTransfers.payments.InternetAndTVByVendorFromListTest">
-                <parameter name="tests.account" value="9923491935"/>
+                <parameter name="account" value="9923491935"/>
                 <parameter name="sum" value="110.15"/>
             </class>
             <class name="tests.demoversion.paymentsAndTransfers.payments.InternetAndTVByVendorBySearchTest">
-                <parameter name="tests.account" value="9923491935"/>
+                <parameter name="account" value="9923491935"/>
                 <parameter name="sum" value="110.15"/>
                 <parameter name="inn" value="7740000076"/>
             </class>
