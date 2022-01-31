@@ -1,5 +1,6 @@
 package tests.demoversion.card;
 
+import pages.android.demoversion.card.DemoCardPage;
 import tests.demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,6 +15,7 @@ public class EditPinCodeTest extends DemoVersionMainTest {
                 .scrollAndTapOnEditPinCode()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
-        Assert.assertTrue(actualResult);
+        var isDisplayActionsBlock = new DemoCardPage(getAndroidDriver()).isDisplayActionsBlock();
+        Assert.assertTrue(actualResult && isDisplayActionsBlock);
     }
 }

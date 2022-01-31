@@ -64,7 +64,7 @@ public class DemoAccountPage extends DemoVersionMainPage {
         return new DemoRequisitesPage(getAndroidDriver());
     }
 
-    @Step("Тапнуть на 'Карту' с номером 1223 4500 0000 3457")
+    @Step("Тапнуть на 'Карту' последнюю карту с номером *3457")
     public DemoCardPage tapOnCardWithoutPinCode() {
         buttons.searchAndClickButtonBy(CARD_WITHOUT_PIN_CODE);
         return new DemoCardPage(getAndroidDriver());
@@ -118,7 +118,7 @@ public class DemoAccountPage extends DemoVersionMainPage {
         return this;
     }
 
-    @Step("Тапнуть на 'Карту'")
+    @Step("Тапнуть на первую карту с номером *3438")
     public DemoCardPage tapOnCardWithPinCode() {
         buttons.searchAndClickButtonBy(CARD_WITH_PIN_CODE);
         return new DemoCardPage(getAndroidDriver());

@@ -1,8 +1,9 @@
 package tests.demoversion.card;
 
-import tests.demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.android.demoversion.card.DemoCardPage;
+import tests.demoversion.DemoVersionMainTest;
 
 public class SetPinCodeTest extends DemoVersionMainTest {
 
@@ -11,9 +12,11 @@ public class SetPinCodeTest extends DemoVersionMainTest {
         var actualResult = demoAccountPage
                 .goToAccountPage()
                 .tapOnCardWithoutPinCode()
-                .scrollAndTapOnSetPinCodeButton()
+                .scrollToActionsBlock()
+                .tapOnSetPinCodeButton()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
-        Assert.assertTrue(actualResult);
+        var isDisplayActionsBlock = new DemoCardPage(getAndroidDriver()).isDisplayActionsBlock();
+        Assert.assertTrue(actualResult && isDisplayActionsBlock);
     }
 }

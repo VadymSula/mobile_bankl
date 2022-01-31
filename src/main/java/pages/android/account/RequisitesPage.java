@@ -63,7 +63,7 @@ public class RequisitesPage extends AndroidBasePage {
         return this;
     }
 
-    @Step("Ведомление \"Введен некорректный Email адрес\" отображается")
+    @Step("Уведомление \"Введен некорректный Email адрес\" отображается")
     public boolean isDisplayMessageAboutIncorrectEmail() {
         return elements.getTextFromElement(COMMON_DIALOG_TEXT).contains(INCORRECT_EMAIL_MESSAGE_TEXT);
     }
@@ -71,10 +71,6 @@ public class RequisitesPage extends AndroidBasePage {
     @Step("Уведомление \"Поле ввода не может быть пустым\" отображается")
     public boolean isDisplayMessageAboutFieldEmpty() {
         var textFromProperty = Text.FIELD_NOT_MAY_BE_EMPTY.getText();
-        var text = elements.getTextFromElement(COMMON_DIALOG_TEXT);
-        System.out.println(textFromProperty);
-        System.out.println("==========");
-        System.out.println(text);
         return elements.getTextFromElement(COMMON_DIALOG_TEXT).contains(textFromProperty);
     }
 

@@ -1,5 +1,6 @@
 package tests.account;
 
+import core.base.BaseTest;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -7,9 +8,8 @@ import io.qameta.allure.TmsLink;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.android.account.RequisitesPage;
-import tests.LoginSteps;
 
-public class SendRequisitesOnNotValidEmailTest extends LoginSteps {
+public class SendRequisitesOnNotValidEmailTest extends BaseTest {
 
     @Epic("Счет")
     @Feature("Отправка/Сохранение реквизитов")

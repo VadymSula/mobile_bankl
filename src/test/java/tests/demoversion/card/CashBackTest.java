@@ -1,8 +1,8 @@
 package tests.demoversion.card;
 
-import tests.demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.demoversion.DemoVersionMainTest;
 
 public class CashBackTest extends DemoVersionMainTest {
 
@@ -12,8 +12,7 @@ public class CashBackTest extends DemoVersionMainTest {
                 .goToAccountPage()
                 .tapOnCardWithPinCode()
                 .scrollAndTapOnDetailsCashBackConditions()
-                .scrollAndTapOnDetailConditions()
-                .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
+                .scrollAndTapOnDetailConditions();
 
         Assert.assertTrue(actualResult);
     }

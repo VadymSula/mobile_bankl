@@ -40,8 +40,6 @@ public class AndroidBasePage {
     protected MobileElement LOGIN_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_button_become_client")
     protected MobileElement BECOME_CLIENT_BUTTON;
-    @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_test_settings")
-    protected MobileElement SETTINGS_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/include_department_addresses")
     protected MobileElement DEPARTMENT_ADDRESSES_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/include_currency_rates")
@@ -60,6 +58,10 @@ public class AndroidBasePage {
     protected MobileElement ONBOARDING_MESSAGE_TEXT;
     @AndroidFindBy(id = "cb.ibank:id/tutorial_view_next_button")
     protected MobileElement ONBOARDING_NEXT_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_welcome_test_settings")
+    protected MobileElement TEST_SETTINGS_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_test_settings_api_endpoints")
+    protected MobileElement API_ENDPOINTS_BUTTON;
 
     @Step("Тапнуть на кнопку 'Курс валют'")
     public CurrencyRatePage goToCurrencyRatesPage() {
@@ -89,6 +91,18 @@ public class AndroidBasePage {
     public DemoAccountPage goToDemoVersion() {
         buttons.searchAndClickButtonBy(DEMO_VERSION_BUTTON);
         return new DemoAccountPage(getAndroidDriver());
+    }
+
+    public void tapOnTestSettingsButtonAndChooseStand(String standName) {
+        buttons.searchAndClickButtonBy(TEST_SETTINGS_BUTTON);
+        buttons.searchAndClickButtonBy(API_ENDPOINTS_BUTTON);
+        chooseAndTapStandForTest(standName);
+        buttons.searchAndClickButtonBy(BACK_BUTTON);
+    }
+
+    private void chooseAndTapStandForTest(String standName) {
+        var standVariantElement = androidDriver.findElementByXPath("//android.widget.CheckedTextView[@text='" + standName + "']");
+        buttons.searchAndClickButtonBy(standVariantElement);
     }
 
     public boolean isDisplayStartPage() {

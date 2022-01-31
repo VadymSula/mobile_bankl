@@ -6,6 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.account.AccountPage;
+import pages.android.depositsAndSavingAccount.deposits.DepositPage;
 import pages.android.paymentsAndTransfers.PaymentsAndTransfersPage;
 
 public class PersonalCabinetMainPage extends AndroidBasePage {
@@ -22,6 +23,10 @@ public class PersonalCabinetMainPage extends AndroidBasePage {
     protected MobileElement ACCOUNT_NAME;
     @AndroidFindBy(id = "cb.ibank:id/main_navigation_main_action_button")
     protected MobileElement PAYMENTS_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/main_screen_accounts_and_deposits_show_as_list")
+    protected MobileElement SHOW_ALL_ACCOUNTS_AND_DEPOSITS_BUTTON;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='*0008']/ancestor::android.view.ViewGroup[1]")
+    protected MobileElement DEPOSIT_WITH_OPTION;
 
     public PersonalCabinetMainPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
@@ -57,6 +62,24 @@ public class PersonalCabinetMainPage extends AndroidBasePage {
     public PaymentsAndTransfersPage tapOnPaymentsButton() {
         buttons.searchAndClickButtonBy(PAYMENTS_BUTTON);
         return new PaymentsAndTransfersPage(getAndroidDriver());
+    }
+
+    @Step("Тапнуть на кнопку \"Показать все\" в секции Счета на Главном экране")
+    public PersonalCabinetMainPage tapOnShowAllInAccountAndDepositsSection() {
+        buttons.searchAndClickButtonBy(SHOW_ALL_ACCOUNTS_AND_DEPOSITS_BUTTON);
+        return this;
+    }
+
+    @Step("Пройти онбординг")
+    public PersonalCabinetMainPage skipOnboarding() {
+        buttons.searchAndClickButtonBy(ONBOARDING_NEXT_BUTTON);
+        return this;
+    }
+
+    @Step("Тапнуть на вклад с опцией")
+    public DepositPage tapOnDepositWithOption() {
+        buttons.searchAndClickButtonBy(DEPOSIT_WITH_OPTION);
+        return new DepositPage(getAndroidDriver());
     }
 
 }

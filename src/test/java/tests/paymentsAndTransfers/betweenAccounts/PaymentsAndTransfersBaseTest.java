@@ -1,12 +1,12 @@
 package tests.paymentsAndTransfers.betweenAccounts;
 
+import core.base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.asserts.SoftAssert;
 import pages.android.paymentsAndTransfers.BetweenAccountsPage;
 import pages.android.paymentsAndTransfers.PaymentsAndTransfersPage;
-import tests.LoginSteps;
 
-public class PaymentsAndTransfersBaseTest extends LoginSteps {
+public class PaymentsAndTransfersBaseTest extends BaseTest {
     protected PaymentsAndTransfersPage paymentsAndTransfersPage = new PaymentsAndTransfersPage(getAndroidDriver());
 
     @BeforeClass
