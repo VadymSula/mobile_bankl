@@ -2,12 +2,14 @@ package tests;
 
 import core.base.BaseTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 import steps.LoginSteps;
 
 public class AuthorizationStep extends BaseTest {
 
     @BeforeSuite
-    public void authorizeByLogin() {
-        LoginSteps.login();
+    @Parameters({"login", "password"})
+    public void authorizeByLogin(String login, String password) {
+        LoginSteps.login(login, password);
     }
 }

@@ -3,7 +3,6 @@ package tests.account;
 import core.base.BaseTest;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,9 +12,8 @@ public class SendRequisitesOnNotValidEmailTest extends BaseTest {
 
     @Epic("Счет")
     @Feature("Отправка/Сохранение реквизитов")
-    @Story("Отправка реквизитов счета на не валидный Email. Нет привязанной почты")
     @TmsLink("21913")
-    @Test
+    @Test(description = "Отправка реквизитов счета на не валидный Email. Нет привязанной почты")
     public void sendingRequisitesOfAccountToEmailNotValidAndNotExistEmail() {
         var actualResult = personalCabinetMainPage
                 .tapOnAccountInBlock()

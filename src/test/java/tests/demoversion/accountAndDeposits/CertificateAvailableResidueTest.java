@@ -10,13 +10,12 @@ public class CertificateAvailableResidueTest extends DemoVersionMainTest {
 
     @Test
     @TmsLink("31845")
-    //@Parameters("email")
-    public void certificateOfAvailableResidue(/*String email*/) {
-
+    @Parameters("invalidEmail")
+    public void certificateOfAvailableResidue(String invalidEmail) {
         var actualResult = demoAccountPage
                 .goToAccountPage()
                 .tapOnCertificateAvailableResidue()
-                .fillTheEmailField("asdasd@gmail.com")
+                .fillTheEmailField(invalidEmail)
                 .tapOnSendButton()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 

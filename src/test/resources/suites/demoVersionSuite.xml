@@ -2,6 +2,7 @@
 <suite name="Демо-режим">
     <parameter name="email" value="ext_sulavv@ubrr.ru"/>
     <test name="Счета и вклады">
+        <parameter name="invalidEmail" value="asdasd@gmail.com"/>
         <classes>
             <class name="tests.demoversion.accountAndDeposits.AccountRefillTest"/>
             <class name="tests.demoversion.accountAndDeposits.AccountEditNameTest"/>

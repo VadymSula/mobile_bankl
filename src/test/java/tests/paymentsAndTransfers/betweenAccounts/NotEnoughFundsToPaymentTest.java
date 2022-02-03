@@ -2,7 +2,6 @@ package tests.paymentsAndTransfers.betweenAccounts;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -12,9 +11,8 @@ public class NotEnoughFundsToPaymentTest extends PaymentsAndTransfersBaseTest {
 
     @Epic("Платежи и переводы")
     @Feature("Переводы между счетами")
-    @Story("Недостаточно средств")
     @TmsLink("27211")
-    @Test
+    @Test(description = "Недостаточно средств")
     public void notEnoughFundsToPaymentsBetweenAccountsTest() {
         SoftAssert softAssert = new SoftAssert();
         var betweenAccountsPage = new BetweenAccountsPage(getAndroidDriver());

@@ -1,6 +1,5 @@
 package tests.authorization.login;
 
-import tests.authorization.AuthorizationMainTest;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -9,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.android.authorization.ConfirmLoginPage;
-import utils.integration.fimi.SOAPClientSAAJ;
+import tests.authorization.AuthorizationMainTest;
 
 public class DataValidTest extends AuthorizationMainTest {
 
@@ -18,14 +17,14 @@ public class DataValidTest extends AuthorizationMainTest {
     @Story("Валидные данные")
     @TmsLink("27316")
     @Test
-    //@Parameters({"login", "password"})
-    public void signInWithValidCredentialsTest(/*String login, String password*/) {
+    @Parameters({"login", "password"})
+    public void signInWithValidCredentialsTest(String login, String password) {
         ConfirmLoginPage confirmLoginPage = new ConfirmLoginPage(getAndroidDriver());
         var isDisplaySignInScreen = loginPage.isDisplaySignInScreenAndSections();
 
         var isDisplayConfirmLoginScreen = loginPage
-                .tapOnIDOrLoginFieldAndInput("9990040083167")
-                .tapOnPasswordFieldAndInput("1111")
+                .tapOnIDOrLoginFieldAndInput(login)
+                .tapOnPasswordFieldAndInput(password)
                 .tapOnSignInButton()
                 .isDisplayConfirmLoginScreenAndSections();
 

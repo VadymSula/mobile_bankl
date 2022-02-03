@@ -5,9 +5,9 @@ import tests.demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@TmsLink("31841")
 public class RefillAndRequestPaymentTest extends DemoVersionMainTest {
 
+    @TmsLink("31841")
     @Test
     public void refillAndRequestPayment() {
         var actualResult = demoAccountPage

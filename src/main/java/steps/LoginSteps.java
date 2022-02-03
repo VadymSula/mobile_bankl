@@ -13,39 +13,39 @@ import utils.EnvVariablesGetter;
 import utils.integration.fimi.SOAPClientSAAJ;
 
 public class LoginSteps extends BaseStep {
-    //private static final String KEY = EnvVariablesGetter.getValueFromEnvironmentVariableByKey("TEST_PORT");
     protected static LoginPage loginPage = new LoginPage(getAndroidDriver());
     protected static PersonalCabinetMainPage personalCabinetMainPage = new PersonalCabinetMainPage(getAndroidDriver());
 
     @Step("Выбрать стенд и залогиниться")
-    public static void chooseTestStandAndLogin() {
-        chooseTestStand();
-        login();
+    public static void chooseTestStandAndLogin(String login, String password) {
+        var port = EnvVariablesGetter.getValueFromEnvironmentVariableByKey("TEST_PORT");
+        chooseTestStand(port);
+        login(login, password);
     }
 
-    @Step("Выбор тестового стенда. Выбран: \"{KEY1}\"")
-    public static void chooseTestStand() {
-        var KEY1 = "Dev2";
-        androidBasePage.tapOnTestSettingsButtonAndChooseStand(KEY1);
+    @Step("Выбор тестового стенда. Выбран: \"{port}\"")
+    public static void chooseTestStand(String port) {
+        androidBasePage.tapOnTestSettingsButtonAndChooseStand(port);
     }
 
     @Step("Валидный вход по логину")
-    public static void login(/*String login, String password*/) {
+    public static void login(String login, String password) {
         loginPage
                 .goToSignInPage()
-                .tapOnIDOrLoginFieldAndInput("99900704114373")
-                .tapOnPasswordFieldAndInput("1111")
+                .tapOnIDOrLoginFieldAndInput(login)
+                .tapOnPasswordFieldAndInput(password)
                 .tapOnSignInButton()
-                //.inputCheckingCodeInFieldByCode(getCheckingCode())
+                .inputCheckingCodeInFieldByCode(getCheckingCode(login))
                 .tapOnReadyButton()
                 .tapOnFingerPrintCancelButtonIfExistIt()
                 .tapRepeatedlyOnOnboardingNextButton();
     }
 
-    private String getCheckingCode() {
+    private static String getCheckingCode(String login) {
         return SOAPClientSAAJ.getDynamicCodeByHisNumber(
                 new ConfirmLoginPage(getAndroidDriver())
-                        .getNumberOfCheckingCode()
+                        .getNumberOfCheckingCode(),
+                login
         );
     }
 }

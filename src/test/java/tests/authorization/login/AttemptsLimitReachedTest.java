@@ -1,24 +1,24 @@
 package tests.authorization.login;
 
-import tests.authorization.AuthorizationMainTest;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.android.authorization.ConfirmLoginPage;
+import tests.authorization.AuthorizationMainTest;
 
 public class AttemptsLimitReachedTest extends AuthorizationMainTest {
 
     @Epic("Авторизация")
     @Feature("Логин")
-    @Story("Ошибка \"Лимит попыток исчерпан\"")
     @TmsLink("9480")
-    @Test
-    public void attemptsLimitReachedAfterInputOfInvalidCode() {
+    @Test(description = "Ошибка \"Лимит попыток исчерпан\"")
+    @Parameters({"login", "password"})
+    public void attemptsLimitReachedAfterInputOfInvalidCode(String login, String password) {
         ConfirmLoginPage confirmLoginPage = new ConfirmLoginPage(getAndroidDriver());
-        loginAndSignInSteps("9990040083167", "1111")
+        loginAndSignInSteps(login, password)
                 .inputCheckingCodeInFieldByCode("0000")
                 .tapOnReadyButton();
         var isDisplayFailMessage = confirmLoginPage.isContainsMessageAboutInvalidCode();

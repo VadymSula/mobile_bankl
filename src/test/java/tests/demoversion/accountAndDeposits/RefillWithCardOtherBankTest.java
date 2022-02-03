@@ -5,12 +5,12 @@ import tests.demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@TmsLink("31839")
 public class RefillWithCardOtherBankTest extends DemoVersionMainTest {
     private static final String CVV_CODE = "191";
     private static final String SUM = "123";
 
     @Test
+    @TmsLink("31839")
     public void refillWithCardOfOtherBank() {
         var actualResult = demoAccountPage
                 .goToAccountPage()

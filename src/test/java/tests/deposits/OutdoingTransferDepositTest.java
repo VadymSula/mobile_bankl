@@ -13,9 +13,8 @@ public class OutdoingTransferDepositTest extends PaymentsAndTransfersBaseTest {
 
     @Epic("Вклады и накопительный счет")
     @Feature("Вклад")
-    @Story("Исходящий перевод со счета вклада")
     @TmsLink("9619")
-    @Test
+    @Test(description = "Исходящий перевод со счета вклада")
     public void outgoingTransferFromDepositAccountTest() {
         SoftAssert softAssert = new SoftAssert();
         var betweenAccountsPage = new BetweenAccountsPage(getAndroidDriver());

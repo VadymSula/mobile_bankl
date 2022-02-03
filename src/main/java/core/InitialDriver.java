@@ -13,6 +13,8 @@ import utils.YamlParser;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 
 public class InitialDriver {
     private static final String APPIUM_URL = "http://0.0.0.0:4723/wd/hub";
@@ -25,6 +27,7 @@ public class InitialDriver {
         if (driver == null) {
             try {
                 driver = initializeDriver();
+                driver.manage().timeouts().implicitlyWait(5L, TimeUnit.SECONDS);
                 LOGGER.info("Driver is started");
             } catch (MalformedURLException e) {
                 e.printStackTrace();

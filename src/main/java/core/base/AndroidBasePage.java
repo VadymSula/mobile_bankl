@@ -8,8 +8,10 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-import pages.android.authorization.ConfirmLoginPage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.android.authorization.LoginPage;
 import pages.android.demoversion.accountsAndDeposits.DemoAccountPage;
 import pages.android.mainscreen.BecomeClientPage;
@@ -18,7 +20,7 @@ import pages.android.mainscreen.DepartmentAddressesPage;
 import utils.mobile.Waiters;
 
 public class AndroidBasePage {
-    private AndroidDriver<MobileElement> androidDriver;
+    private final AndroidDriver<MobileElement> androidDriver;
     protected Buttons buttons;
     protected Screen screen;
     protected Elements elements;

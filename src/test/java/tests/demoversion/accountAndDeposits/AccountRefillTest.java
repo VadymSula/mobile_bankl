@@ -5,10 +5,11 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import tests.demoversion.DemoVersionMainTest;
 
-@TmsLink("31838")
+
 public class AccountRefillTest extends DemoVersionMainTest {
     private static final String TRANSFER_SUM = "2000";
 
+    @TmsLink("31838")
     @Test(description = "Пополнить. Со своего счёта")
     public void isExistBeforeSelectedAccountTest() {
         SoftAssert softAssert = new SoftAssert();

@@ -5,8 +5,14 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 import pages.android.demoversion.DemoVersionMainPage;
 import pages.android.demoversion.card.limits.DemoLimitsPage;
+
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DemoCardPage extends DemoVersionMainPage {
     private static final String LIMITS_TEXT = "Лимиты";
@@ -21,6 +27,16 @@ public class DemoCardPage extends DemoVersionMainPage {
     protected MobileElement LIMITS_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/card_details_action_edit_pin_code")
     protected MobileElement EDIT_PIN_CODE_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/card_details_cvc_cvv_button")
+    protected MobileElement CARD_DETAILS_CVC_CVV_BUTTON;
+    @AndroidFindBy(accessibility = "CVC2/CVV2")
+    protected MobileElement CVC2_CVV2_BUTTON;
+    @AndroidFindBy(accessibility = "Номер карты")
+    protected MobileElement CARD_NUMBER_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_two_columns_icon")
+    protected MobileElement COPY_CARD_NUMBER;
+    @AndroidFindBy(id = "cb.ibank:id/view_two_columns_value")
+    protected List<MobileElement> CARD_VALUE;
 
     public DemoCardPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
@@ -65,4 +81,42 @@ public class DemoCardPage extends DemoVersionMainPage {
         buttons.searchAndClickButtonBy(EDIT_PIN_CODE_BUTTON);
         return this;
     }
+
+    @Step("Тапнуть на 'Показать номер карты и CVC/CVV'")
+    public DemoCardPage tapOnCardDetailsCvcCvvButton() {
+        buttons.searchAndClickButtonBy(CARD_DETAILS_CVC_CVV_BUTTON);
+
+        return this;
+    }
+
+    @Step("Данные карты соответсвуют {args}'")
+    public List<List<String>> checkCardValue(String... args) {
+        List<String> expectedValue = Arrays.asList(args);
+        CARD_VALUE.forEach(x -> waiters.isElementExist(x));
+
+        List<String> currentValue = CARD_VALUE
+                .stream().map(MobileElement::getText).collect(Collectors.toList());
+
+        return Arrays.asList(expectedValue, currentValue);
+    }
+
+    @Step("Тапнуть на 'Номер карты'")
+    public boolean tapOnCardNumberButton() {
+        buttons.searchAndClickButtonBy(CARD_NUMBER_BUTTON);
+        return elements.isSelectedElement(CVC2_CVV2_BUTTON);
+
+    }
+
+    @Step("Тапнуть на 'CVC2/CVV2'")
+    public boolean tapOnCVC2CVV2() {
+        buttons.searchAndClickButtonBy(CVC2_CVV2_BUTTON);
+        return elements.isSelectedElement(CARD_NUMBER_BUTTON);
+    }
+
+    @Step("Тапнуть на кнопку копировать")
+    public DemoCardPage tapOnCopyCardNumber() {
+        buttons.searchAndClickButtonBy(COPY_CARD_NUMBER);
+        return this;
+    }
+
 }

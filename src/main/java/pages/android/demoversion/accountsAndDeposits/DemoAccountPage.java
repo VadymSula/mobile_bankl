@@ -4,6 +4,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import pages.android.demoversion.DemoVersionMainPage;
 import pages.android.demoversion.card.DemoCardPage;
 
@@ -44,6 +45,18 @@ public class DemoAccountPage extends DemoVersionMainPage {
 
     public DemoAccountPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
+    }
+
+    // Возвращает карту по последним 4 цифрам
+    private MobileElement getCard(String cardNumber){
+        String cardXpath = String.format("//android.widget.TextView[contains(@text, '%s')]/..", cardNumber);
+        return getAndroidDriver().findElement(By.xpath(cardXpath));
+    }
+
+    @Step("Тапнуть на карте с номером {cardNumber}")
+    public DemoCardPage tapOnCardWithNumber(String cardNumber) {
+        buttons.searchAndClickButtonBy(getCard(cardNumber));
+        return new DemoCardPage(getAndroidDriver());
     }
 
     @Step("Тапнуть на кнопку 'Переименовать'")

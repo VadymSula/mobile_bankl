@@ -11,7 +11,7 @@ public class DemoLimitManagementPage extends DemoVersionMainPage {
     protected MobileElement EDIT_LIMIT;
     @AndroidFindBy(id = "cb.ibank:id/edit_quick")
     protected MobileElement READY_BUTTON;
-    @AndroidFindBy(accessibility = "Перейти вверх")
+    @AndroidFindBy(accessibility = "Navigate up")
     protected MobileElement BACK_BUTTON;
 
     public DemoLimitManagementPage(AndroidDriver<MobileElement> androidDriver) {

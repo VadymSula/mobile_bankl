@@ -13,7 +13,7 @@ import javax.xml.soap.SOAPMessage;
 public class SOAPClientSAAJ {
     private static final String TEST_CRED = "DB_TEST2";
 
-    public static String getDynamicCodeByHisNumber(String numberOfCode) {
+    public static String getDynamicCodeByHisNumber(String login, String numberOfCode) {
         String code = "";
         try {
             SOAPMessage initSessionResponse = initSessionRequest();
@@ -21,7 +21,7 @@ public class SOAPClientSAAJ {
             SOAPMessage loginResponse = loginRequest(session,
                     SOAPParser.getAttributeValueFromResponse(initSessionResponse, 0));
             SOAPMessage getCMSArchiveResponse = getCMSArchiveRequest(session,
-                    SOAPParser.getAttributeValueFromResponse(loginResponse, 0));
+                    SOAPParser.getAttributeValueFromResponse(loginResponse, 0), login);
             code = SOAPParser.getValueByTagName(getCMSArchiveResponse, "m0:Message", numberOfCode);
             logout(session, SOAPParser.getAttributeValueFromResponse(getCMSArchiveResponse, 0));
 
@@ -38,9 +38,9 @@ public class SOAPClientSAAJ {
         new LogoffRq().callSoapWebService(user);
     }
 
-    private static SOAPMessage getCMSArchiveRequest(String session, String challenge) throws SOAPException {
+    private static SOAPMessage getCMSArchiveRequest(String session, String challenge, String login) throws SOAPException {
         var password = TripleDes.get3DesFimiPassword(TEST_CRED, challenge);
-        var user = new User(TEST_CRED, password, session, null, "9990040083167");
+        var user = new User(TEST_CRED, password, session, null, login);
         return new GetCMSArchiveRq().callSoapWebService(user);
     }
 
