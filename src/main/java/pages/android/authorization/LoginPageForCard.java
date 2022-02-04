@@ -1,0 +1,130 @@
+package pages.android.authorization;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.qameta.allure.Step;
+
+public class LoginPageForCard extends LoginPage {
+
+
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_sign_in_with_card_title")
+    protected MobileElement CARD_TITLE;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_sign_in_with_card_field_card")
+    protected MobileElement CARD_TEXTFIELD;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_sign_in_with_card_field_password")
+    protected MobileElement PASSWORD_TEXTFIELD;
+    @AndroidFindBy(xpath = "//android.widget.EditText[contains(@text, 'логин')]")
+    protected MobileElement LOGIN_PLACEHOLDER;
+    @AndroidFindBy(xpath = "//android.widget.EditText[contains(@text, 'Пароль')]")
+    protected MobileElement PASSWORD_PLACEHOLDER;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_sign_in_with_card_forgot_password")
+    protected MobileElement FORGOT_PASSWORD_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_sign_in_with_card_enter_button")
+    protected MobileElement SIGN_IN_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_progress_button_progress")
+    protected MobileElement PROGRESS_SPINNER_ON_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_progress_button_text")
+    protected MobileElement PROGRESS_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/text_input_end_icon")
+    protected MobileElement SCAN_CARD;
+
+
+    @Step("Тапнуть на кнопку \"Войти\"")
+    public LoginPageForCard tapOnSignInButton() {
+        buttons.searchAndClickButtonBy(SIGN_IN_BUTTON);
+        return this;
+    }
+
+    @Step("Тапнуть на поле \"Номер карты\"" +
+            "Ввести номер карты ({idOrLogin})")
+    public LoginPageForCard tapOnIDOrLoginFieldAndInput(String idOrLogin) {
+        buttons.searchAndClickButtonBy(CARD_TEXTFIELD);
+        elements.sendKeyFromAction(idOrLogin);
+        return this;
+    }
+
+    @Step("Тапнуть на поле \"Пароль\"" +
+            "Ввести пароль ({password})")
+    public LoginPageForCard tapOnPasswordFieldAndInput(String password) {
+        buttons.searchAndClickButtonBy(PASSWORD_TEXTFIELD);
+        elements.sendKeyFromAction(password);
+        return this;
+    }
+
+    @Step("Отображается заголовок \"Вход в мобильный банк по номеру карты\"")
+    protected boolean isDisplayTitle() {
+        return elements.isElementExist(CARD_TITLE)
+                && CARD_TITLE.getText().equals("Вход в мобильный банк по номеру карты");
+    }
+
+
+    @Step("Отображается раздел \"По логину\" ")
+    protected boolean isExistByLoginSection() {
+        return elements.isElementExist(BY_LOGIN_SECTION)
+                && !elements.isSelectedElement(BY_LOGIN_SECTION);
+    }
+
+    @Step("Отображается раздел \"По Карте\"")
+    protected boolean isExistByCardSection() {
+        return elements.isElementExist(BY_CARD_SECTION)
+                && elements.isSelectedElement(BY_CARD_SECTION);
+    }
+
+    @Step("Отображается поле \"Номер карты\"")
+    private boolean isDisplayIDOrCardField() {
+        return elements.isElementExist(CARD_TEXTFIELD)
+                && CARD_TEXTFIELD.getText().equals("Номер карты");
+    }
+
+    @Step("Отображается поле \"Пароль\"")
+    private boolean isDisplayPasswordField() {
+        return elements.isElementExist(PASSWORD_TEXTFIELD)
+                && PASSWORD_TEXTFIELD.getText().equals("Пароль");
+    }
+
+    @Step("Отображается поле \"Сканирвоать карту\"")
+    private boolean isDisplayScanCard() {
+        return elements.isElementExist(SCAN_CARD);
+    }
+
+    @Step("Отображаются кнопки \"Забыли пароль?\" и \"Войти\"")
+    private boolean isDisplayForgotPasswordAndSignInButton() {
+        var isExistForgotButton = elements.isElementExist(FORGOT_PASSWORD_BUTTON)
+                && FORGOT_PASSWORD_BUTTON.getText().equals("Забыли пароль?");
+        var isExistSignInButton = elements.isElementExist(SIGN_IN_BUTTON);
+
+        return isExistSignInButton && isExistForgotButton;
+    }
+
+    // TODO: 04.02.2022 Переписать проверку наличия элементов на экране 
+    @Step("Отображается экран входа в МБ, разделы")
+    public boolean isDisplaySignInScreenAndSectionsOnThePageForCard() {
+        return  isDisplayScreenWithFormForLogin() &&
+                isExistByLoginSection() &&
+                isExistByCardSection() &&
+                isDisplayTitle() &&
+                isDisplayIDOrCardField() &&
+                isDisplayPasswordField() &&
+                isDisplayScanCard() &&
+                isDisplayForgotPasswordAndSignInButton();
+    }
+
+
+
+
+    private static LoginPageForCard instanse;
+
+    private LoginPageForCard(AndroidDriver<MobileElement> androidDriver) {
+        super(androidDriver);
+    }
+
+    public static LoginPageForCard getLoginPageForCard(AndroidDriver<MobileElement> androidDriver) {
+        if (instanse == null) {
+            return new LoginPageForCard(androidDriver);
+        }
+        return instanse;
+    }
+
+
+}

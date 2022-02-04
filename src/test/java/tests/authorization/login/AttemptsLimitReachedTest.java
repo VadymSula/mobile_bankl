@@ -33,14 +33,14 @@ public class AttemptsLimitReachedTest extends AuthorizationMainTest {
         confirmLoginPage.tapOnOkButton();
         var isDisplayAlertAboutBlock =
                 //loginAndSignInSteps("9990040083167", "1111")
-                loginPage
-                .tapOnSignInButton()
-                .isDisplayAlertAboutAccessTempBlockMessage() && confirmLoginPage.isDisplayCallToBankAndOkButton();
+                loginPageForLogin
+                        .tapOnSignInButton()
+                        .isDisplayAlertAboutAccessTempBlockMessage() && confirmLoginPage.isDisplayCallToBankAndOkButton();
 
         Assert.assertTrue(isDisplayFailMessage && isDisplayMessageAboutLimit && isDisplayAlertAboutBlock);
     }
 
-    private boolean isExistLimitMessageAfterInputsInvalidCodeUntilThrowsAlert(ConfirmLoginPage confirmLoginPage, String code) throws Exception{
+    private boolean isExistLimitMessageAfterInputsInvalidCodeUntilThrowsAlert(ConfirmLoginPage confirmLoginPage, String code) {
         do {
             inputCheckingCodeAndTapOnReadyButton(confirmLoginPage, code);
             if (confirmLoginPage.isContainsMessageAboutInvalidCode()) {
@@ -59,7 +59,7 @@ public class AttemptsLimitReachedTest extends AuthorizationMainTest {
     }
 
     private ConfirmLoginPage loginAndSignInSteps(String login, String password) {
-        return loginPage
+        return loginPageForLogin
                 .tapOnIDOrLoginFieldAndInput(login)
                 .tapOnPasswordFieldAndInput(password)
                 .tapOnSignInButton();

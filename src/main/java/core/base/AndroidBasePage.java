@@ -8,16 +8,15 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.android.authorization.LoginPage;
+import pages.android.authorization.LoginPageForLogin;
 import pages.android.demoversion.accountsAndDeposits.DemoAccountPage;
 import pages.android.mainscreen.BecomeClientPage;
 import pages.android.mainscreen.CurrencyRatePage;
 import pages.android.mainscreen.DepartmentAddressesPage;
 import utils.mobile.Waiters;
+
+import static pages.android.authorization.LoginPageForLogin.getLoginPageForLogin;
 
 public class AndroidBasePage {
     private final AndroidDriver<MobileElement> androidDriver;
@@ -84,9 +83,9 @@ public class AndroidBasePage {
     }
 
     @Step("Тап на кнопку 'Войти'")
-    public LoginPage goToSignInPage() {
+    public LoginPageForLogin goToSignInPage() {
         buttons.searchAndClickButtonBy(LOGIN_BUTTON);
-        return new LoginPage(getAndroidDriver());
+        return getLoginPageForLogin(getAndroidDriver());
     }
 
     @Step("Тапнуть на кнопку 'Демо-версия'")

@@ -20,9 +20,9 @@ public class DataValidTest extends AuthorizationMainTest {
     @Parameters({"login", "password"})
     public void signInWithValidCredentialsTest(String login, String password) {
         ConfirmLoginPage confirmLoginPage = new ConfirmLoginPage(getAndroidDriver());
-        var isDisplaySignInScreen = loginPage.isDisplaySignInScreenAndSections();
+        var isDisplaySignInScreen = loginPageForLogin.isDisplaySignInScreenAndSections();
 
-        var isDisplayConfirmLoginScreen = loginPage
+        var isDisplayConfirmLoginScreen = loginPageForLogin
                 .tapOnIDOrLoginFieldAndInput(login)
                 .tapOnPasswordFieldAndInput(password)
                 .tapOnSignInButton()
