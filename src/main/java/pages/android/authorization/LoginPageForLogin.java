@@ -15,7 +15,7 @@ public class LoginPageForLogin extends LoginPage {
     protected MobileElement LOGIN_TEXTFIELD;
     @AndroidFindBy(id = "cb.ibank:id/view_controller_login_password_edit_text_layout")
     protected MobileElement PASSWORD_TEXTFIELD;
-    @AndroidFindBy(xpath = "//android.widget.EditText[contains(@text, 'логин')]")
+    @AndroidFindBy(xpath = "//android.widget.EditText[contains(@text, 'Идентификатор / логин')]")
     protected MobileElement LOGIN_PLACEHOLDER;
     @AndroidFindBy(xpath = "//android.widget.EditText[contains(@text, 'Пароль')]")
     protected MobileElement PASSWORD_PLACEHOLDER;
@@ -43,14 +43,16 @@ public class LoginPageForLogin extends LoginPage {
 
     // TODO: 04.02.2022 Переписать проверку наличия элементов на экране
     @Step("Отображается экран входа в МБ, разделы")
-    public boolean isDisplaySignInScreenAndSections() {
-        return isDisplayScreenWithFormForLogin() &&
-                isExistByLoginSection() &&
-                isExistByCardSection() &&
-                isDisplayTitle() &&
-                isDisplayIDOrLoginField() &&
-                isDisplayPasswordField() &&
-                isDisplayForgotLoginOrPasswordAndSignInButton();
+    public LoginPageForLogin isDisplaySignInScreenAndSectionsForLogin() {
+        isDisplaySignInScreenAndSections();
+        softAssert.assertTrue(BY_LOGIN_SECTION.isSelected(), "Вход по логину не выбран");
+        softAssert.assertTrue(isDisplayTitle(), "Не отображается заголовок \"Вход в мобильный банк по логину\"");
+        softAssert.assertTrue(isDisplayIDOrLoginField(), "Не отображается поле \"Идентификатор / логин\"");
+        softAssert.assertTrue(isDisplayPasswordField(), "Не отображается поле \"Пароль\"");
+        softAssert.assertTrue(isDisplayForgotLoginOrPasswordButton(), "Не отображаются кнопка \"Забыли логин или пароль?\"");
+        softAssert.assertTrue(isDisplaySignInButton(), "Не отображаются кнопка \"Войти\"");
+        softAssert.assertAll();
+        return this;
     }
 
 
@@ -89,42 +91,34 @@ public class LoginPageForLogin extends LoginPage {
     }
 
 
-    @Step("Отображается раздел \"По логину\"")
-    protected boolean isExistByLoginSection() {
-        return elements.isElementExist(BY_LOGIN_SECTION)
-                && elements.isSelectedElement(BY_LOGIN_SECTION);
-    }
-
-    @Step("Отображается раздел \"По карте\"")
-    protected boolean isExistByCardSection() {
-        return elements.isElementExist(BY_CARD_SECTION)
-                && !elements.isSelectedElement(BY_CARD_SECTION);
-    }
-
     @Step("Отображается заголовок \"Вход в мобильный банк по логину\"")
     protected boolean isDisplayTitle() {
         return elements.isElementExist(LOGIN_TITLE)
-                && LOGIN_TITLE.getText().equals("Вход в мобильный банк по логину");
+                && LOGIN_TITLE.getText().equals("Вход в мобильный банк \nпо логину");
     }
 
     @Step("Отображается поле \"Идентификатор / логин\"")
     private boolean isDisplayIDOrLoginField() {
-        return elements.isElementExist(LOGIN_TEXTFIELD)
-                && LOGIN_TEXTFIELD.getText().equals("Идентификатор / логин");
+        return elements.isElementExist(LOGIN_PLACEHOLDER)
+                && LOGIN_PLACEHOLDER.getText().equals("Идентификатор / логин");
     }
 
     @Step("Отображается поле \"Пароль\"")
     private boolean isDisplayPasswordField() {
-        return elements.isElementExist(PASSWORD_TEXTFIELD)
-                && PASSWORD_TEXTFIELD.getText().equals("Пароль");
+        return elements.isElementExist(PASSWORD_PLACEHOLDER)
+                && PASSWORD_PLACEHOLDER.getText().equals("Пароль");
     }
 
-    @Step("Отображаются кнопки \"Забыли логин или пароль?\" и \"Войти\"")
-    private boolean isDisplayForgotLoginOrPasswordAndSignInButton() {
-        var isExistForgotButton = elements.isElementExist(FORGOT_LOGIN_OR_PASSWORD_BUTTON);
-        var isExistSignInButton = elements.isElementExist(SIGN_IN_BUTTON);
+    @Step("Отображаются кнопка \"Забыли логин или пароль?\"")
+    private boolean isDisplayForgotLoginOrPasswordButton() {
+        return elements.isElementExist(FORGOT_LOGIN_OR_PASSWORD_BUTTON) &&
+                FORGOT_LOGIN_OR_PASSWORD_BUTTON.getText().equals("Забыли логин\nили пароль?");
 
-        return isExistSignInButton && isExistForgotButton;
+    }
+
+    @Step("Отображаются кнопка и \"Войти\"")
+    private boolean isDisplaySignInButton() {
+        return elements.isElementExist(SIGN_IN_BUTTON);
     }
 
     @Step("В полях формы присутствует плейсхолдер")

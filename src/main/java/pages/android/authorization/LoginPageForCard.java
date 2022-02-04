@@ -55,21 +55,9 @@ public class LoginPageForCard extends LoginPage {
     @Step("Отображается заголовок \"Вход в мобильный банк по номеру карты\"")
     protected boolean isDisplayTitle() {
         return elements.isElementExist(CARD_TITLE)
-                && CARD_TITLE.getText().equals("Вход в мобильный банк по номеру карты");
+                && CARD_TITLE.getText().equals("Вход в мобильный банк \nпо номеру карты");
     }
 
-
-    @Step("Отображается раздел \"По логину\" ")
-    protected boolean isExistByLoginSection() {
-        return elements.isElementExist(BY_LOGIN_SECTION)
-                && !elements.isSelectedElement(BY_LOGIN_SECTION);
-    }
-
-    @Step("Отображается раздел \"По Карте\"")
-    protected boolean isExistByCardSection() {
-        return elements.isElementExist(BY_CARD_SECTION)
-                && elements.isSelectedElement(BY_CARD_SECTION);
-    }
 
     @Step("Отображается поле \"Номер карты\"")
     private boolean isDisplayIDOrCardField() {
@@ -88,29 +76,34 @@ public class LoginPageForCard extends LoginPage {
         return elements.isElementExist(SCAN_CARD);
     }
 
-    @Step("Отображаются кнопки \"Забыли пароль?\" и \"Войти\"")
-    private boolean isDisplayForgotPasswordAndSignInButton() {
-        var isExistForgotButton = elements.isElementExist(FORGOT_PASSWORD_BUTTON)
-                && FORGOT_PASSWORD_BUTTON.getText().equals("Забыли пароль?");
-        var isExistSignInButton = elements.isElementExist(SIGN_IN_BUTTON);
+    @Step("Отображается кнопка \"Забыли пароль?\"")
+    private boolean isDisplayForgotPasswordButton() {
+        return elements.isElementExist(FORGOT_PASSWORD_BUTTON)
+                && FORGOT_PASSWORD_BUTTON.getText().equals("Забыли\nпароль?");
 
-        return isExistSignInButton && isExistForgotButton;
     }
 
-    // TODO: 04.02.2022 Переписать проверку наличия элементов на экране 
+    @Step("Отображается кнопка \"Войти\"")
+    private boolean isDisplaySignInButton() {
+        return elements.isElementExist(SIGN_IN_BUTTON);
+    }
+
+
+    // TODO: 04.02.2022 Переписать проверку наличия элементов на экране
+
     @Step("Отображается экран входа в МБ, разделы")
-    public boolean isDisplaySignInScreenAndSectionsOnThePageForCard() {
-        return  isDisplayScreenWithFormForLogin() &&
-                isExistByLoginSection() &&
-                isExistByCardSection() &&
-                isDisplayTitle() &&
-                isDisplayIDOrCardField() &&
-                isDisplayPasswordField() &&
-                isDisplayScanCard() &&
-                isDisplayForgotPasswordAndSignInButton();
+    public LoginPageForCard isDisplaySignInScreenAndSectionsForCard() {
+        isDisplaySignInScreenAndSections();
+        softAssert.assertTrue(BY_CARD_SECTION.isSelected(), "Вход по карте не выбран");
+        softAssert.assertTrue(isDisplayTitle(), "Не отображается заголовок \"Вход в мобильный банк по номеру карты\"");
+        softAssert.assertTrue(isDisplayIDOrCardField(), "Не отображается поле \"Номер карты\"");
+        softAssert.assertTrue(isDisplayPasswordField(), "Не отображается поле \"Пароль\"");
+        softAssert.assertTrue(isDisplayScanCard(), "Не отображается поле \"Сканирвоать карту\"");
+        softAssert.assertTrue(isDisplayForgotPasswordButton(), "Не отображаются кнопка \"Забыли пароль?\"");
+        softAssert.assertTrue(isDisplaySignInButton(), "Не отображаются кнопка \"Войти\"");
+        softAssert.assertAll();
+        return this;
     }
-
-
 
 
     private static LoginPageForCard instanse;

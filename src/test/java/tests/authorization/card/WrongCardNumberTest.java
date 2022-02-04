@@ -15,6 +15,7 @@ public class WrongCardNumberTest extends AuthorizationMainTest {
 
         Assert.assertTrue(loginPageForLogin
                         .tapOnByCardSectiot()
+                        .isDisplaySignInScreenAndSectionsForCard()
                         .tapOnIDOrLoginFieldAndInput("1234")
                         .tapOnPasswordFieldAndInput("1234")
                         .tapOnSignInButton()

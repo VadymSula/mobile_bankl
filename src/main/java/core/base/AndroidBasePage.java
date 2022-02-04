@@ -85,7 +85,7 @@ public class AndroidBasePage {
     @Step("Тап на кнопку 'Войти'")
     public LoginPageForLogin goToSignInPage() {
         buttons.searchAndClickButtonBy(LOGIN_BUTTON);
-        return getLoginPageForLogin(getAndroidDriver());
+        return getLoginPageForLogin(getAndroidDriver()).isDisplaySignInScreenAndSectionsForLogin();
     }
 
     @Step("Тапнуть на кнопку 'Демо-версия'")

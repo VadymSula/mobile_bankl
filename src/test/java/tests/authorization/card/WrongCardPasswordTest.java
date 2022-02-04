@@ -12,12 +12,13 @@ public class WrongCardPasswordTest extends AuthorizationMainTest {
     @Test
     @TmsLink("29888")
     public void insertWrongPassword() {
-        String cardNumber  = "4301 8183 7499 6323".replaceAll("\\s","");
+        String cardNumber  = "4301 8183 7499 6323";
         String password  = "0000";
 
         Assert.assertTrue(loginPageForLogin
                         .tapOnByCardSectiot()
-                        .tapOnIDOrLoginFieldAndInput(cardNumber)
+                        .isDisplaySignInScreenAndSectionsForCard()
+                        .tapOnIDOrLoginFieldAndInput(cardNumber.replaceAll("\\s",""))
                         .tapOnPasswordFieldAndInput(password)
                         .tapOnSignInButton()
                         .isExistFailAlertAfterSignIn(Text.INVALID_PASSWORD)
