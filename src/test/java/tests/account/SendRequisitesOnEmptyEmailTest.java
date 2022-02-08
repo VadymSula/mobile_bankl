@@ -6,7 +6,7 @@ import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.android.account.RequisitesPage;
-import steps.LoginSteps;
+import steps.autorization.LoginSteps;
 
 public class SendRequisitesOnEmptyEmailTest extends LoginSteps {
 
