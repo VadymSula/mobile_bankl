@@ -1,7 +1,6 @@
 package pages.android.authorization;
 
 import core.base.AndroidBasePage;
-import enums.Text;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -51,10 +50,8 @@ public abstract class LoginPage extends AndroidBasePage {
     }
 
     @Step(USER_IS_NOT_EXIST_ALERT_TEXT)
-    public boolean isExistFailAlertAfterSignIn(Text alert) {
-        var textFromAlert = elements.getTextFromElement(COMMON_DIALOG_TEXT);
-
-        return textFromAlert.contains(alert.getText());
+    public String isExistFailAlertAfterSignIn() {
+        return elements.getTextFromElement(COMMON_DIALOG_TEXT);
     }
 
     abstract boolean isDisplayTitle();

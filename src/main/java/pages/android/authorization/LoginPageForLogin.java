@@ -1,6 +1,5 @@
 package pages.android.authorization;
 
-import core.base.AndroidBasePage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -78,12 +77,6 @@ public class LoginPageForLogin extends LoginPage {
         return new ConfirmLoginPage(getAndroidDriver());
     }
 
-    @Step(USER_IS_NOT_EXIST_ALERT_TEXT)
-    public boolean isExistFailAlertAfterSignIn() {
-        var textFromAlert = elements.getTextFromElement(COMMON_DIALOG_TEXT);
-
-        return textFromAlert.contains(PART_OF_ALERT_MESSAGE_ABOUT_NON_EXIST_USER);
-    }
 
     @Step("Кнопка 'Ок' отображается на экране")
     public boolean isExistOKButtonOnScreen() {
