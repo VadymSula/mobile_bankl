@@ -1,19 +1,15 @@
 package steps;
 
-import core.InitialDriver;
-import core.base.AndroidBasePage;
 import core.base.BaseStep;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Step;
 import pages.android.PersonalCabinetMainPage;
 import pages.android.authorization.ConfirmLoginPage;
-import pages.android.authorization.LoginPage;
+import pages.android.authorization.LoginPageForLogin;
 import utils.EnvVariablesGetter;
 import utils.integration.fimi.SOAPClientSAAJ;
 
 public class LoginSteps extends BaseStep {
-    protected static LoginPage loginPage = new LoginPage(getAndroidDriver());
+    protected static LoginPageForLogin loginPageForLogin = LoginPageForLogin.getLoginPageForLogin(getAndroidDriver());
     protected static PersonalCabinetMainPage personalCabinetMainPage = new PersonalCabinetMainPage(getAndroidDriver());
 
     @Step("Выбрать стенд и залогиниться")
@@ -30,7 +26,7 @@ public class LoginSteps extends BaseStep {
 
     @Step("Валидный вход по логину")
     public static void login(String login, String password) {
-        loginPage
+        loginPageForLogin
                 .goToSignInPage()
                 .tapOnIDOrLoginFieldAndInput(login)
                 .tapOnPasswordFieldAndInput(password)

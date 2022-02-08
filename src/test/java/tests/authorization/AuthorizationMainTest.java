@@ -1,15 +1,16 @@
 package tests.authorization;
 
 import core.base.BaseTest;
-import org.testng.annotations.BeforeClass;
-import pages.android.authorization.LoginPage;
+import org.testng.annotations.BeforeMethod;
+import pages.android.authorization.LoginPageForLogin;
 
 public class AuthorizationMainTest extends BaseTest {
-    protected final LoginPage loginPage = new LoginPage(getAndroidDriver());
+    protected final LoginPageForLogin loginPageForLogin = LoginPageForLogin.getLoginPageForLogin(getAndroidDriver());
 
-    @BeforeClass
+    @BeforeMethod
     public void goToLoginPage() {
-        loginPage
+        getAndroidDriver().launchApp();
+        loginPageForLogin
                 .goToSignInPage();
     }
 }
