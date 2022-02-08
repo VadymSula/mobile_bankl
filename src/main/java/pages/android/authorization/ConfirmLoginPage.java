@@ -1,13 +1,12 @@
 package pages.android.authorization;
 
-import core.base.AndroidBasePage;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.PersonalCabinetMainPage;
 
-public class ConfirmLoginPage extends AndroidBasePage {
+public class ConfirmLoginPage extends LoginPage {
 
     private static final String SMS_MESSAGE = "Мы отправили вам сообщение на";
     private static final String TIMER_TEXT = "Код действует:";
@@ -32,6 +31,13 @@ public class ConfirmLoginPage extends AndroidBasePage {
     protected MobileElement COMMON_DIALOG_TEXT;
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'ПОЗВОНИТЬ В БАНК')]/..")
     protected MobileElement CALL_TO_BANK_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/view_controller_confirm_sms_scroll_view")
+    protected MobileElement CONFIRM_SMS_SCREEN;
+
+    @Override
+    boolean isDisplayTitle() {
+        return elements.isElementExist(CONFIRM_SMS_SCREEN);
+    }
 
     public ConfirmLoginPage(AndroidDriver<MobileElement> androidDriver) {
         super(androidDriver);
@@ -52,6 +58,17 @@ public class ConfirmLoginPage extends AndroidBasePage {
         }
         buttons.searchAndClickButtonBy(CONFIRM_SMS_BUTTON);
         return new PersonalCabinetMainPage(getAndroidDriver());
+    }
+
+    @Step("Тапнуть на кнопку \"Готово\"")
+    public AccessRecoveryPage tapOnReadyButtonAfterAccessRecovery() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        buttons.searchAndClickButtonBy(CONFIRM_SMS_BUTTON);
+        return new AccessRecoveryPage(getAndroidDriver());
     }
 
     @Step("Отображается экран подтверждения: ")

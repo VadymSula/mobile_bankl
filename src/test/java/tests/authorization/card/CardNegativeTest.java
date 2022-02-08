@@ -54,9 +54,9 @@ public class CardNegativeTest extends AuthorizationMainTest {
 
     private void testExecute(String cardNumber, String password, Text text) {
         String result = loginPageForLogin
-                .tapOnByCardSectiot()
+                .tapOnByCardSection()
                 .isDisplaySignInScreenAndSectionsForCard()
-                .tapOnIDOrLoginFieldAndInput(cardNumber.replaceAll("\\s", ""))
+                .tapOnCardFieldAndInput(cardNumber.replaceAll("\\s", ""))
                 .tapOnPasswordFieldAndInput(password)
                 .tapOnSignInButton(text.getText());
         Assert.assertEquals(result, text.getText(),

@@ -38,13 +38,13 @@ public abstract class LoginPage extends AndroidBasePage {
     }
 
     @Step("Тапнуть на \"По логину\"")
-    public LoginPageForLogin tapOnByLoginSectiot() {
+    public LoginPageForLogin tapOnByLoginSection() {
         buttons.searchAndClickButtonBy(BY_CARD_SECTION);
         return LoginPageForLogin.getLoginPageForLogin(getAndroidDriver());
     }
 
     @Step("Тапнуть на \"По карте\"")
-    public LoginPageForCard tapOnByCardSectiot() {
+    public LoginPageForCard tapOnByCardSection() {
         buttons.searchAndClickButtonBy(BY_CARD_SECTION);
         return LoginPageForCard.getLoginPageForCard(getAndroidDriver());
     }

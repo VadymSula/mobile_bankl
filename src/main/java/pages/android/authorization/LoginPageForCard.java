@@ -43,10 +43,10 @@ public class LoginPageForCard extends LoginPage {
     }
 
     @Step("Тапнуть на поле \"Номер карты\"" +
-            "Ввести номер карты ({idOrLogin})")
-    public LoginPageForCard tapOnIDOrLoginFieldAndInput(String idOrLogin) {
+            "Ввести номер карты ({cardNumber})")
+    public LoginPageForCard tapOnCardFieldAndInput(String cardNumber) {
         buttons.searchAndClickButtonBy(CARD_TEXTFIELD);
-        elements.sendKeyFromAction(idOrLogin);
+        elements.sendKeyFromAction(cardNumber);
         return this;
     }
 
@@ -56,6 +56,12 @@ public class LoginPageForCard extends LoginPage {
         buttons.searchAndClickButtonBy(PASSWORD_TEXTFIELD);
         elements.sendKeyFromAction(password);
         return this;
+    }
+
+    @Step("Тапнуть на кнопку \"Забыли пароль?\"")
+    public AccessRecoveryPage tapOnForgotPassword() {
+        buttons.searchAndClickButtonBy(FORGOT_PASSWORD_BUTTON);
+        return new AccessRecoveryPage(getAndroidDriver());
     }
 
     @Step("Отображается заголовок \"Вход в мобильный банк по номеру карты\"")
@@ -77,7 +83,7 @@ public class LoginPageForCard extends LoginPage {
                 && PASSWORD_TEXTFIELD.getText().equals("Пароль");
     }
 
-    @Step("Отображается поле \"Сканирвоать карту\"")
+    @Step("Отображается поле \"Сканировать карту\"")
     private boolean isDisplayScanCard() {
         return elements.isElementExist(SCAN_CARD);
     }
@@ -104,7 +110,7 @@ public class LoginPageForCard extends LoginPage {
         softAssert.assertTrue(isDisplayTitle(), "Не отображается заголовок \"Вход в мобильный банк по номеру карты\"");
         softAssert.assertTrue(isDisplayIDOrCardField(), "Не отображается поле \"Номер карты\"");
         softAssert.assertTrue(isDisplayPasswordField(), "Не отображается поле \"Пароль\"");
-        softAssert.assertTrue(isDisplayScanCard(), "Не отображается поле \"Сканирвоать карту\"");
+        softAssert.assertTrue(isDisplayScanCard(), "Не отображается поле \"Сканировать карту\"");
         softAssert.assertTrue(isDisplayForgotPasswordButton(), "Не отображаются кнопка \"Забыли пароль?\"");
         softAssert.assertTrue(isDisplaySignInButton(), "Не отображаются кнопка \"Войти\"");
         softAssert.assertAll();
