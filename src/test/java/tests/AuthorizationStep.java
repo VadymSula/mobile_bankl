@@ -3,7 +3,7 @@ package tests;
 import core.base.BaseTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-import steps.LoginSteps;
+import steps.autorization.LoginSteps;
 
 public class AuthorizationStep extends BaseTest {
 

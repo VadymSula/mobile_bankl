@@ -1,4 +1,4 @@
-package steps;
+package steps.autorization;
 
 import core.base.BaseStep;
 import io.qameta.allure.Step;

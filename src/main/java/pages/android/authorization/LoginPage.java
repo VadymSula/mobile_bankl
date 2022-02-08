@@ -49,8 +49,8 @@ public abstract class LoginPage extends AndroidBasePage {
         return LoginPageForCard.getLoginPageForCard(getAndroidDriver());
     }
 
-    @Step(USER_IS_NOT_EXIST_ALERT_TEXT)
-    public String isExistFailAlertAfterSignIn() {
+    @Step("Проверяем сообщения об ошибке ({text})")
+    public String isExistFailAlertAfterSignIn(String text) {
         return elements.getTextFromElement(COMMON_DIALOG_TEXT);
     }
 

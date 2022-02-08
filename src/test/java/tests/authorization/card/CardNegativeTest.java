@@ -58,8 +58,7 @@ public class CardNegativeTest extends AuthorizationMainTest {
                 .isDisplaySignInScreenAndSectionsForCard()
                 .tapOnIDOrLoginFieldAndInput(cardNumber.replaceAll("\\s", ""))
                 .tapOnPasswordFieldAndInput(password)
-                .tapOnSignInButton()
-                .isExistFailAlertAfterSignIn();
+                .tapOnSignInButton(text.getText());
         Assert.assertEquals(result, text.getText(),
                 String.format("Ожидаемое сообщение: \"%s\"\n" +
                         "Фаткичесеки пришло: \"%s\"", text.getText(), result));

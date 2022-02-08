@@ -31,9 +31,15 @@ public class LoginPageForCard extends LoginPage {
 
 
     @Step("Тапнуть на кнопку \"Войти\"")
-    public LoginPageForCard tapOnSignInButton() {
+    public ConfirmLoginPage tapOnSignInButton() {
         buttons.searchAndClickButtonBy(SIGN_IN_BUTTON);
-        return this;
+        return new ConfirmLoginPage(getAndroidDriver());
+    }
+
+    @Step("Тапнуть на кнопку \"Войти\" и проверить текст ошибки ({text})")
+    public String tapOnSignInButton(String text) {
+        buttons.searchAndClickButtonBy(SIGN_IN_BUTTON);
+        return isExistFailAlertAfterSignIn(text);
     }
 
     @Step("Тапнуть на поле \"Номер карты\"" +
