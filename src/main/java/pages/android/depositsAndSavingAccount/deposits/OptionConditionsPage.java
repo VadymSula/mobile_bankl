@@ -21,14 +21,11 @@ public class OptionConditionsPage extends DepositPage {
     @AndroidFindBy(id = "cb.ibank:id/conditions_of_option_cost_description")
     protected MobileElement COST_DESCRIPTION;
 
-    public OptionConditionsPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть ссылку \"Как формируется ставка\"")
     public RateWithOptionPage tapOnHowRateFormedLink() {
         buttons.searchAndClickButtonBy(HOW_RATE_IS_FORMED);
-        return new RateWithOptionPage(getAndroidDriver());
+        return new RateWithOptionPage();
     }
 
     @Step("Экран \"Условия опции\":")

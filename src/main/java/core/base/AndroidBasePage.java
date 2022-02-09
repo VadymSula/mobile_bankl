@@ -16,7 +16,9 @@ import pages.android.mainscreen.CurrencyRatePage;
 import pages.android.mainscreen.DepartmentAddressesPage;
 import utils.mobile.Waiters;
 
+import static core.InitialDriver.getAndroidDriver;
 import static pages.android.authorization.LoginPageForLogin.getLoginPageForLogin;
+import static utils.mobile.Waiters.getWaiters;
 
 public class AndroidBasePage {
     private final AndroidDriver<MobileElement> androidDriver;
@@ -25,9 +27,9 @@ public class AndroidBasePage {
     protected Elements elements;
     protected Waiters waiters;
 
-    public AndroidBasePage(AndroidDriver<MobileElement> androidDriver) {
-        this.androidDriver = androidDriver;
-        waiters = new Waiters(androidDriver);
+    public AndroidBasePage() {
+        this.androidDriver = getAndroidDriver();
+        waiters = getWaiters();
         buttons = new Buttons(androidDriver, waiters);
         screen = new Screen(androidDriver, waiters);
         elements = new Elements(androidDriver, waiters);
@@ -67,31 +69,31 @@ public class AndroidBasePage {
     @Step("Тапнуть на кнопку 'Курс валют'")
     public CurrencyRatePage goToCurrencyRatesPage() {
         buttons.waitInSecondsAndClickButtonBy(CURRENCY_RATES_BUTTON, 3);
-        return new CurrencyRatePage(getAndroidDriver());
+        return new CurrencyRatePage();
     }
 
     @Step("Тапнуть на кнопку 'Адреса'")
     public DepartmentAddressesPage goToDepartmentAddressesPage() {
         buttons.searchAndClickButtonBy(DEPARTMENT_ADDRESSES_BUTTON);
-        return new DepartmentAddressesPage(getAndroidDriver());
+        return new DepartmentAddressesPage();
     }
 
     @Step("Тапнуть на блок Стать клиентом")
     public BecomeClientPage goToBecomeClientPage() {
         buttons.searchAndClickButtonBy(BECOME_CLIENT_BUTTON);
-        return new BecomeClientPage(getAndroidDriver());
+        return new BecomeClientPage();
     }
 
     @Step("Тап на кнопку 'Войти'")
     public LoginPageForLogin goToSignInPage() {
         buttons.searchAndClickButtonBy(LOGIN_BUTTON);
-        return getLoginPageForLogin(getAndroidDriver()).isDisplaySignInScreenAndSectionsForLogin();
+        return getLoginPageForLogin().isDisplaySignInScreenAndSectionsForLogin();
     }
 
     @Step("Тапнуть на кнопку 'Демо-версия'")
     public DemoAccountPage goToDemoVersion() {
         buttons.searchAndClickButtonBy(DEMO_VERSION_BUTTON);
-        return new DemoAccountPage(getAndroidDriver());
+        return new DemoAccountPage();
     }
 
     public void tapOnTestSettingsButtonAndChooseStand(String standName) {
@@ -110,7 +112,5 @@ public class AndroidBasePage {
         return elements.isElementExist(WELCOME_TITLE);
     }
 
-    public AndroidDriver<MobileElement> getAndroidDriver() {
-        return androidDriver;
-    }
+
 }

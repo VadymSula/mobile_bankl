@@ -16,7 +16,4 @@ public class DemoRequisitesPage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = REQUISITES_FIELDS)
     protected MobileElement FIELD_REQUISITE;
 
-    public DemoRequisitesPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 }

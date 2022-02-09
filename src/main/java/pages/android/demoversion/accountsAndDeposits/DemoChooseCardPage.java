@@ -14,14 +14,11 @@ public class DemoChooseCardPage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Добавить')]/..")
     protected MobileElement ADD_NEW_CARD_BUTTON;
 
-    public DemoChooseCardPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть на карту 'Classic'")
     public DemoFromCardOtherBankPage tapOnTheClassicCard() {
         buttons.searchAndClickButtonBy(CLASSIC_CARD);
-        return new DemoFromCardOtherBankPage(getAndroidDriver());
+        return new DemoFromCardOtherBankPage();
     }
 
     @Step("Тапнуть на опцию 'Добавить новую карту'")

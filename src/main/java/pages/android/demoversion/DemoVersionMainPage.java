@@ -22,14 +22,12 @@ public class DemoVersionMainPage extends AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/main_navigation_main_action_button")
     protected MobileElement PAYMENTS_BUTTON;
 
-    public DemoVersionMainPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
+
 
     @Step("Тапнуть на счет 'Зарплатный Счет'")
     public DemoAccountPage goToAccountPage() {
         buttons.searchAndClickButtonBy(SALARY_ACCOUNT);
-        return new DemoAccountPage(getAndroidDriver());
+        return new DemoAccountPage();
     }
 
     @Step("Всплывает предупреждение 'Недоступно в демо-режиме'")
@@ -48,7 +46,7 @@ public class DemoVersionMainPage extends AndroidBasePage {
     @Step("Тапнуть 'Еще'")
     public DemoMorePage goToMorePage() {
         buttons.searchAndClickButtonBy(MORE_BUTTON);
-        return new DemoMorePage(getAndroidDriver());
+        return new DemoMorePage();
     }
 
     @Step("Тапнуть на 'Готово'")
@@ -60,6 +58,6 @@ public class DemoVersionMainPage extends AndroidBasePage {
     @Step("Тапнуть на 'Платежи'")
     public DemoPaymentsAndTransfersPage tapOnPaymentsButton() {
         buttons.searchAndClickButtonBy(PAYMENTS_BUTTON);
-        return new DemoPaymentsAndTransfersPage(getAndroidDriver());
+        return new DemoPaymentsAndTransfersPage();
     }
 }

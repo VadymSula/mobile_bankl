@@ -17,10 +17,6 @@ public class DemoDepartmentAddressesPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_atm_map_zoom_in_button")
     protected MobileElement ZOOM_IN_BUTTON;
 
-    public DemoDepartmentAddressesPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
-
     @Step("В подразделе 'Карта' отображается карта города")
     public boolean isDisplayMapCity() {
         waiters.waitForVisibility(ZOOM_IN_BUTTON);

@@ -2,7 +2,6 @@ package pages.android;
 
 import core.base.AndroidBasePage;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.account.AccountPage;
@@ -28,10 +27,6 @@ public class PersonalCabinetMainPage extends AndroidBasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='*0008']/ancestor::android.view.ViewGroup[1]")
     protected MobileElement DEPOSIT_WITH_OPTION;
 
-    public PersonalCabinetMainPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
-
     @Step("Отображается главный экран\n" +
             "Пользователь вошел в личный кабинет")
     public boolean isDisplayMainScreenContent() {
@@ -55,13 +50,13 @@ public class PersonalCabinetMainPage extends AndroidBasePage {
     @Step("Тапнуть на счёт в блоке \"Счета и вклады\"")
     public AccountPage tapOnAccountInBlock() {
         buttons.searchAndClickButtonByCoordinates(ACCOUNT_NAME);
-        return new AccountPage(getAndroidDriver());
+        return new AccountPage();
     }
 
     @Step("Тапнуть на \"Платежи\"")
     public PaymentsAndTransfersPage tapOnPaymentsButton() {
         buttons.searchAndClickButtonBy(PAYMENTS_BUTTON);
-        return new PaymentsAndTransfersPage(getAndroidDriver());
+        return new PaymentsAndTransfersPage();
     }
 
     @Step("Тапнуть на кнопку \"Показать все\" в секции Счета на Главном экране")
@@ -79,7 +74,7 @@ public class PersonalCabinetMainPage extends AndroidBasePage {
     @Step("Тапнуть на вклад с опцией")
     public DepositPage tapOnDepositWithOption() {
         buttons.searchAndClickButtonBy(DEPOSIT_WITH_OPTION);
-        return new DepositPage(getAndroidDriver());
+        return new DepositPage();
     }
 
 }

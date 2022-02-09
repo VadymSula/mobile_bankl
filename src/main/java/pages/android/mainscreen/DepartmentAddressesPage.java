@@ -20,9 +20,6 @@ public class DepartmentAddressesPage extends AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_addresses_details_view_pager")
     protected MobileElement ADDITIONAL_INFO_PAGER;
 
-    public DepartmentAddressesPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Открытие вариантов с адресами банкоматов до последнего одиночного варианта")
     public DepartmentAddressesPage goToAddressDepartmentToSingleVariant() {

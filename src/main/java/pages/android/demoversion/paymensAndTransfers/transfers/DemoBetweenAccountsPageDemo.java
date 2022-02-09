@@ -17,9 +17,6 @@ public class DemoBetweenAccountsPageDemo extends DemoPaymentsAndTransfersPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_to_account_button_next")
     protected MobileElement TRANSFER_BUTTON;
 
-    public DemoBetweenAccountsPageDemo(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Заполнить поля:\n" +
             "Счет пополнения: 'Накопительный'\n" +

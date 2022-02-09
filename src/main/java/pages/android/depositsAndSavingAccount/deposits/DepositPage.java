@@ -16,9 +16,6 @@ public class DepositPage extends PersonalCabinetMainPage {
     @AndroidFindBy(xpath = "//*[@text = 'Подробная информация']/..")
     protected MobileElement DETAILS_INFO;
 
-    public DepositPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Экран \"Вклад\" с подключенной опцией отображается")
     public boolean isDisplayDepositScreen() {
@@ -31,6 +28,6 @@ public class DepositPage extends PersonalCabinetMainPage {
         screen.swipeScreenWithPressTime(Screen.Direction.UP, 1000, null);
         buttons.searchAndClickButtonBy(HINT_DETAILS_MORE_PLUSES);
 
-        return new OptionConditionsPage(getAndroidDriver());
+        return new OptionConditionsPage();
     }
 }

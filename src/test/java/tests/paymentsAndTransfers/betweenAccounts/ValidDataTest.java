@@ -15,7 +15,7 @@ public class ValidDataTest extends PaymentsAndTransfersBaseTest {
     @Test(description = "Валидные данные")
     public void betweenAccountsValidDataTest() {
         SoftAssert softAssert = new SoftAssert();
-        var betweenAccountsPage = new BetweenAccountsPage(getAndroidDriver());
+        var betweenAccountsPage = new BetweenAccountsPage();
 
         stepToChooseAccountRecipient(softAssert, betweenAccountsPage);
         var isDisplayModalForAccountRecipient = betweenAccountsPage

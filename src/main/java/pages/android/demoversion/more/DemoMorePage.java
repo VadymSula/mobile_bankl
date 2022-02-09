@@ -34,20 +34,17 @@ public class DemoMorePage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Адреса отделений')]/..")
     protected MobileElement DEPARTMENT_ADDRESSES;
 
-    public DemoMorePage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть на 'Выход'")
     public AndroidBasePage tapOnLogout() {
         buttons.searchAndClickButtonBy(LOGOUT_BUTTON);
-        return new AndroidBasePage(getAndroidDriver());
+        return new AndroidBasePage();
     }
 
     @Step("Тапнуть на 'Система быстрых платежей'")
     public DemoFastPaymentSystemPage tapOnFastPaymentSystem() {
         buttons.searchAndClickButtonBy(FAST_PAYMENT_SYSTEM_BUTTON);
-        return new DemoFastPaymentSystemPage(getAndroidDriver());
+        return new DemoFastPaymentSystemPage();
     }
 
     @Step("Тапнуть на 'Изменение пароля'")
@@ -59,7 +56,7 @@ public class DemoMorePage extends DemoVersionMainPage {
     @Step("Тапнуть на 'Персональные данные'")
     public DemoPersonalDataPage tapOnPersonalData() {
         buttons.searchAndClickButtonBy(PERSONAL_DATA);
-        return new DemoPersonalDataPage(getAndroidDriver());
+        return new DemoPersonalDataPage();
     }
 
     @Step("Тапнуть на toggle 'Вход по отпечатку пальца'")
@@ -88,18 +85,18 @@ public class DemoMorePage extends DemoVersionMainPage {
     @Step("Тапнуть на 'Курсы валют'")
     public CurrencyRatePage tapOnCurrencyRates() {
         buttons.searchAndClickButtonBy(CURRENCY_RATE);
-        return new CurrencyRatePage(getAndroidDriver());
+        return new CurrencyRatePage();
     }
 
     @Step("Тапнуть на 'SMS/Email уведомления'")
     public DemoPhoneAndEmail tapOnSmsAndEmailNotifications() {
         buttons.searchAndClickButtonBy(SMS_EMAIL_NOTIFICATIONS);
-        return new DemoPhoneAndEmail(getAndroidDriver());
+        return new DemoPhoneAndEmail();
     }
 
     @Step("Тапнуть на 'Адреса отделений'")
     public DemoDepartmentAddressesPage tapOnDepartmentAddresses() {
         buttons.searchAndClickButtonBy(DEPARTMENT_ADDRESSES);
-        return new DemoDepartmentAddressesPage(getAndroidDriver());
+        return new DemoDepartmentAddressesPage();
     }
 }

@@ -16,7 +16,7 @@ public class SendRequisitesOnEmptyEmailTest extends LoginSteps {
     @Test(description = "Отправка реквизитов на пустой Email. Хинт")
     public void sendingRequisitesOnEmptyEmailAndHintWorkingTest() {
         SoftAssert softAssert = new SoftAssert();
-        var requisitesPage = new RequisitesPage(getAndroidDriver());
+        var requisitesPage = new RequisitesPage();
         var isDisplayAboutEmpty = personalCabinetMainPage
                 .tapOnAccountInBlock()
                 .tapOnRequisitesButton()

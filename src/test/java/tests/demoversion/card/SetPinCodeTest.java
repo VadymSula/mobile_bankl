@@ -16,7 +16,7 @@ public class SetPinCodeTest extends DemoVersionMainTest {
                 .tapOnSetPinCodeButton()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
-        var isDisplayActionsBlock = new DemoCardPage(getAndroidDriver()).isDisplayActionsBlock();
+        var isDisplayActionsBlock = new DemoCardPage().isDisplayActionsBlock();
         Assert.assertTrue(actualResult && isDisplayActionsBlock);
     }
 }

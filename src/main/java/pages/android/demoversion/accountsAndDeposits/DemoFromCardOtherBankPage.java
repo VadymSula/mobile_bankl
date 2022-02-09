@@ -14,9 +14,6 @@ public class DemoFromCardOtherBankPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_cards_other_bank_refill_button_next")
     protected MobileElement NEXT_BUTTON;
 
-    public DemoFromCardOtherBankPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть на поле с плейсхолдером '000'" +
             "Ввести CVV в поле с плейсхолдером '000'")

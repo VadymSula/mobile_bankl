@@ -17,9 +17,6 @@ public class DemoByPhoneNumberPageDemo extends DemoPaymentsAndTransfersPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_by_phone_and_sbp_button_next")
     protected MobileElement TRANSFER_BUTTON;
 
-    public DemoByPhoneNumberPageDemo(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть по полю 'Номер телефона'")
     public DemoByPhoneNumberPageDemo tapOnPhoneNumber() {

@@ -6,6 +6,8 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import pages.android.PersonalCabinetMainPage;
 
+import static core.InitialDriver.getAndroidDriver;
+
 public class ConfirmLoginPage extends LoginPage {
 
     private static final String SMS_MESSAGE = "Мы отправили вам сообщение на";
@@ -39,9 +41,6 @@ public class ConfirmLoginPage extends LoginPage {
         return elements.isElementExist(CONFIRM_SMS_SCREEN);
     }
 
-    public ConfirmLoginPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Ввести код из смс")
     public ConfirmLoginPage inputCheckingCodeInFieldByCode(String code) {
@@ -57,7 +56,7 @@ public class ConfirmLoginPage extends LoginPage {
             e.printStackTrace();
         }
         buttons.searchAndClickButtonBy(CONFIRM_SMS_BUTTON);
-        return new PersonalCabinetMainPage(getAndroidDriver());
+        return new PersonalCabinetMainPage();
     }
 
     @Step("Тапнуть на кнопку \"Готово\"")
@@ -68,7 +67,7 @@ public class ConfirmLoginPage extends LoginPage {
             e.printStackTrace();
         }
         buttons.searchAndClickButtonBy(CONFIRM_SMS_BUTTON);
-        return new AccessRecoveryPage(getAndroidDriver());
+        return new AccessRecoveryPage();
     }
 
     @Step("Отображается экран подтверждения: ")

@@ -2,7 +2,6 @@ package tests.deposits;
 
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -17,7 +16,7 @@ public class OutgoingTransferSavingAccTest extends PaymentsAndTransfersBaseTest 
     @Test(description = "Исходящий перевод с накопительного счета")
     public void outgoingTransferFromDepositAccountTest() {
         SoftAssert softAssert = new SoftAssert();
-        var betweenAccountsPage = new BetweenAccountsPage(getAndroidDriver());
+        var betweenAccountsPage = new BetweenAccountsPage();
 
         stepToChooseAccountRecipient(softAssert, betweenAccountsPage);
         var isDisplayModalForAccountRecipient = betweenAccountsPage

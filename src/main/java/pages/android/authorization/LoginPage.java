@@ -11,9 +11,6 @@ public abstract class LoginPage extends AndroidBasePage {
 
     SoftAssert softAssert = new SoftAssert();
 
-    protected static final String USER_IS_NOT_EXIST_ALERT_TEXT = "Алерт 'Мы не нашли пользователя с такими данными. Убедитесь, что все введено корректно'";
-    protected static final String PART_OF_ALERT_MESSAGE_ABOUT_NON_EXIST_USER = "Мы не нашли";
-
     @AndroidFindBy(xpath = "//androidx.viewpager.widget.ViewPager/android.widget.ScrollView/android.view.ViewGroup")
     protected MobileElement FORM_CONTAINER;
     @AndroidFindBy(accessibility = "По Логину")
@@ -40,13 +37,13 @@ public abstract class LoginPage extends AndroidBasePage {
     @Step("Тапнуть на \"По логину\"")
     public LoginPageForLogin tapOnByLoginSection() {
         buttons.searchAndClickButtonBy(BY_CARD_SECTION);
-        return LoginPageForLogin.getLoginPageForLogin(getAndroidDriver());
+        return LoginPageForLogin.getLoginPageForLogin();
     }
 
     @Step("Тапнуть на \"По карте\"")
     public LoginPageForCard tapOnByCardSection() {
         buttons.searchAndClickButtonBy(BY_CARD_SECTION);
-        return LoginPageForCard.getLoginPageForCard(getAndroidDriver());
+        return LoginPageForCard.getLoginPageForCard();
     }
 
     @Step("Проверяем сообщения об ошибке ({text})")
@@ -64,10 +61,6 @@ public abstract class LoginPage extends AndroidBasePage {
         softAssert.assertAll();
     }
 
-
-    public LoginPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
 
 }

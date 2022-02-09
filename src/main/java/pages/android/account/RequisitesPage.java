@@ -3,9 +3,10 @@ package pages.android.account;
 import core.base.AndroidBasePage;
 import enums.Text;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
+
+import static core.InitialDriver.getAndroidDriver;
 
 public class RequisitesPage extends AndroidBasePage {
 
@@ -23,9 +24,6 @@ public class RequisitesPage extends AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/view_payment_field_hint")
     protected MobileElement VIEW_PAYMENT_FIELD_HINT;
 
-    public RequisitesPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть на кнопку \"Сохранить или переслать\"")
     public RequisitesPage tapOnSaveOrShareButton() {

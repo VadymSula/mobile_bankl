@@ -7,6 +7,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import pages.android.demoversion.DemoVersionMainPage;
 
+import static core.InitialDriver.getAndroidDriver;
+
 public class DemoLimitsPage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Все расходы в месяц')]/..")
     protected MobileElement ALL_EXPENSES_PER_MONTH_BUTTON;
@@ -22,14 +24,10 @@ public class DemoLimitsPage extends DemoVersionMainPage {
     protected MobileElement CASH_WITH_PER_DAY;
 
 
-    public DemoLimitsPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
-
     @Step("Тапнуть на 'Все расходы в месяц'")
     public DemoLimitManagementPage tapOnAllExpensesPerMonthButton() {
         buttons.searchAndClickButtonBy(ALL_EXPENSES_PER_MONTH_BUTTON);
-        return new DemoLimitManagementPage(getAndroidDriver());
+        return new DemoLimitManagementPage();
     }
 
     @Step("Тапнуть на 'Добавить'")
@@ -41,25 +39,25 @@ public class DemoLimitsPage extends DemoVersionMainPage {
     @Step("Тапнуть на 'Операции в Интернет в сутки'")
     public DemoLimitManagementPage tapOnInternetTransactionsPerDay() {
         buttons.searchAndClickButtonBy(INTERNET_TRANSACTIONS_PER_DAY);
-        return new DemoLimitManagementPage(getAndroidDriver());
+        return new DemoLimitManagementPage();
     }
 
     @Step("Тапнуть на 'Расходы за границей в сутки'")
     public DemoLimitManagementPage TapOnIspendingAbroadPerDay() {
         buttons.searchAndClickButtonBy(SPENDING_ABROAD_PER_DAY);
-        return new DemoLimitManagementPage(getAndroidDriver());
+        return new DemoLimitManagementPage();
     }
 
     @Step("Тапнуть на 'Все расходы в сутки'")
     public DemoLimitManagementPage tapOnAllExpensesPerDay() {
         buttons.searchAndClickButtonBy(ALL_EXPENSES_PER_DAY);
-        return new DemoLimitManagementPage(getAndroidDriver());
+        return new DemoLimitManagementPage();
     }
 
     @Step("Тапнуть на 'Выдача наличных в сутки'")
     public DemoLimitManagementPage tapOnCashWithPerDay() {
         buttons.searchAndClickButtonBy(CASH_WITH_PER_DAY);
-        return new DemoLimitManagementPage(getAndroidDriver());
+        return new DemoLimitManagementPage();
     }
 
     @Step("Тапнуть на '{allure}'")
@@ -67,7 +65,7 @@ public class DemoLimitsPage extends DemoVersionMainPage {
         buttons.searchAndClickButtonBy(
                  getAndroidDriver()
                         .findElement(By.xpath(key.getXpath())));
-        return new DemoLimitManagementPage(getAndroidDriver());
+        return new DemoLimitManagementPage();
     }
 
     public enum LIMITS_TYPE {

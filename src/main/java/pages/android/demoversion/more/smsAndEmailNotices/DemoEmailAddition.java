@@ -11,9 +11,6 @@ public class DemoEmailAddition extends DemoVersionMainPage {
     @AndroidFindBy(className = "android.widget.EditText")
     protected MobileElement EMAIL_EDITTEXT;
 
-    public DemoEmailAddition(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Ввести в поле 'Email' email")
     public DemoEmailAddition inputEmailInEmailField(String email) {

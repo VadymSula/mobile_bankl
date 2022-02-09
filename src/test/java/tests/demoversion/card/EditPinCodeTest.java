@@ -15,7 +15,7 @@ public class EditPinCodeTest extends DemoVersionMainTest {
                 .scrollAndTapOnEditPinCode()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
-        var isDisplayActionsBlock = new DemoCardPage(getAndroidDriver()).isDisplayActionsBlock();
+        var isDisplayActionsBlock = new DemoCardPage().isDisplayActionsBlock();
         Assert.assertTrue(actualResult && isDisplayActionsBlock);
     }
 }

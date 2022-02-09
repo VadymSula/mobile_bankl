@@ -57,9 +57,6 @@ public class BetweenAccountsPage extends AndroidBasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Накопительный счет']/ancestor::android.widget.LinearLayout[1]")
     protected MobileElement SAVING_ACCOUNT;
 
-    public BetweenAccountsPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Отображается экран \"перевод между счетами\"\n" +
             "Поля:\n" +
@@ -167,7 +164,7 @@ public class BetweenAccountsPage extends AndroidBasePage {
     @Step("Тапнуть на кнопку \"Вернуться в платежи\"")
     public PaymentsAndTransfersPage tapOnBackToPaymentsButton() {
         buttons.searchAndClickButtonBy(BACK_TO_PAYMENT_BUTTON);
-        return new PaymentsAndTransfersPage(getAndroidDriver());
+        return new PaymentsAndTransfersPage();
     }
 
     @Step("Тапнуть на поле \"Сумма\"\n" +

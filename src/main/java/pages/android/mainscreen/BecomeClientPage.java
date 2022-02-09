@@ -9,9 +9,6 @@ public class BecomeClientPage extends AndroidBasePage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_choose_product_switcher")
     protected MobileElement BECOME_CLIENT_CONTAINER;
 
-    public BecomeClientPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     public boolean isExistBecomeClientContainer() {
         return elements.isElementExist(BECOME_CLIENT_CONTAINER);

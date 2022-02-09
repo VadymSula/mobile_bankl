@@ -33,7 +33,7 @@ public class LoginPageForCard extends LoginPage {
     @Step("Тапнуть на кнопку \"Войти\"")
     public ConfirmLoginPage tapOnSignInButton() {
         buttons.searchAndClickButtonBy(SIGN_IN_BUTTON);
-        return new ConfirmLoginPage(getAndroidDriver());
+        return new ConfirmLoginPage();
     }
 
     @Step("Тапнуть на кнопку \"Войти\" и проверить текст ошибки ({text})")
@@ -61,7 +61,7 @@ public class LoginPageForCard extends LoginPage {
     @Step("Тапнуть на кнопку \"Забыли пароль?\"")
     public AccessRecoveryPage tapOnForgotPassword() {
         buttons.searchAndClickButtonBy(FORGOT_PASSWORD_BUTTON);
-        return new AccessRecoveryPage(getAndroidDriver());
+        return new AccessRecoveryPage();
     }
 
     @Step("Отображается заголовок \"Вход в мобильный банк по номеру карты\"")
@@ -120,13 +120,13 @@ public class LoginPageForCard extends LoginPage {
 
     private static LoginPageForCard instanse;
 
-    private LoginPageForCard(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
+    private LoginPageForCard() {
+        super();
     }
 
-    public static LoginPageForCard getLoginPageForCard(AndroidDriver<MobileElement> androidDriver) {
+    public static LoginPageForCard getLoginPageForCard() {
         if (instanse == null) {
-            return new LoginPageForCard(androidDriver);
+            return new LoginPageForCard();
         }
         return instanse;
     }

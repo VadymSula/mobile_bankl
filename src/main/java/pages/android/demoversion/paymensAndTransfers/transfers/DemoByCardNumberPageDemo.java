@@ -16,9 +16,6 @@ public class DemoByCardNumberPageDemo extends DemoPaymentsAndTransfersPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_by_card_button_next")
     protected MobileElement TRANSFER_BUTTON;
 
-    public DemoByCardNumberPageDemo(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Заполнить поля:\n" +
             "Номер карты: '{cardNumber}'\n" +

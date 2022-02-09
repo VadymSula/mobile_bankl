@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 import pages.android.demoversion.paymensAndTransfers.DemoPaymentsAndTransfersPage;
 
 public class PaymentsAndTransfersMainTest extends BaseTest {
-    protected final DemoPaymentsAndTransfersPage demoPaymentsAndTransfersPage = new DemoPaymentsAndTransfersPage(getAndroidDriver());
+    protected final DemoPaymentsAndTransfersPage demoPaymentsAndTransfersPage = new DemoPaymentsAndTransfersPage();
 
     @BeforeClass
     public void goToDemoVersionAndPayments() {

@@ -23,9 +23,6 @@ public class DemoSystemOfFastPaymentsPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_transfer_by_phone_and_sbp_button_next")
     protected MobileElement TRANSFER_BUTTON_SBP;
 
-    public DemoSystemOfFastPaymentsPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Заполнить поля: ")
     public DemoSystemOfFastPaymentsPage fillInFieldsForSBP(String transferSum, String comment) {

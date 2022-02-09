@@ -14,9 +14,7 @@ public class DemoLimitManagementPage extends DemoVersionMainPage {
     @AndroidFindBy(accessibility = "Navigate up")
     protected MobileElement BACK_BUTTON;
 
-    public DemoLimitManagementPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
+
 
     @Step()
     public DemoLimitManagementPage editLimitValue(String limitValue) {
@@ -33,6 +31,6 @@ public class DemoLimitManagementPage extends DemoVersionMainPage {
     @Step()
     public DemoLimitsPage tapOnBackButton() {
         buttons.searchAndClickButtonBy(BACK_BUTTON);
-        return new DemoLimitsPage(getAndroidDriver());
+        return new DemoLimitsPage();
     }
 }

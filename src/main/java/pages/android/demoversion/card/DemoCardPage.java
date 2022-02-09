@@ -38,9 +38,6 @@ public class DemoCardPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_two_columns_value")
     protected List<MobileElement> CARD_VALUE;
 
-    public DemoCardPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть на 'Условия программы'")
     public DemoCashBackConditionsPage scrollAndTapOnDetailsCashBackConditions() {
@@ -48,7 +45,7 @@ public class DemoCardPage extends DemoVersionMainPage {
         screen.scrollablePageAndroidByText(text);
         buttons.searchAndClickButtonBy(CASHBACK_CONDITIONS);
 
-        return new DemoCashBackConditionsPage(getAndroidDriver());
+        return new DemoCashBackConditionsPage();
     }
 
     @Step("Проскроллить к блоку 'Действия'")
@@ -72,7 +69,7 @@ public class DemoCardPage extends DemoVersionMainPage {
     public DemoLimitsPage tapOnLimitsButton() {
         screen.scrollablePageAndroidByText(LIMITS_TEXT);
         buttons.searchAndClickButtonBy(LIMITS_BUTTON);
-        return new DemoLimitsPage(getAndroidDriver());
+        return new DemoLimitsPage();
     }
 
     @Step("Проскроллить к блоку 'Действия' и тапнуть на 'Изменить ПИН-код'")

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import pages.android.mainscreen.BecomeClientPage;
 
 public class BecomeClientTest extends BaseTest {
-    private final BecomeClientPage becomeClientPage = new BecomeClientPage(getAndroidDriver());
+    private final BecomeClientPage becomeClientPage = new BecomeClientPage();
 
     @Test
     public void toBecomeClient() {

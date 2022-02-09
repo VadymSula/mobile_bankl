@@ -29,13 +29,13 @@ public class LoginPageForLogin extends LoginPage {
 
     private static LoginPageForLogin instance;
 
-    private LoginPageForLogin(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
+    private LoginPageForLogin() {
+        super();
     }
 
-    public static LoginPageForLogin getLoginPageForLogin(AndroidDriver<MobileElement> androidDriver) {
+    public static LoginPageForLogin getLoginPageForLogin() {
         if (instance == null) {
-            return new LoginPageForLogin(androidDriver);
+            return new LoginPageForLogin();
         }
         return instance;
     }
@@ -74,7 +74,7 @@ public class LoginPageForLogin extends LoginPage {
     @Step("Тап на кнопку 'Войти'")
     public ConfirmLoginPage tapOnSignInButton() {
         buttons.searchAndClickButtonBy(SIGN_IN_BUTTON);
-        return new ConfirmLoginPage(getAndroidDriver());
+        return new ConfirmLoginPage();
     }
 
 

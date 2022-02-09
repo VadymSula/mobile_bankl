@@ -11,10 +11,6 @@ public class DemoCashBackConditionsPage extends DemoCardPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_cashback_container")
     protected MobileElement CASHBACK_PAGE;
 
-    public DemoCashBackConditionsPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
-
     public boolean scrollAndTapOnDetailConditions() {
         return elements.isElementExist(CASHBACK_PAGE);
     }

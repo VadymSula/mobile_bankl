@@ -30,9 +30,6 @@ public class DemoByRequisitesPage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Перевести')]/..")
     protected MobileElement TRANSFER_BUTTON;
 
-    public DemoByRequisitesPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Заполнить поля")
     public DemoByRequisitesPage fillInFields(Requisites requisites, String bikSearchFieldValue) {

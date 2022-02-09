@@ -17,9 +17,6 @@ public class DemoMobileConnectionPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_top_up_mobile_button_next")
     protected MobileElement MOBILE_CONNECTION_TRANSFER_BUTTON;
 
-    public DemoMobileConnectionPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Ввести в поле: {phoneNumber}")
     public DemoMobileConnectionPage inputPhoneNumberInField(String phoneNumber) {

@@ -15,7 +15,7 @@ public class NotEnoughFundsToPaymentTest extends PaymentsAndTransfersBaseTest {
     @Test(description = "Недостаточно средств")
     public void notEnoughFundsToPaymentsBetweenAccountsTest() {
         SoftAssert softAssert = new SoftAssert();
-        var betweenAccountsPage = new BetweenAccountsPage(getAndroidDriver());
+        var betweenAccountsPage = new BetweenAccountsPage();
 
         stepToChooseAccountRecipient(softAssert, betweenAccountsPage);
         var isDisplayModalForAccountRecipient = betweenAccountsPage

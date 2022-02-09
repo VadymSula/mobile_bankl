@@ -25,9 +25,6 @@ public class DemoInternetAndTVPage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView/..")
     protected MobileElement FIRST_VENDOR;
 
-    public DemoInternetAndTVPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть на кнопку 'Оплата по QR-коду'")
     public DemoInternetAndTVPage tapOnByQRCodePaymentButton() {

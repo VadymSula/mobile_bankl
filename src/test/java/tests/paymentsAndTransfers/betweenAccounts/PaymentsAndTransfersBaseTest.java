@@ -7,7 +7,7 @@ import pages.android.paymentsAndTransfers.BetweenAccountsPage;
 import pages.android.paymentsAndTransfers.PaymentsAndTransfersPage;
 
 public class PaymentsAndTransfersBaseTest extends BaseTest {
-    protected PaymentsAndTransfersPage paymentsAndTransfersPage = new PaymentsAndTransfersPage(getAndroidDriver());
+    protected PaymentsAndTransfersPage paymentsAndTransfersPage = new PaymentsAndTransfersPage();
 
     @BeforeClass
     public void passTheOnboarding() {

@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import pages.android.authorization.ConfirmLoginPage;
 import tests.authorization.AuthorizationMainTest;
 
+import static core.InitialDriver.getAndroidDriver;
+
 public class AttemptsLimitReachedTest extends AuthorizationMainTest {
 
     @Epic("Авторизация")
@@ -17,7 +19,7 @@ public class AttemptsLimitReachedTest extends AuthorizationMainTest {
     @Test(description = "Ошибка \"Лимит попыток исчерпан\"")
     @Parameters({"login", "password"})
     public void attemptsLimitReachedAfterInputOfInvalidCode(String login, String password) {
-        ConfirmLoginPage confirmLoginPage = new ConfirmLoginPage(getAndroidDriver());
+        ConfirmLoginPage confirmLoginPage = new ConfirmLoginPage();
         loginAndSignInSteps(login, password)
                 .inputCheckingCodeInFieldByCode("0000")
                 .tapOnReadyButton();

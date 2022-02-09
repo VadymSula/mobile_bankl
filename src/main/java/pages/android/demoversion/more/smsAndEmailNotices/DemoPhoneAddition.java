@@ -10,9 +10,6 @@ public class DemoPhoneAddition extends DemoVersionMainPage {
     @AndroidFindBy(className = "android.widget.EditText")
     protected MobileElement PHONE_NUMBER_EDITTEXT;
 
-    public DemoPhoneAddition(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть в поле 'Номер телефона' и написать номер телефона")
     public DemoPhoneAddition tapOnPhoneNumberFieldAndWriteNumber(String phoneNumber) {

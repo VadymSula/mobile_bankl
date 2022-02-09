@@ -3,7 +3,6 @@ package pages.android.paymentsAndTransfers;
 import config.PropertiesConfig;
 import core.base.AndroidBasePage;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 
@@ -20,9 +19,6 @@ public class PaymentsAndTransfersPage extends AndroidBasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Между счетами']/..")
     protected MobileElement PAYMENT_BETWEEN_ACCOUNTS;
 
-    public PaymentsAndTransfersPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Отображается подсказка \"Быстрые платежи\" с текстом:\n" +
             "\"Все успешно выполненные операции временно сохраняются в меню быстрых платежей. " +
@@ -77,6 +73,6 @@ public class PaymentsAndTransfersPage extends AndroidBasePage {
     @Step("Тапнуть на иконку \"Между счетами\"")
     public BetweenAccountsPage tapOnBetweenAccountsIcon() {
         buttons.searchAndClickButtonBy(PAYMENT_BETWEEN_ACCOUNTS);
-        return new BetweenAccountsPage(getAndroidDriver());
+        return new BetweenAccountsPage();
     }
 }

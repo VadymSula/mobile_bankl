@@ -17,14 +17,12 @@ public class RateWithOptionPage extends OptionConditionsPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_saving_account_month_rate_levels_payments_header")
     protected MobileElement RATE_LEVELS_PAYMENTS_TITTLE;
 
-    public RateWithOptionPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
+
 
     @Step("Тапнуть кнопку \"Назад\"")
     public OptionConditionsPage tapOnBackButton() {
         buttons.searchAndClickButtonBy(BACK_BUTTON);
-        return new OptionConditionsPage(getAndroidDriver());
+        return new OptionConditionsPage();
     }
 
     @Step("Экран \"Ставка из опцией\":")

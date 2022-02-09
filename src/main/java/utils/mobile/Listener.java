@@ -1,17 +1,18 @@
 package utils.mobile;
 
-import core.base.BaseTest;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import static core.InitialDriver.getAndroidDriver;
+
 public class Listener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         Object currentClass = result.getInstance();
-        var driver = ((BaseTest) currentClass).getAndroidDriver();
+        var driver = getAndroidDriver();
         var srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         saveScreenshot(srcFile);
     }

@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import pages.android.demoversion.DemoVersionMainPage;
 import pages.android.demoversion.card.DemoCardPage;
 
+import static core.InitialDriver.getAndroidDriver;
+
 public class DemoAccountPage extends DemoVersionMainPage {
     private static final String SALARY_ACCOUNT_NAME = "Зарплатный счет";
     private static final String CERTIFICATE_AVAILABLE_RESIDUE_TEXT = "Справка о доступном остатке";
@@ -43,9 +45,7 @@ public class DemoAccountPage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, '" + CERTIFICATE_AVAILABLE_RESIDUE_TEXT + "')]/..")
     protected MobileElement CERTIFICATE_AVAILABLE_RESIDUE;
 
-    public DemoAccountPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
+
 
     // Возвращает карту по последним 4 цифрам
     private MobileElement getCard(String cardNumber){
@@ -56,7 +56,7 @@ public class DemoAccountPage extends DemoVersionMainPage {
     @Step("Тапнуть на карте с номером {cardNumber}")
     public DemoCardPage tapOnCardWithNumber(String cardNumber) {
         buttons.searchAndClickButtonBy(getCard(cardNumber));
-        return new DemoCardPage(getAndroidDriver());
+        return new DemoCardPage();
     }
 
     @Step("Тапнуть на кнопку 'Переименовать'")
@@ -74,13 +74,13 @@ public class DemoAccountPage extends DemoVersionMainPage {
     @Step("Тапнуть 'Реквизиты'")
     public DemoRequisitesPage tapOnRequisites() {
         buttons.searchAndClickButtonBy(REQUISITES_BUTTON);
-        return new DemoRequisitesPage(getAndroidDriver());
+        return new DemoRequisitesPage();
     }
 
     @Step("Тапнуть на 'Карту' последнюю карту с номером *3457")
     public DemoCardPage tapOnCardWithoutPinCode() {
         buttons.searchAndClickButtonBy(CARD_WITHOUT_PIN_CODE);
-        return new DemoCardPage(getAndroidDriver());
+        return new DemoCardPage();
     }
 
     @Step("Тапнуть на опцию 'Со своего счета'")
@@ -92,7 +92,7 @@ public class DemoAccountPage extends DemoVersionMainPage {
     @Step("Тапнуть на опцию 'С карты другого банка'")
     public DemoChooseCardPage tapOnFromCardOfOtherBankButton() {
         buttons.searchAndClickButtonBy(FROM_CARD_OTHER_BANK);
-        return new DemoChooseCardPage(getAndroidDriver());
+        return new DemoChooseCardPage();
     }
 
     @Step("Тапнуть на опцию 'Запросить платеж'")
@@ -134,13 +134,13 @@ public class DemoAccountPage extends DemoVersionMainPage {
     @Step("Тапнуть на первую карту с номером *3438")
     public DemoCardPage tapOnCardWithPinCode() {
         buttons.searchAndClickButtonBy(CARD_WITH_PIN_CODE);
-        return new DemoCardPage(getAndroidDriver());
+        return new DemoCardPage();
     }
 
     @Step("Тапнуть на опцию '" + CERTIFICATE_AVAILABLE_RESIDUE_TEXT + "'")
     public DemoCertificateAvailableResiduePage tapOnCertificateAvailableResidue() {
         screen.scrollablePageAndroidByText(CERTIFICATE_AVAILABLE_RESIDUE_TEXT);
         buttons.searchAndClickButtonBy(CERTIFICATE_AVAILABLE_RESIDUE);
-        return new DemoCertificateAvailableResiduePage(getAndroidDriver());
+        return new DemoCertificateAvailableResiduePage();
     }
 }

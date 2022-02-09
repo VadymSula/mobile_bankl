@@ -19,7 +19,7 @@ public class PersonalDataTest extends MoreMainTest {
 
     @Test(priority = 1)
     public void editPersonalDataTest() {
-        var actualResult = new DemoPersonalDataPage(getAndroidDriver())
+        var actualResult = new DemoPersonalDataPage()
                 .tapOnEditCodeWord()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 

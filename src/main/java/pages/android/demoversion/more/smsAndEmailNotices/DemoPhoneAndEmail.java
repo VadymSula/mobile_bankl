@@ -14,9 +14,7 @@ public class DemoPhoneAndEmail extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Добавить ещё один Email')]")
     protected MobileElement ADD_NEW_EMAIL;
 
-    public DemoPhoneAndEmail(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
+
 
     @Step("Тапнуть на 'Удаление номера'")
     public DemoPhoneAndEmail tapOnDeleteFirstNumber() {
@@ -27,12 +25,12 @@ public class DemoPhoneAndEmail extends DemoVersionMainPage {
     @Step("Тапнуть на 'Добавить еще один номер'")
     public DemoPhoneAddition tapOnNewNumberAddition() {
         buttons.searchAndClickButtonBy(ADD_NEW_NUMBER);
-        return new DemoPhoneAddition(getAndroidDriver());
+        return new DemoPhoneAddition();
     }
 
     @Step("Тапнуть на 'Добавить еще один Email'")
     public DemoEmailAddition tapOnNewEmailAddition() {
         buttons.searchAndClickButtonBy(ADD_NEW_EMAIL);
-        return new DemoEmailAddition(getAndroidDriver());
+        return new DemoEmailAddition();
     }
 }

@@ -1,19 +1,16 @@
 package core.base;
 
-import core.InitialDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import pages.android.PersonalCabinetMainPage;
 import utils.mobile.Listener;
 
+import static core.InitialDriver.*;
+
 @Listeners(Listener.class)
 public class BaseTest {
-    private final AndroidDriver<MobileElement> androidDriver = (AndroidDriver<MobileElement>) InitialDriver.getDriver();
-    protected AndroidBasePage androidBasePage = new AndroidBasePage(getAndroidDriver());
-    protected PersonalCabinetMainPage personalCabinetMainPage = new PersonalCabinetMainPage(getAndroidDriver());
+    protected AndroidBasePage androidBasePage = new AndroidBasePage();
+    protected PersonalCabinetMainPage personalCabinetMainPage = new PersonalCabinetMainPage();
+
 
     @AfterClass
     public void afterMobileTests() {
@@ -22,7 +19,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void afterMethod(){
+    public void afterMethod() {
         getAndroidDriver().closeApp();
     }
 
@@ -31,7 +28,4 @@ public class BaseTest {
 //        getAppiumDriver().removeApp(PropertiesConfig.getProperty("myAppPackage"));
 //    }
 
-    public AndroidDriver<MobileElement> getAndroidDriver() {
-        return androidDriver;
-    }
 }

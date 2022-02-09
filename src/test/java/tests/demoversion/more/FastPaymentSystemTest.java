@@ -22,7 +22,7 @@ public class FastPaymentSystemTest extends MoreMainTest {
 
     @Test(priority = 1)
     public void isNotAvailableInDemoVersion() {
-        var actualResult = new DemoFastPaymentSystemPage(getAndroidDriver())
+        var actualResult = new DemoFastPaymentSystemPage()
                 .tapOnOkButtonAndGoToSBP()
                 .tapOnAgreeConditionsCheckbox()
                 .tapOnConnectButton()

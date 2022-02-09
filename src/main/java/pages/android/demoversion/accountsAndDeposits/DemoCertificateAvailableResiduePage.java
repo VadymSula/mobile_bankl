@@ -16,10 +16,6 @@ public class DemoCertificateAvailableResiduePage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.RadioGroup/android.widget.LinearLayout[1]")
     protected MobileElement FIRST_CHECKBOX_ACCOUNT;
 
-    public DemoCertificateAvailableResiduePage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
-
     @Step("Тапнуть на поле с плейсхолдером 'Email' " +
             "| Ввести электронный адрес в поле с плейсхолдером 'Email'")
     public DemoCertificateAvailableResiduePage fillTheEmailField(String email) {

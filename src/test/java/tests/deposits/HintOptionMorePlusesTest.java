@@ -27,15 +27,15 @@ public class HintOptionMorePlusesTest extends AuthWithStandStep {
                 .tapOnDepositWithOption()
                 .isDisplayDepositScreen();
         softAssert.assertTrue(isDisplayDepositScreen);
-        var isDisplayConditions = new DepositPage(getAndroidDriver())
+        var isDisplayConditions = new DepositPage()
                 .tapOnHintInOptionMorePluses()
                 .isDisplayOptionsConditionsShower();
         softAssert.assertTrue(isDisplayConditions);
-        var isDisplayRateWithOptionScreen = new OptionConditionsPage(getAndroidDriver())
+        var isDisplayRateWithOptionScreen = new OptionConditionsPage()
                 .tapOnHowRateFormedLink()
                 .isDisplayRateWithOptionScreen();
         softAssert.assertTrue(isDisplayRateWithOptionScreen);
-        var isDisplayConditionsAfterBackClick = new RateWithOptionPage(getAndroidDriver())
+        var isDisplayConditionsAfterBackClick = new RateWithOptionPage()
                 .tapOnBackButton()
                 .isDisplayOptionConditionsShower();
         softAssert.assertTrue(isDisplayConditionsAfterBackClick);

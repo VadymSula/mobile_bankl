@@ -6,41 +6,56 @@ import io.appium.java_client.functions.AppiumFunction;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import static core.InitialDriver.getAndroidDriver;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.testng.Assert.fail;
 
 public class Waiters {
     protected static final Logger LOGGER = LoggerFactory.getLogger(Waiters.class);
 
-    protected static final long WAIT_ELEMENT_TIMEOUT_IN_SECONDS = 15L;
+    private final AppiumDriver<MobileElement> driver;
+    WebDriverWait wait;
+
+    public static final long IMPLICITLY_WAIT = 15L;
+    protected static final long EXPLICITLY_WAIT = 5L;
     protected static final long WAIT_ELEMENT_NOT_EXIST_TIMEOUT_IN_SECONDS = 5L;
 
-    AppiumDriver<MobileElement> driver;
 
-    public Waiters(AppiumDriver<MobileElement> driver) {
-        this.driver = driver;
+    private static Waiters instance;
+
+    public static Waiters getWaiters() {
+        if (instance == null) {
+            return new Waiters();
+        }
+        return instance;
+    }
+
+    private Waiters() {
+        this.driver = getAndroidDriver();
+        this.wait = new WebDriverWait(getAndroidDriver(), EXPLICITLY_WAIT);
     }
 
     public void waitForAlert() {
-        waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(ExpectedConditions.alertIsPresent());
+        waiter(EXPLICITLY_WAIT).until(ExpectedConditions.alertIsPresent());
     }
 
     public MobileElement getElementAfterWaitForVisibility(MobileElement mobileElement) {
-        return (MobileElement) waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(ExpectedConditions.visibilityOf(mobileElement));
+        return (MobileElement) waiter(EXPLICITLY_WAIT).until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
     public void waitForVisibility(MobileElement mobileElement) {
-        waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(ExpectedConditions.visibilityOf(mobileElement));
+        waiter(EXPLICITLY_WAIT).until(ExpectedConditions.visibilityOf(mobileElement));
     }
 
     public MobileElement waitForElementClickable(MobileElement element) {
-        return (MobileElement) waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(elementToBeClickable(element));
+        return (MobileElement) waiter(EXPLICITLY_WAIT).until(elementToBeClickable(element));
     }
 
     public MobileElement waitForElementClickable(MobileElement element, Long duration) {
@@ -48,7 +63,7 @@ public class Waiters {
     }
 
     public void waitForChangeAttribute(By by, String attribute, String attributeValue) {
-        waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(ExpectedConditions.attributeContains(by, attribute, attributeValue));
+        waiter(EXPLICITLY_WAIT).until(ExpectedConditions.attributeContains(by, attribute, attributeValue));
     }
 
     public void waitForElementVisibleNot(By byElement) {
@@ -65,35 +80,17 @@ public class Waiters {
     }
 
     public boolean isElementExist(MobileElement element) {
-        boolean isElementExist;
-        setWaitElementTimeout(WAIT_ELEMENT_NOT_EXIST_TIMEOUT_IN_SECONDS);
-
-        try {
-            isElementExist = element.isDisplayed();
-        } catch (NoSuchElementException | ElementNotInteractableException e) {
-            isElementExist = false;
-        }
-
-        setWaitElementTimeout(WAIT_ELEMENT_TIMEOUT_IN_SECONDS);
-        return isElementExist;
+        wait.until(ExpectedConditions.visibilityOf(element));
+        return element.isDisplayed();
     }
 
     public boolean isElementExist(MobileElement element, Long duration) {
-        boolean isElementExist;
-        setWaitElementTimeout(duration);
-
-        try {
-            isElementExist = element.isDisplayed();
-        } catch (NoSuchElementException | ElementNotInteractableException e) {
-            isElementExist = false;
-        }
-
-        setWaitElementTimeout(WAIT_ELEMENT_TIMEOUT_IN_SECONDS);
-        return isElementExist;
+        new WebDriverWait(driver, duration).until(ExpectedConditions.visibilityOf(element));
+        return element.isDisplayed();
     }
 
     public void waitUntilFunctionIsTrue(AppiumFunction<AppiumDriver<MobileElement>, Object> function) {
-        waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS).until(function);
+        waiter(EXPLICITLY_WAIT).until(function);
     }
 
     protected void waitUntilFunctionIsTrue(AppiumFunction<AppiumDriver<MobileElement>, Object> function, String errorMessage) {
@@ -107,7 +104,7 @@ public class Waiters {
         try {
             waitForVisibility(element);
         } catch (Exception e) {
-            var errorMessage = pageName + " was not loaded after " + WAIT_ELEMENT_TIMEOUT_IN_SECONDS + " seconds.\n";
+            var errorMessage = pageName + " was not loaded after " + EXPLICITLY_WAIT + " seconds.\n";
             fail(errorMessage);
             LOGGER.error(errorMessage);
             e.printStackTrace();
@@ -122,7 +119,7 @@ public class Waiters {
         try {
             waitForElementVisibleNot(By.xpath(rootPageLocator));
         } catch (Exception e) {
-            fail(pageName + " was not closed after " + WAIT_ELEMENT_TIMEOUT_IN_SECONDS + " seconds.\n" + e.getMessage());
+            fail(pageName + " was not closed after " + EXPLICITLY_WAIT + " seconds.\n" + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -137,13 +134,12 @@ public class Waiters {
     }
 
     private FluentWait<AppiumDriver<MobileElement>> waiter(String errorMessage) {
-        return waiter(WAIT_ELEMENT_TIMEOUT_IN_SECONDS)
-                .withMessage(errorMessage + "\nWait timeout: " + WAIT_ELEMENT_TIMEOUT_IN_SECONDS + " seconds.\n");
+        return waiter(EXPLICITLY_WAIT)
+                .withMessage(errorMessage + "\nWait timeout: " + EXPLICITLY_WAIT + " seconds.\n");
     }
 
     public void waitSomeSecond(Integer seconds) {
         int timeOnMills = seconds * 1000;
-
         try {
             Thread.sleep(timeOnMills);
         } catch (InterruptedException e) {
@@ -151,8 +147,5 @@ public class Waiters {
         }
     }
 
-    private void setWaitElementTimeout(long timeoutInSeconds) {
-        driver.manage().timeouts().implicitlyWait(timeoutInSeconds, TimeUnit.SECONDS);
-    }
 }
 

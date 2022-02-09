@@ -8,9 +8,12 @@ import pages.android.authorization.LoginPageForLogin;
 import utils.EnvVariablesGetter;
 import utils.integration.fimi.SOAPClientSAAJ;
 
+import static core.InitialDriver.getAndroidDriver;
+
 public class LoginSteps extends BaseStep {
-    protected static LoginPageForLogin loginPageForLogin = LoginPageForLogin.getLoginPageForLogin(getAndroidDriver());
-    protected static PersonalCabinetMainPage personalCabinetMainPage = new PersonalCabinetMainPage(getAndroidDriver());
+    protected static LoginPageForLogin loginPageForLogin = LoginPageForLogin.getLoginPageForLogin();
+    protected static PersonalCabinetMainPage personalCabinetMainPage = new PersonalCabinetMainPage();
+
 
     @Step("Выбрать стенд и залогиниться")
     public static void chooseTestStandAndLogin(String login, String password) {
@@ -39,7 +42,7 @@ public class LoginSteps extends BaseStep {
 
     private static String getCheckingCode(String login) {
         return SOAPClientSAAJ.getDynamicCodeByHisNumber(
-                new ConfirmLoginPage(getAndroidDriver())
+                new ConfirmLoginPage()
                         .getNumberOfCheckingCode(),
                 login
         );

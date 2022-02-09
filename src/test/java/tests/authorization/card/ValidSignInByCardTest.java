@@ -17,7 +17,7 @@ public class ValidSignInByCardTest extends AuthorizationMainTest {
     @Test(description = "Валидный вход по карте")
     public void validSignInByCardTest() {
         SoftAssert softAssert = new SoftAssert();
-        var confirmLoginPage = new ConfirmLoginPage(getAndroidDriver());
+        var confirmLoginPage = new ConfirmLoginPage();
         boolean isDisplayConfirmLoginByCardScreen = loginPageForLogin
                 .tapOnByCardSection()
                 .isDisplaySignInScreenAndSectionsForCard()

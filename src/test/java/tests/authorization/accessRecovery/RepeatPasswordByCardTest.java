@@ -24,16 +24,16 @@ public class RepeatPasswordByCardTest extends AuthorizationMainTest {
                 .tapOnForgotPassword()
                 .isDisplayAccessRecoveryScreen();
         boolean isDisplayCreatePasswordTittle =
-                AccessRecoveryPage.getAccessRecoveryPage(getAndroidDriver())
+                AccessRecoveryPage.getAccessRecoveryPage()
                 .tapOnCardNumberFieldAndInputCard("4301805015601446")
                 .tapOnSignInButton()
                 .tapOnReadyButtonAfterAccessRecovery()
                 .isDisplayCreatePasswordTittle();
         boolean isDisplayConfirmPassTittle =
-                AccessRecoveryPage.getAccessRecoveryPage(getAndroidDriver())
+                AccessRecoveryPage.getAccessRecoveryPage()
                 .inputPassword()
                 .isDisplayConfirmPasswordTittle();
-        AccessRecoveryPage.getAccessRecoveryPage(getAndroidDriver())
+        AccessRecoveryPage.getAccessRecoveryPage()
                 .inputPassword();
         softAssert.assertTrue(isDisplayAccessRecoveryScreen);
         softAssert.assertTrue(isDisplayCreatePasswordTittle);

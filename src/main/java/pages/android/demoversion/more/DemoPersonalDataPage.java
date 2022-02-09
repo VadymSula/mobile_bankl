@@ -15,9 +15,6 @@ public class DemoPersonalDataPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_code_word_edit_action_button")
     protected MobileElement EDIT_CODE_WORD_BUTTON;
 
-    public DemoPersonalDataPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть на 'кодовое слово'")
     public DemoPersonalDataPage tapOnCodeWordButton() {

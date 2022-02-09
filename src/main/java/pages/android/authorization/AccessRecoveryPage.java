@@ -29,16 +29,14 @@ public class AccessRecoveryPage extends LoginPage {
 
     private static AccessRecoveryPage instanse;
 
-    public static AccessRecoveryPage getAccessRecoveryPage(AndroidDriver<MobileElement> androidDriver) {
+    public static AccessRecoveryPage getAccessRecoveryPage() {
         if (instanse == null) {
-            return new AccessRecoveryPage(androidDriver);
+            return new AccessRecoveryPage();
         }
         return instanse;
     }
 
-    public AccessRecoveryPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
+
 
     @Step("Отображается экран \"Восстановление доступа\":")
     public boolean isDisplayAccessRecoveryScreen() {
@@ -59,7 +57,7 @@ public class AccessRecoveryPage extends LoginPage {
     @Step("Тапнуть на кнопку \"Войти\"")
     public ConfirmLoginPage tapOnSignInButton() {
         buttons.searchAndClickButtonBy(SIGN_IN_BUTTON);
-        return new ConfirmLoginPage(getAndroidDriver());
+        return new ConfirmLoginPage();
     }
 
     @Step("Отображается текст \"Придумайте пароль\"")

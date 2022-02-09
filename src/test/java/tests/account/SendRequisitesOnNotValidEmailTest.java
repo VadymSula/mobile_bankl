@@ -28,7 +28,7 @@ public class SendRequisitesOnNotValidEmailTest extends BaseTest {
 
     @Test(priority = 1)
     public void isExistMessageAboutIncorrectEmail() {
-        var actualResult = new RequisitesPage(getAndroidDriver())
+        var actualResult = new RequisitesPage()
                 .tapOnSendButton()
                 .isDisplayMessageAboutIncorrectEmail();
 
@@ -37,7 +37,7 @@ public class SendRequisitesOnNotValidEmailTest extends BaseTest {
 
     @Test(priority = 2)
     public void isDisplayQuestionIconAgain() {
-        var actualResult = new RequisitesPage(getAndroidDriver())
+        var actualResult = new RequisitesPage()
                 .tapOnOkButton()
                 .isDisplayQuestionIcon();
 

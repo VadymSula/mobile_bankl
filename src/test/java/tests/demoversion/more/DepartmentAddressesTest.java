@@ -22,7 +22,7 @@ public class DepartmentAddressesTest extends MoreMainTest {
     @Test(priority = 1)
     @Flaky
     public void isDisplayListOfAddresses() {
-        var departmentAddressesPage = new DemoDepartmentAddressesPage(getAndroidDriver());
+        var departmentAddressesPage = new DemoDepartmentAddressesPage();
         var actualResult = departmentAddressesPage
                 .tapOnListOfAddresses()
                 .isDisplayListOfAddresses();

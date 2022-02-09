@@ -28,10 +28,6 @@ public class DemoFastPaymentSystemPage extends DemoVersionMainPage {
     @AndroidFindBy(id = "cb.ibank:id/view_controller_sbp_settings_button_connect")
     protected MobileElement CONNECT_BUTTON;
 
-    public DemoFastPaymentSystemPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
-
     @Step("Тапнуть на хинт 'о СБП'")
     public DemoFastPaymentSystemPage tapOnHintAboutFastPaymentSystem() {
         buttons.searchAndClickButtonBy(SHOW_INFO_BUTTON);

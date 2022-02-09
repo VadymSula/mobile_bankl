@@ -37,33 +37,30 @@ public class DemoPaymentsAndTransfersPage extends DemoVersionMainPage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Образование')]/..")
     protected MobileElement EDUCATION_BUTTON;
 
-    public DemoPaymentsAndTransfersPage(AndroidDriver<MobileElement> androidDriver) {
-        super(androidDriver);
-    }
 
     @Step("Тапнуть на 'По номеру телефона' в разделе 'Переводы'")
     public DemoByPhoneNumberPageDemo tapOnByPhoneNumberButton() {
         buttons.searchAndClickButtonBy(BY_PHONE_NUMBER_BUTTON);
-        return new DemoByPhoneNumberPageDemo(getAndroidDriver());
+        return new DemoByPhoneNumberPageDemo();
     }
 
     @Step("Тапнуть на кнопку 'Между счетами'")
     public DemoBetweenAccountsPageDemo tapOnBetweenAccountsButton() {
         buttons.searchAndClickButtonBy(BETWEEN_ACCOUNTS);
-        return new DemoBetweenAccountsPageDemo(getAndroidDriver());
+        return new DemoBetweenAccountsPageDemo();
     }
 
     @Step("Тапнуть кнопку 'По номеру карты'")
     public DemoByCardNumberPageDemo tapOnByCardNumberButton() {
         buttons.searchAndClickButtonBy(BY_CARD_NUMBER);
-        return new DemoByCardNumberPageDemo(getAndroidDriver());
+        return new DemoByCardNumberPageDemo();
     }
 
     @Step("Тапнуть кнопку 'По реквизитам'")
     public DemoByRequisitesPage tapOnByRequisitesButton() {
         screen.swipeScreenWithPressTime(Screen.Direction.LEFT, 1000, null);
         buttons.searchAndClickButtonBy(BY_REQUISITES);
-        return new DemoByRequisitesPage(getAndroidDriver());
+        return new DemoByRequisitesPage();
     }
 
     @Step("Тапнуть кнопку 'СБП'")
@@ -76,7 +73,7 @@ public class DemoPaymentsAndTransfersPage extends DemoVersionMainPage {
     @Step("Тапнуть кнопку 'По номеру телефона'")
     public DemoSystemOfFastPaymentsPage tapOnByPhoneNumberButtonThroughSBP() {
         buttons.searchAndClickButtonBy(BY_PHONE_NUMBER_BUTTON);
-        return new DemoSystemOfFastPaymentsPage(getAndroidDriver());
+        return new DemoSystemOfFastPaymentsPage();
     }
 
     @Step("Тапнуть на кнопку 'Оплата по QR-коду'")
@@ -89,7 +86,7 @@ public class DemoPaymentsAndTransfersPage extends DemoVersionMainPage {
     public DemoMobileConnectionPage tapOnMobileConnectionButton() {
         screen.swipeScreenWithPressTime(Screen.Direction.LEFT, 800, paymentsPoint);
         buttons.searchAndClickButtonBy(MOBILE_CONNECTION);
-        return new DemoMobileConnectionPage(getAndroidDriver());
+        return new DemoMobileConnectionPage();
     }
 
     @Step("Тапнуть кнопку 'Оплата услуг ЖКХ'")
@@ -109,7 +106,7 @@ public class DemoPaymentsAndTransfersPage extends DemoVersionMainPage {
     public DemoInternetAndTVPage tapOnInternetAndTVButton() {
         screen.swipeScreenWithPressTime(Screen.Direction.LEFT, 200, paymentsPoint);
         buttons.searchAndClickButtonBy(INTERNET_AND_TV_BUTTON);
-        return new DemoInternetAndTVPage(getAndroidDriver());
+        return new DemoInternetAndTVPage();
     }
 
     @Step("Тапнуть на кнопку 'Образование'")

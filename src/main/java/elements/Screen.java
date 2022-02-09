@@ -16,6 +16,8 @@ import utils.mobile.Waiters;
 
 import java.time.Duration;
 
+import static utils.mobile.Waiters.getWaiters;
+
 public class Screen extends MobileElements {
     protected static final Logger LOGGER = LoggerFactory.getLogger(Screen.class);
 
@@ -53,7 +55,7 @@ public class Screen extends MobileElements {
         int edgeBorder = 10;
 
         Dimension dims = driver.manage().window().getSize();
-        new Waiters(driver).waitSomeSecond(1);
+        getWaiters().waitSomeSecond(1);
 
         if (pointStart == null) {
             pointStart = new Point(dims.width / 2, dims.height / 2);
