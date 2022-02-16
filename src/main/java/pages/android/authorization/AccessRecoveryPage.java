@@ -36,7 +36,10 @@ public class AccessRecoveryPage extends LoginPage {
         return instanse;
     }
 
-
+    @Step("Отображается экран \"Создание пароля\" (придумайте пароль)")
+    public boolean isDisplayCreatingPasswordScreen() {
+        return elements.isElementExist(CREATE_PASSWORD_TITTLE);
+    }
 
     @Step("Отображается экран \"Восстановление доступа\":")
     public boolean isDisplayAccessRecoveryScreen() {
@@ -71,6 +74,29 @@ public class AccessRecoveryPage extends LoginPage {
             buttons.searchAndClickButtonBy(BUTTON_ZERO);
         }
         return this;
+    }
+
+    @Step("Тапнуть на кнопку Х (закрыть)")
+    public AccessRecoveryPage tapOnCloseButtonAfterAccessRecovery() {
+        buttons.searchAndClickButtonBy(BACK_BUTTON);
+        return this;
+    }
+
+    @Step("Тапнуть на кнопку \"Отмена\"")
+    public AccessRecoveryPage tapOnCancelButton() {
+        buttons.searchAndClickButtonBy(CANCEL_BUTTON);
+        return this;
+    }
+
+    @Step("Тапнуть на кнопку \"Прервать\"")
+    public AccessRecoveryPage tapOnAbortButton() {
+        buttons.searchAndClickButtonBy(OK_BUTTON);
+        return this;
+    }
+
+    @Step("Отображается алерт \"Вы уверенны что хотите прервать процесс получения доступа?\"")
+    public String isDisplayAlertAboutStoppingAccessRecovery() {
+        return elements.getTextFromElement(COMMON_DIALOG_TEXT).trim();
     }
 
     @Step("Отображается текст \"Повторите пароль\"")

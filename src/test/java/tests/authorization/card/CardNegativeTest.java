@@ -3,8 +3,11 @@ package tests.authorization.card;
 import enums.Text;
 import io.qameta.allure.TmsLink;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import tests.authorization.AuthorizationMainTest;
+
+import static core.InitialDriver.getAndroidDriver;
 
 
 public class CardNegativeTest extends AuthorizationMainTest {
@@ -51,6 +54,10 @@ public class CardNegativeTest extends AuthorizationMainTest {
         testExecute(cardNumber, password, Text.DONT_FOUND_USER);
     }
 
+    @AfterMethod
+    public void afterMethod() {
+        getAndroidDriver().closeApp();
+    }
 
     private void testExecute(String cardNumber, String password, Text text) {
         String result = loginPageForLogin

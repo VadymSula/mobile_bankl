@@ -40,5 +40,4 @@ public class RepeatPasswordByCardTest extends AuthorizationMainTest {
         softAssert.assertTrue(isDisplayConfirmPassTittle);
         softAssert.assertAll();
     }
-
 }

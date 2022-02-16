@@ -55,6 +55,8 @@ public class AndroidBasePage {
     protected MobileElement COMMON_DIALOG_TEXT;
     @AndroidFindBy(id = "cb.ibank:id/common_dialog_button_ok")
     protected MobileElement OK_BUTTON;
+    @AndroidFindBy(id = "cb.ibank:id/common_dialog_button_cancel")
+    protected MobileElement CANCEL_BUTTON;
     @AndroidFindBy(id = "cb.ibank:id/tutorial_view_title")
     protected MobileElement ONBOARDING_TITLE_TEXT;
     @AndroidFindBy(id = "cb.ibank:id/tutorial_view_message")

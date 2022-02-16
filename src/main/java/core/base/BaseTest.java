@@ -18,11 +18,6 @@ public class BaseTest {
         //TODO Через .startActivity для уменьшения логина
     }
 
-    @AfterMethod
-    public void afterMethod() {
-        getAndroidDriver().closeApp();
-    }
-
 //    @AfterSuite
 //    public void afterSuiteTest() {
 //        getAppiumDriver().removeApp(PropertiesConfig.getProperty("myAppPackage"));

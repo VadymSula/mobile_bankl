@@ -15,6 +15,7 @@ import utils.mobile.Waiters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 
@@ -42,7 +43,7 @@ public abstract class InitialDriver {
         if (driver == null) {
             try {
                 driver = initializeDriver();
-                driver.manage().timeouts().implicitlyWait(Waiters.IMPLICITLY_WAIT, TimeUnit.SECONDS);
+                Objects.requireNonNull(driver).manage().timeouts().implicitlyWait(Waiters.IMPLICITLY_WAIT, TimeUnit.SECONDS);
                 LOGGER.info("Driver is started");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -61,7 +62,7 @@ public abstract class InitialDriver {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            LOGGER.error(String.format("Invalid platform in caps: %s", caps.getPlatform().getPartOfOsName()));
+            LOGGER.error(String.format("Invalid platform in caps: %s", caps.getPlatform().name()));
         }
         return null;
     }
@@ -70,9 +71,9 @@ public abstract class InitialDriver {
     private static void setCapabilities() {
         if (caps == null) {
             caps = new DesiredCapabilities();
-            var capabilities = yamlParser.getCapabilitiesForDevice("Pixel_5_API_32");
+            var capabilities = yamlParser.getCapabilitiesForDevice("realme6Pro");
             switch (capabilities.getDevice().getPlatformName()) {
-                case "realme6Pro":
+                case "Android":
                     caps.setCapability(MobileCapabilityType.DEVICE_NAME, capabilities.getDevice().getDeviceName());
                     caps.setCapability(MobileCapabilityType.PLATFORM_NAME, capabilities.getDevice().getPlatformName());
                     caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, capabilities.getDevice().getPlatformVersion());

@@ -6,9 +6,9 @@ import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.android.account.RequisitesPage;
-import steps.autorization.LoginSteps;
+import steps.autorization.LoginByPANSteps;
 
-public class SendRequisitesOnEmptyEmailTest extends LoginSteps {
+public class SendRequisitesOnEmptyEmailTest extends LoginByPANSteps {
 
     @Epic("Счет")
     @Feature("Отправка/Сохранение реквизитов")

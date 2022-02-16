@@ -13,7 +13,6 @@ public class AuthorizationMainTest extends BaseTest {
 
     @BeforeMethod
     public void goToLoginPage() {
-        getAndroidDriver().launchApp();
         loginPageForLogin
                 .goToSignInPage();
     }

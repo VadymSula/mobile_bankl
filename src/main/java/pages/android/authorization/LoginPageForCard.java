@@ -29,7 +29,6 @@ public class LoginPageForCard extends LoginPage {
     @AndroidFindBy(id = "cb.ibank:id/text_input_end_icon")
     protected MobileElement SCAN_CARD;
 
-
     @Step("Тапнуть на кнопку \"Войти\"")
     public ConfirmLoginPage tapOnSignInButton() {
         buttons.searchAndClickButtonBy(SIGN_IN_BUTTON);
@@ -119,10 +118,6 @@ public class LoginPageForCard extends LoginPage {
 
 
     private static LoginPageForCard instanse;
-
-    private LoginPageForCard() {
-        super();
-    }
 
     public static LoginPageForCard getLoginPageForCard() {
         if (instanse == null) {

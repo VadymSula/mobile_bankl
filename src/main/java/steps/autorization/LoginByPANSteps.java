@@ -10,7 +10,7 @@ import utils.integration.fimi.SOAPClientSAAJ;
 
 import static core.InitialDriver.getAndroidDriver;
 
-public class LoginSteps extends BaseStep {
+public class LoginByPANSteps extends BaseStep {
     protected static LoginPageForLogin loginPageForLogin = LoginPageForLogin.getLoginPageForLogin();
     protected static PersonalCabinetMainPage personalCabinetMainPage = new PersonalCabinetMainPage();
 
