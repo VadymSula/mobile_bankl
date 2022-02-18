@@ -1,9 +1,7 @@
 package tests.authorization.accessRecovery;
 
-import core.base.BaseTest;
 import enums.Text;
 import io.qameta.allure.*;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.android.authorization.AccessRecoveryPage;

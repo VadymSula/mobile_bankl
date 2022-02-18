@@ -1,14 +1,17 @@
 package tests.demoversion.more;
 
-import org.testng.Assert;
+import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.android.demoversion.more.DemoFastPaymentSystemPage;
 
 public class FastPaymentSystemTest extends MoreMainTest {
 
     @Test
+    @TmsLink("31898")
     public void isDisplayedInfoFromAlertSBP() {
-        var actualResult = demoMorePage
+        SoftAssert softAssert = new SoftAssert();
+        var isDisplayedInfoText = demoMorePage
                 .tapOnFastPaymentSystem()
                 .tapOnHintAboutFastPaymentSystem()
                 .tapOnCloseButton()
@@ -16,18 +19,13 @@ public class FastPaymentSystemTest extends MoreMainTest {
                 .tapOnOtherNumber()
                 .tapOnSPBSettingsAccountHint()
                 .isDisplayedInfoText();
-
-        Assert.assertTrue(actualResult);
-    }
-
-    @Test(priority = 1)
-    public void isNotAvailableInDemoVersion() {
         var actualResult = new DemoFastPaymentSystemPage()
                 .tapOnOkButtonAndGoToSBP()
                 .tapOnAgreeConditionsCheckbox()
                 .tapOnConnectButton()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
-
-        Assert.assertTrue(actualResult);
+        softAssert.assertTrue(isDisplayedInfoText);
+        softAssert.assertTrue(actualResult);
+        softAssert.assertAll();
     }
 }

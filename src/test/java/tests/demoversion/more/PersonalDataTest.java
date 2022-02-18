@@ -1,28 +1,27 @@
 package tests.demoversion.more;
 
-import org.testng.Assert;
+import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.android.demoversion.more.DemoPersonalDataPage;
 
 public class PersonalDataTest extends MoreMainTest {
 
     @Test
+    @TmsLink("31900")
     public void showPersonalDataTest() {
-        var actualResult = demoMorePage
+        SoftAssert softAssert = new SoftAssert();
+        var isExistAlertAboutNotAvailableInDemoVersionAndTapOK = demoMorePage
                 .tapOnPersonalData()
                 .tapOnCodeWordButton()
                 .tapOnShowCodeWord()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
-
-        Assert.assertTrue(actualResult);
-    }
-
-    @Test(priority = 1)
-    public void editPersonalDataTest() {
         var actualResult = new DemoPersonalDataPage()
                 .tapOnEditCodeWord()
                 .isExistAlertAboutNotAvailableInDemoVersionAndTapOK();
 
-        Assert.assertTrue(actualResult);
+        softAssert.assertTrue(isExistAlertAboutNotAvailableInDemoVersionAndTapOK);
+        softAssert.assertTrue(actualResult);
+        softAssert.assertAll();
     }
 }

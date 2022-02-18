@@ -18,6 +18,10 @@
             <class name="tests.demoversion.card.CashBackTest"/>
             <class name="tests.demoversion.card.SetPinCodeTest"/>
             <class name="tests.demoversion.card.EditPinCodeTest"/>
+            <class name="tests.demoversion.card.TariffPlanTest"/>
+            <class name="tests.demoversion.card.LimitTest"/>
+            <class name="tests.demoversion.card.ViewCardTest"/>
+
         </classes>
     </test>
 

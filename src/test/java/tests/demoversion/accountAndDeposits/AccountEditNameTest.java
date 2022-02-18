@@ -6,11 +6,11 @@ import tests.demoversion.DemoVersionMainTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@TmsLink("31843")
 public class AccountEditNameTest extends DemoVersionMainTest {
 
 
     @Test
+    @TmsLink("31843")
     public void editAccountName() {
         var actualResult = demoAccountPage
                 .goToAccountPage()

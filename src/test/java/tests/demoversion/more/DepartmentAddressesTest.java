@@ -4,6 +4,7 @@ import io.qameta.allure.Flaky;
 import io.qameta.allure.TmsLink;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.android.demoversion.more.DemoDepartmentAddressesPage;
 
 public class DepartmentAddressesTest extends MoreMainTest {
@@ -12,21 +13,17 @@ public class DepartmentAddressesTest extends MoreMainTest {
     @Flaky
     @TmsLink("24528")
     public void isDisplayCityMap() {
-        var actualResult = demoMorePage
+        SoftAssert softAssert = new SoftAssert();
+        var isDisplayMapCity = demoMorePage
                 .tapOnDepartmentAddresses()
                 .isDisplayMapCity();
-
-        Assert.assertTrue(actualResult);
-    }
-
-    @Test(priority = 1)
-    @Flaky
-    public void isDisplayListOfAddresses() {
         var departmentAddressesPage = new DemoDepartmentAddressesPage();
         var actualResult = departmentAddressesPage
                 .tapOnListOfAddresses()
                 .isDisplayListOfAddresses();
 
-        Assert.assertTrue(actualResult);
+        softAssert.assertTrue(isDisplayMapCity);
+        softAssert.assertTrue(actualResult);
+        softAssert.assertAll();
     }
 }

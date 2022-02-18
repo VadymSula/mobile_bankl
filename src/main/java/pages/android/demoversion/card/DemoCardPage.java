@@ -37,6 +37,8 @@ public class DemoCardPage extends DemoVersionMainPage {
     protected MobileElement COPY_CARD_NUMBER;
     @AndroidFindBy(id = "cb.ibank:id/view_two_columns_value")
     protected List<MobileElement> CARD_VALUE;
+    @AndroidFindBy(id = "cb.ibank:id/card_details_action_tariff")
+    protected MobileElement TARIFF_PLAN;
 
 
     @Step("Тапнуть на 'Условия программы'")
@@ -44,6 +46,15 @@ public class DemoCardPage extends DemoVersionMainPage {
         var text = elements.getTextFromElement(CASHBACK_CONDITIONS);
         screen.scrollablePageAndroidByText(text);
         buttons.searchAndClickButtonBy(CASHBACK_CONDITIONS);
+
+        return new DemoCashBackConditionsPage();
+    }
+
+    @Step("Проскроллить к блоку \"Действия\" и Тапнуть на \"Тарифный план\"")
+    public DemoCashBackConditionsPage scrollAndTapOnTariffPlan() {
+        var text = elements.getTextFromElement(TARIFF_PLAN);
+        screen.scrollablePageAndroidByText(text);
+        buttons.searchAndClickButtonBy(TARIFF_PLAN);
 
         return new DemoCashBackConditionsPage();
     }
